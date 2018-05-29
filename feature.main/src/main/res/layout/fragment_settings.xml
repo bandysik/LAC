@@ -1,0 +1,76 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".settings.SettingsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <TextView
+            style="@style/SettingsTitle"
+            android:text="From" />
+
+        <Button
+            android:id="@+id/fragment_settings_from"
+            style="@style/SettingsButton"
+            android:text="Select from" />
+
+        <TextView
+            style="@style/SettingsTitle"
+            android:text="To" />
+
+        <Button
+            android:id="@+id/fragment_settings_to"
+            style="@style/SettingsButton"
+            android:text="Select to" />
+
+        <TextView
+            style="@style/SettingsTitle"
+            android:text="Currency" />
+
+        <Button
+            android:id="@+id/fragment_settings_currency"
+            style="@style/SettingsButton"
+            android:text="Select currency" />
+
+        <TextView
+            style="@style/SettingsTitle"
+            android:text="Notification" />
+
+        <Switch
+            android:id="@+id/fragment_settings_notification"
+            style="@style/SettingsSwitch"
+            android:text="Allow to get notification" />
+
+        <TextView
+            style="@style/SettingsTitle"
+            android:text="Other" />
+
+        <Button
+            android:id="@+id/fragment_settings_feedback"
+            style="@style/SettingsButton"
+            android:text="Send Feedback" />
+
+        <Button
+            android:id="@+id/fragment_settings_share"
+            style="@style/SettingsButton"
+            android:text="Share with Friends" />
+
+        <Button
+            android:id="@+id/fragment_settings_apps"
+            style="@style/SettingsButton"
+            android:text="Other applications" />
+
+        <TextView
+            android:id="@+id/fragment_settings_version"
+            style="@style/SettingsText"
+            android:text="1.0.0" />
+    </LinearLayout>
+
+</ScrollView>

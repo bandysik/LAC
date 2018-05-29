@@ -1,0 +1,28 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+    defaultConfig {
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    api Deps.kotlin_stdlib
+
+    api Deps.android_support_compat
+    api Deps.android_constraint
+
+    api Deps.ktx_core
+
+    api Deps.koin_core
+    api Deps.koin_android
+
+    api Deps.timber
+}

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">feature.main</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_bookmarks">Bookmarks</string>
+    <string name="title_settings">Settings</string>
+</resources>

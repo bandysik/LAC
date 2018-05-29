@@ -1,0 +1,8 @@
+include ':core.app',
+        ':core.feature',
+        ':core.plugin',
+        ':app',
+        ':feature.main',
+        ':plugin.fcm',
+        ':plugin.featureswitcher'
+

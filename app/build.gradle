@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+    defaultConfig {
+        applicationId "bandysik.pdp"
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        debug {
+            keyAlias 'key0'
+            keyPassword 'password'
+            storeFile file('../keystore/pdpkeystore.jks')
+            storePassword 'password'
+        }
+        //TODO make release signing config if need
+        release {
+            try {
+                storeFile file("../keystore/pdpkeystore.jks")
+                storePassword KEYSTORE_PASSWORD
+                keyAlias "key0"
+                keyPassword KEY_PASSWORD
+            }
+            catch (ex) {
+                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+            }
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
+        }
+        release {
+            signingConfig signingConfigs.release
+            applicationIdSuffix '.release'
+            versionNameSuffix '-release'
+
+            postprocessing {
+                removeUnusedCode true
+                removeUnusedResources true
+                obfuscate true
+                optimizeCode true
+                proguardFile '../proguard/proguard-rules.pro'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation project(':core.app')
+
+    implementation project(':feature.main')
+}
