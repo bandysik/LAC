@@ -1,6 +1,7 @@
 package lac.feature.main.home
 
 import android.support.design.widget.BottomNavigationView
+import android.support.design.widget.CoordinatorLayout
 import android.support.v4.app.Fragment
 import kotlinx.android.synthetic.main.activity_home.*
 import lac.core.feature.core.old.CommonActivity
@@ -10,6 +11,7 @@ import lac.feature.main.feed.FeedFragment
 import lac.feature.main.home.Params.HOME_VIEW
 import lac.feature.main.settings.SettingsFragment
 import org.koin.android.ext.android.inject
+
 
 class HomeActivity : CommonActivity<HomePresenter>(), HomeContract.View {
 
@@ -45,15 +47,16 @@ class HomeActivity : CommonActivity<HomePresenter>(), HomeContract.View {
 
     override fun initViews() {
         activity_home_navigation.setOnNavigationItemSelectedListener(
-            onNavigationItemSelectedListener)
+                onNavigationItemSelectedListener)
         activity_home_navigation.selectedItemId = navigationCurrentItem
 
-//        Injector.remoteConfig.update()
+        val layoutParams = activity_home_navigation.layoutParams as CoordinatorLayout.LayoutParams
+        layoutParams.behavior = BottomNavigationViewBehavior()
     }
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.activity_home_container, fragment)
-            .commit()
+                .replace(R.id.activity_home_container, fragment)
+                .commit()
     }
 }
