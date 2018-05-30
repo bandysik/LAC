@@ -39,6 +39,7 @@ captures/
 .idea/modules.xml
 .idea/runConfigurations.xml
 .idea/vcs.xml
+/.idea/codeStyles/Project.xml
 .idea/dictionaries
 .idea/libraries
 .idea/caches
@@ -64,3 +65,4 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+.idea/
