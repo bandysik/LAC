@@ -10,12 +10,9 @@ import lac.feature.main.bookmark.BookmarksFragment
 import lac.feature.main.feed.FeedFragment
 import lac.feature.main.home.Params.HOME_VIEW
 import lac.feature.main.settings.SettingsFragment
-import lac.plugin.logger.Logger
 import org.koin.android.ext.android.inject
 
 class HomeActivity : CommonActivity<HomePresenter>(), HomeContract.View {
-
-    val logger: Logger by inject()
 
     val presenter: HomeContract.Presenter by inject { mapOf(HOME_VIEW to this) }
 
@@ -54,8 +51,6 @@ class HomeActivity : CommonActivity<HomePresenter>(), HomeContract.View {
 
         val layoutParams = activity_home_navigation.layoutParams as CoordinatorLayout.LayoutParams
         layoutParams.behavior = BottomNavigationViewBehavior()
-
-        logger.d("")
     }
 
 }

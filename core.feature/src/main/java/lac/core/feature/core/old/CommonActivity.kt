@@ -6,7 +6,7 @@ import lac.core.feature.core.Pikkel
 import lac.core.feature.core.PikkelDelegate
 
 abstract class CommonActivity<out Presenter : BasePresenter> : AppCompatActivity(), BaseView,
-                                                               Pikkel by PikkelDelegate() {
+        Pikkel by PikkelDelegate() {
 
     private lateinit var presenter: Presenter
 

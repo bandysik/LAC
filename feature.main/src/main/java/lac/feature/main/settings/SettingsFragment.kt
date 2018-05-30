@@ -6,8 +6,8 @@ import lac.core.feature.core.old.BaseFragment
 import lac.feature.main.R
 
 class SettingsFragment : BaseFragment<SettingsPresenter>(),
-                         SettingsContract.View,
-                         CurrencyDialogFragment.Listener {
+        SettingsContract.View,
+        CurrencyDialogFragment.Listener {
 
     override fun getLayoutResId() =
             R.layout.fragment_settings
@@ -18,15 +18,15 @@ class SettingsFragment : BaseFragment<SettingsPresenter>(),
     override fun initViews() {
         fragment_settings_from.setOnClickListener {
             CurrencyDialogFragment.newInstance(30)
-                .show(childFragmentManager, "dialog")
+                    .show(childFragmentManager, "dialog")
         }
         fragment_settings_to.setOnClickListener {
             CurrencyDialogFragment.newInstance(30)
-                .show(childFragmentManager, "dialog")
+                    .show(childFragmentManager, "dialog")
         }
         fragment_settings_currency.setOnClickListener {
             CurrencyDialogFragment.newInstance(30)
-                .show(childFragmentManager, "dialog")
+                    .show(childFragmentManager, "dialog")
         }
         fragment_settings_feedback.setOnClickListener {}
 
