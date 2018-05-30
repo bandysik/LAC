@@ -2,18 +2,20 @@ package lac.feature.main.home
 
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.CoordinatorLayout
-import android.support.v4.app.Fragment
 import kotlinx.android.synthetic.main.activity_home.*
 import lac.core.feature.core.old.CommonActivity
+import lac.core.feature.core.utils.extension.replaceFragment
 import lac.feature.main.R
 import lac.feature.main.bookmark.BookmarksFragment
 import lac.feature.main.feed.FeedFragment
 import lac.feature.main.home.Params.HOME_VIEW
 import lac.feature.main.settings.SettingsFragment
+import lac.plugin.logger.Logger
 import org.koin.android.ext.android.inject
 
-
 class HomeActivity : CommonActivity<HomePresenter>(), HomeContract.View {
+
+    val logger: Logger by inject()
 
     val presenter: HomeContract.Presenter by inject { mapOf(HOME_VIEW to this) }
 
@@ -24,15 +26,15 @@ class HomeActivity : CommonActivity<HomePresenter>(), HomeContract.View {
                 navigationCurrentItem = item.itemId
                 when (item.itemId) {
                     R.id.navigation_home -> {
-                        replaceFragment(FeedFragment.newInstance())
+                        supportFragmentManager.replaceFragment(R.id.activity_home_container, FeedFragment.newInstance())
                         return@OnNavigationItemSelectedListener true
                     }
                     R.id.navigation_bookmarks -> {
-                        replaceFragment(BookmarksFragment.newInstance())
+                        supportFragmentManager.replaceFragment(R.id.activity_home_container, BookmarksFragment.newInstance())
                         return@OnNavigationItemSelectedListener true
                     }
                     R.id.navigation_settings -> {
-                        replaceFragment(SettingsFragment.newInstance())
+                        supportFragmentManager.replaceFragment(R.id.activity_home_container, SettingsFragment.newInstance())
                         return@OnNavigationItemSelectedListener true
                     }
                 }
@@ -52,11 +54,8 @@ class HomeActivity : CommonActivity<HomePresenter>(), HomeContract.View {
 
         val layoutParams = activity_home_navigation.layoutParams as CoordinatorLayout.LayoutParams
         layoutParams.behavior = BottomNavigationViewBehavior()
+
+        logger.d("")
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.activity_home_container, fragment)
-                .commit()
-    }
 }

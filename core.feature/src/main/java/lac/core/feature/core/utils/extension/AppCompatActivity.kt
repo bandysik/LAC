@@ -44,5 +44,5 @@ private inline fun FragmentManager.transact(action: FragmentTransaction.() -> Un
     beginTransaction().apply {
         action()
     }
-        .commit()
+            .commit()
 }

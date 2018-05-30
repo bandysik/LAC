@@ -3,22 +3,28 @@ package lac.core.feature.core.utils.extension
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 
-internal fun FragmentManager.removeFragment(tag: String/*,
+fun FragmentManager.removeFragment(tag: String/*,
                                             slideIn: Int = R.anim.slide_left,
                                             slideOut: Int = R.anim.slide_right*/) {
     this.beginTransaction()
-        .disallowAddToBackStack()
+            .disallowAddToBackStack()
 //        .setCustomAnimations(slideIn, slideOut)
-        .remove(this.findFragmentByTag(tag))
-        .commitNow()
+            .remove(this.findFragmentByTag(tag))
+            .commitNow()
 }
 
-internal fun FragmentManager.addFragment(containerViewId: Int, fragment: Fragment, tag: String/*,
+fun FragmentManager.addFragment(containerViewId: Int, fragment: Fragment, tag: String/*,
                                          slideIn: Int = R.anim.slide_left,
                                          slideOut: Int = R.anim.slide_right*/) {
     this.beginTransaction()
-        .disallowAddToBackStack()
+            .disallowAddToBackStack()
 //        .setCustomAnimations(slideIn, slideOut)
-        .add(containerViewId, fragment, tag)
-        .commit()
+            .add(containerViewId, fragment, tag)
+            .commit()
+}
+
+fun FragmentManager.replaceFragment(containerViewId: Int, fragment: Fragment) {
+    this.beginTransaction()
+            .replace(containerViewId, fragment)
+            .commit()
 }

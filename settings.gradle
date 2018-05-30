@@ -4,5 +4,6 @@ include ':core.app',
         ':app',
         ':feature.main',
         ':plugin.fcm',
-        ':plugin.featureswitcher'
+        ':plugin.featureswitcher',
+        ':plugin.logger'
 

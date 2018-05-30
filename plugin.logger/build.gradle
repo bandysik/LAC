@@ -11,15 +11,7 @@ android {
 }
 
 dependencies {
-    api Deps.kotlin_stdlib
+    implementation project(':core.plugin')
 
-    api Deps.android_support_compat
-    api Deps.android_design
-    api Deps.android_vector
-    api Deps.android_constraint
-
-    api Deps.koin_core
-    api Deps.koin_android
-
-    api Deps.ktx_core
+    api Deps.timber
 }
