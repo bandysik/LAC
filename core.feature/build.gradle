@@ -22,4 +22,9 @@ dependencies {
     api Deps.koin_android
 
     api Deps.ktx_core
+
+    api Deps.retrofit
+    api Deps.retrofit_converter_gson
+
+    api Deps.arch_room
 }

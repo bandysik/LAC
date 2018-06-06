@@ -8,5 +8,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".bookmark.BookmarksFragment"
+    tools:context=".app.bookmark.BookmarksFragment"
     tools:listitem="@layout/adapter_bookmark" />

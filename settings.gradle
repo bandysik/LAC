@@ -1,9 +1,10 @@
-include ':core.app',
+include ':core.app', ':feature.additional', ':plugin.navigator',
         ':core.feature',
         ':core.plugin',
         ':app',
         ':feature.main',
-        ':plugin.fcm',
-        ':plugin.featureswitcher',
-        ':plugin.logger'
+//        ':plugin.fcm',
+//        ':plugin.featureswitcher',
+        ':plugin.logger',
+        ':plugin.analytic'
 

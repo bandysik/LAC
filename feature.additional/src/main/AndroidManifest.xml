@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="lac.feature.additional">
+
+    <application>
+        <activity
+            android:name=".pro.ProActivity"
+            android:label="@string/title_activity_pro" />
+    </application>
+
+</manifest>

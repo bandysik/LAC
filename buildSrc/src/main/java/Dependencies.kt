@@ -9,11 +9,13 @@ object Versions {
     val support = "27.1.1"
     val constraint = "1.1.0"
     val ktx = "0.3"
+    val room = "1.0.0"
 
     //OTHER
     val koin = "0.9.3"
     val timber = "4.7.0"
     val stetho = "1.5.0"
+    val retrofit = "2.4.0"
 
     //TEST
     val junit = "4.12"
@@ -31,11 +33,16 @@ object Deps {
     val android_constraint =
             "com.android.support.constraint:constraint-layout:${Versions.constraint}"
 
+    val arch_room = "android.arch.persistence.room:runtime:${Versions.room}"
+
     val ktx_core = "androidx.core:core-ktx:${Versions.ktx}"
 
     //OTHER
     val koin_core = "org.koin:koin-core:${Versions.koin}"
     val koin_android = "org.koin:koin-android:${Versions.koin}"
+
+    val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    val retrofit_converter_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
 
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
