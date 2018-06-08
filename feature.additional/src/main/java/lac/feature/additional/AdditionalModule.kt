@@ -1,3 +1,9 @@
 package lac.feature.additional
 
-object AdditionalModule
+import android.app.Application
+
+object AdditionalModule {
+    fun init(app: Application) {
+//        app.startKoin(app, listOf(homeModule))
+    }
+}

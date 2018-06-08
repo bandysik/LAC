@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_bookmark_list"
     android:name="lac.feature.main.bookmark.BookmarksFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutManager="LinearLayoutManager"
+    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
     tools:context=".app.bookmark.BookmarksFragment"
     tools:listitem="@layout/adapter_bookmark" />

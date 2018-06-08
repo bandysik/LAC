@@ -32,7 +32,7 @@ class DetailActivity : CommonActivity<DetailPresenter>(), DetailContract.View {
         setSupportActionBar(activity_detail_toolbar)
 
         activity_detail_fab.setOnClickListener { view ->
-            N.navigator.startPro()
+            N.navigator.startPro(this)
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
                 .show()

@@ -28,7 +28,7 @@ class FeedFragment : BaseFragment<FeedPresenter>(), FeedContract.View {
 
     override fun initViews() {
         val context = fragment_feed_list.context
-        fragment_feed_list.layoutManager = LinearLayoutManager(context)
+//        fragment_feed_list.layoutManager = LinearLayoutManager(context)
         fragment_feed_list.adapter = FeedAdapter(DummyContent.ITEMS, mListener)
     }
 
