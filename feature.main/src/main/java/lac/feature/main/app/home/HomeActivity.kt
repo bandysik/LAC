@@ -4,16 +4,22 @@ import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.CoordinatorLayout
 import android.support.v4.app.Fragment
 import kotlinx.android.synthetic.main.activity_home.*
-import lac.core.feature.core.old.CommonActivity
+import lac.core.feature.core.old.BaseActivity
 import lac.core.feature.core.utils.extension.replaceFragment
 import lac.feature.main.R
-import lac.feature.main.app.bookmark.BookmarksFragment
+import lac.feature.main.app.bookmarks.BookmarksFragment
 import lac.feature.main.app.feed.FeedFragment
 import lac.feature.main.app.home.Params.HOME_VIEW
 import lac.feature.main.app.settings.SettingsFragment
 import org.koin.android.ext.android.inject
 
-class HomeActivity : CommonActivity<HomePresenter>(), HomeContract.View {
+internal class HomeActivity :
+        BaseActivity<HomePresenter>(),
+        HomeContract.View {
+
+    override fun getPresenter(): HomePresenter {
+        return presenter as HomePresenter
+    }
 
     private val presenter: HomeContract.Presenter by inject { mapOf(HOME_VIEW to this) }
 
@@ -39,15 +45,15 @@ class HomeActivity : CommonActivity<HomePresenter>(), HomeContract.View {
                 false
             }
 
-    override fun initPresenter() =
-            HomePresenter(this)
+//    override fun initPresenter() =
+//            HomePresenter(this)
 
     override fun getLayoutResId() =
             R.layout.activity_home
 
     override fun initViews() {
         activity_home_navigation.setOnNavigationItemSelectedListener(
-            onNavigationItemSelectedListener)
+                onNavigationItemSelectedListener)
         activity_home_navigation.selectedItemId = navigationCurrentItem
 
         val layoutParams = activity_home_navigation.layoutParams as CoordinatorLayout.LayoutParams

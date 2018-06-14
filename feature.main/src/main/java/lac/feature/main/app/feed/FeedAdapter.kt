@@ -8,7 +8,7 @@ import android.widget.TextView
 import lac.feature.main.R
 import lac.feature.main.app.feed.dummy.DummyContent
 
-class FeedAdapter(private val values: List<DummyContent.DummyItem>,
+internal class FeedAdapter(private val values: List<DummyContent.DummyItem>,
                   private val listener: FeedFragment.FeedFragmentListener?) : RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

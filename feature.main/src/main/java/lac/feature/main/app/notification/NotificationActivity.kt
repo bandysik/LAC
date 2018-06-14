@@ -7,13 +7,24 @@ import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.activity_notification.*
-import lac.core.feature.core.old.CommonActivity
+import lac.core.feature.core.old.BaseActivity
+import lac.core.feature.core.utils.extension.argument
 import lac.feature.main.R
+import org.koin.android.ext.android.inject
 
-class NotificationActivity : CommonActivity<NotificationPresenter>(), NotificationContract.View {
-    override fun initPresenter(): NotificationPresenter {
-        val url = intent.getStringExtra("key_url")
-        return NotificationPresenter(this, url)
+internal class NotificationActivity : BaseActivity<NotificationPresenter>(), NotificationContract.View {
+
+    override fun getPresenter(): NotificationPresenter {
+        return presenter as NotificationPresenter
+    }
+
+    private val url: String by argument(ARG_KEY_URL)
+
+    private val presenter: NotificationContract.Presenter by inject {
+        mapOf(
+                Params.NOTIFICATION_VIEW to this,
+                Params.NOTIFICATION_VIEW to url
+        )
     }
 
     override fun getLayoutResId() =
@@ -23,12 +34,12 @@ class NotificationActivity : CommonActivity<NotificationPresenter>(), Notificati
         activity_notification_webview.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                getPresenter().onFinishLoadPage()
+                presenter.onFinishLoadPage()
             }
 
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
-                getPresenter().onStartLoadPage()
+                presenter.onStartLoadPage()
             }
         }
     }
@@ -47,7 +58,7 @@ class NotificationActivity : CommonActivity<NotificationPresenter>(), Notificati
 
     companion object {
 
-        private const val ARG_COLUMN_COUNT = "column-count"
+        private const val ARG_KEY_URL = "key_url"
 
         fun start(context: Context) {
             val intent = Intent(context, NotificationActivity::class.java)

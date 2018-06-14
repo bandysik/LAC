@@ -9,40 +9,36 @@ import lac.core.feature.core.Pikkel
 import lac.core.feature.core.PikkelDelegate
 
 abstract class BaseFragment<out Presenter : BasePresenter> : Fragment(), BaseView,
-                                                             Pikkel by PikkelDelegate() {
-
-    private lateinit var presenter: Presenter
-
-    abstract fun initPresenter(): Presenter
+        Pikkel by PikkelDelegate() {
 
     abstract fun getLayoutResId(): Int
 
     abstract fun initViews()
 
+    abstract fun getPresenter(): Presenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         restoreInstanceState(savedInstanceState)
-
-        presenter = initPresenter()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.stop()
+        getPresenter().stop()
     }
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(getLayoutResId(), container, false)
+        return inflater.inflate(getLayoutResId(), container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
 
-        presenter.start()
+        getPresenter().start()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

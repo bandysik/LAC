@@ -1,4 +1,4 @@
-package lac.feature.main.app.bookmark
+package lac.feature.main.app.bookmarks
 
 import lac.core.feature.core.old.BasePresenter
 import lac.core.feature.core.old.BaseProgressView

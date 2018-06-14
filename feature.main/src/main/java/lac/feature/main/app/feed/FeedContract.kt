@@ -4,7 +4,7 @@ import lac.core.feature.core.old.BasePresenter
 import lac.core.feature.core.old.BaseProgressView
 import lac.core.feature.core.old.BaseView
 
-interface FeedContract {
+internal interface FeedContract {
 
     interface View : BaseView{
         fun hideProgressBar()

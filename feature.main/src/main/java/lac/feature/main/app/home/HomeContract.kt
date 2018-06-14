@@ -3,7 +3,7 @@ package lac.feature.main.app.home
 import lac.core.feature.core.old.BasePresenter
 import lac.core.feature.core.old.BaseView
 
-interface HomeContract {
+internal interface HomeContract {
 
     interface View : BaseView{
         fun showHome()

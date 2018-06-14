@@ -4,11 +4,14 @@ import lac.core.feature.core.old.BasePresenter
 import lac.core.feature.core.old.BaseProgressView
 import lac.core.feature.core.old.BaseView
 
-interface DetailContract {
+internal interface DetailContract {
 
     interface View : BaseView, BaseProgressView {
         fun showTextMessage(msg: String)
+        fun openPro()
     }
 
-    interface Presenter : BasePresenter
+    interface Presenter : BasePresenter {
+        fun onClickPro()
+    }
 }

@@ -3,7 +3,7 @@ package lac.feature.main.app.home
 import lac.feature.main.app.home.Params.HOME_VIEW
 import org.koin.dsl.module.applicationContext
 
-val homeModule = applicationContext {
+val homeSubModule = applicationContext {
     factory { params -> HomePresenter(params[HOME_VIEW]) as HomeContract.Presenter }
 }
 

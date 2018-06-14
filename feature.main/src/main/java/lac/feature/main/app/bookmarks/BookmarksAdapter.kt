@@ -1,4 +1,4 @@
-package lac.feature.main.app.bookmark
+package lac.feature.main.app.bookmarks
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import lac.feature.main.R
-import lac.feature.main.app.bookmark.dummy.DummyContent
+import lac.feature.main.app.bookmarks.dummy.DummyContent
 
 internal class BookmarksAdapter(private val mValues: List<DummyContent.DummyItem>,
                        private val mListener: BookmarksFragment.BookmarksFragmentListener?) : RecyclerView.Adapter<BookmarksAdapter.ViewHolder>() {

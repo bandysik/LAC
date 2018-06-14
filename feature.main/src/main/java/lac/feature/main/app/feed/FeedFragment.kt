@@ -2,7 +2,6 @@ package lac.feature.main.app.feed
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_feed.*
 import lac.core.feature.core.old.BaseFragment
 import lac.core.feature.core.utils.gone
@@ -10,8 +9,14 @@ import lac.core.feature.core.utils.visible
 import lac.feature.main.R
 import lac.feature.main.app.detail.DetailActivity
 import lac.feature.main.app.feed.dummy.DummyContent
+import org.koin.android.ext.android.inject
 
-class FeedFragment : BaseFragment<FeedPresenter>(), FeedContract.View {
+internal class FeedFragment : BaseFragment<FeedPresenter>(), FeedContract.View {
+    private val presenter: FeedContract.Presenter by inject { mapOf(Params.FEED_VIEW to this) }
+
+    override fun getPresenter(): FeedPresenter {
+        return presenter as FeedPresenter
+    }
 
     private var mListener = object : FeedFragmentListener {
         override fun onClickFeedItem(item: DummyContent.DummyItem) {
@@ -19,9 +24,6 @@ class FeedFragment : BaseFragment<FeedPresenter>(), FeedContract.View {
             startActivity(intent)
         }
     }
-
-    override fun initPresenter() =
-            FeedPresenter(this)
 
     override fun getLayoutResId() =
             R.layout.fragment_feed

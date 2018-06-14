@@ -2,14 +2,23 @@ package lac.feature.main.app.detail
 
 import android.content.Context
 import android.content.Intent
-import android.support.design.widget.Snackbar
 import android.view.View
 import kotlinx.android.synthetic.main.activity_detail.*
-import lac.core.feature.core.old.CommonActivity
+import lac.core.feature.core.old.BaseActivity
 import lac.feature.main.R
 import lac.plugin.navigator.N
+import org.koin.android.ext.android.inject
 
-class DetailActivity : CommonActivity<DetailPresenter>(), DetailContract.View {
+internal class DetailActivity :
+        BaseActivity<DetailContract.Presenter>(),
+        DetailContract.View {
+
+    private val presenter: DetailContract.Presenter by inject { mapOf(Params.DETAIL_VIEW to this) }
+
+    override fun getPresenter(): DetailPresenter {
+        return presenter as DetailPresenter
+    }
+
     override fun showTextMessage(msg: String) {
         activity_detail_text.text = msg
     }
@@ -22,22 +31,20 @@ class DetailActivity : CommonActivity<DetailPresenter>(), DetailContract.View {
         activity_detail_progressbar.visibility = View.VISIBLE
     }
 
-    override fun initPresenter() =
-            DetailPresenter(this, "hello")
-
     override fun getLayoutResId() =
             R.layout.activity_detail
 
     override fun initViews() {
         setSupportActionBar(activity_detail_toolbar)
 
-        activity_detail_fab.setOnClickListener { view ->
-            N.navigator.startPro(this)
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .show()
+        activity_detail_fab.setOnClickListener {
+            presenter.onClickPro()
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun openPro() {
+        N.navigator.startPro(this)
     }
 
     companion object {

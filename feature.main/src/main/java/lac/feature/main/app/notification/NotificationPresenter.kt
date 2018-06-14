@@ -1,6 +1,6 @@
 package lac.feature.main.app.notification
 
-class NotificationPresenter(private val view: NotificationContract.View, private val url: String) :
+internal class NotificationPresenter(private val view: NotificationContract.View, private val url: String) :
         NotificationContract.Presenter {
 
     override fun onStartLoadPage() {

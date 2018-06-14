@@ -1,4 +1,4 @@
-package lac.feature.main.app.bookmark.dummy
+package lac.feature.main.app.bookmarks.dummy
 
 import java.util.*
 

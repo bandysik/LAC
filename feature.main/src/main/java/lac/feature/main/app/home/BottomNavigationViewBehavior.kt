@@ -5,7 +5,7 @@ import android.support.design.widget.CoordinatorLayout
 import android.support.v4.view.ViewCompat
 import android.view.View
 
-class BottomNavigationViewBehavior : CoordinatorLayout.Behavior<BottomNavigationView>() {
+internal class BottomNavigationViewBehavior : CoordinatorLayout.Behavior<BottomNavigationView>() {
 
     private var height: Int = 0
 

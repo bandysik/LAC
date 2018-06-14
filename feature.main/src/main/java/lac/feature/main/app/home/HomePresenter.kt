@@ -1,6 +1,6 @@
 package lac.feature.main.app.home
 
-class HomePresenter(private val view: HomeContract.View) : HomeContract.Presenter {
+internal class HomePresenter(private val view: HomeContract.View) : HomeContract.Presenter {
 
     override fun start() {
     }

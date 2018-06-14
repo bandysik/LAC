@@ -4,16 +4,19 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.fragment_settings.*
 import lac.core.feature.core.old.BaseFragment
 import lac.feature.main.R
+import org.koin.android.ext.android.inject
 
-class SettingsFragment : BaseFragment<SettingsPresenter>(),
+internal class SettingsFragment : BaseFragment<SettingsPresenter>(),
         SettingsContract.View,
         CurrencyDialogFragment.Listener {
+    private val presenter: SettingsContract.Presenter by inject { mapOf(Params.SETTINGS_VIEW to this) }
+
+    override fun getPresenter(): SettingsPresenter {
+        return presenter as SettingsPresenter
+    }
 
     override fun getLayoutResId() =
             R.layout.fragment_settings
-
-    override fun initPresenter() =
-            SettingsPresenter(this)
 
     override fun initViews() {
         fragment_settings_from.setOnClickListener {

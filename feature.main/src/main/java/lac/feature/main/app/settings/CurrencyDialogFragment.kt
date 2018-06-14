@@ -15,7 +15,7 @@ import lac.feature.main.R
 
 const val ARG_ITEM_COUNT = "item_count"
 
-class CurrencyDialogFragment : BottomSheetDialogFragment() {
+internal class CurrencyDialogFragment : BottomSheetDialogFragment() {
 
     private var mListener: Listener? = null
 
