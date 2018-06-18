@@ -60,8 +60,9 @@ internal class NotificationActivity : BaseActivity<NotificationPresenter>(), Not
 
         private const val ARG_KEY_URL = "key_url"
 
-        fun start(context: Context) {
+        fun start(context: Context, url: String) {
             val intent = Intent(context, NotificationActivity::class.java)
+            intent.putExtra(ARG_KEY_URL, url)
             context.startActivity(intent)
         }
     }

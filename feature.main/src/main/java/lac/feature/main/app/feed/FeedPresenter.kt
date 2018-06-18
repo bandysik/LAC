@@ -4,6 +4,7 @@ internal class FeedPresenter(private val view: FeedContract.View) : FeedContract
 
     override fun start() {
         view.showProgressBar()
+        view.hideProgressBar()
     }
 
     override fun stop() {

@@ -45,9 +45,6 @@ internal class HomeActivity :
                 false
             }
 
-//    override fun initPresenter() =
-//            HomePresenter(this)
-
     override fun getLayoutResId() =
             R.layout.activity_home
 

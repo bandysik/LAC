@@ -6,7 +6,9 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_detail.*
 import lac.core.feature.core.old.BaseActivity
 import lac.feature.main.R
+import lac.feature.main.R.id.*
 import lac.plugin.navigator.N
+import lac.plugin.remoteconfig.RC
 import org.koin.android.ext.android.inject
 
 internal class DetailActivity :
@@ -44,12 +46,12 @@ internal class DetailActivity :
     }
 
     override fun openPro() {
-        N.navigator.startPro(this)
+        if (RC.remoteConfig.isEnabledPro()) {
+            N.navigator.startPro(this)
+        }
     }
 
     companion object {
-
-        private const val ARG_COLUMN_COUNT = "column-count"
 
         fun start(context: Context) {
             val intent = Intent(context, DetailActivity::class.java)

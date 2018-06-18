@@ -4,9 +4,11 @@ import android.content.Context
 import com.squareup.leakcanary.LeakCanary
 import lac.core.app.LacApplication
 import lac.example.impl.AppNavigator
+import lac.example.impl.AppRemoteConfig
 import lac.feature.additional.AdditionalModule
 import lac.feature.main.MainModule
 import lac.plugin.navigator.N
+import lac.plugin.remoteconfig.RC
 
 class ExampleApp : LacApplication() {
     init {
@@ -22,6 +24,7 @@ class ExampleApp : LacApplication() {
         AdditionalModule.init(this)
 
         N.navigator = AppNavigator
+        RC.remoteConfig = AppRemoteConfig
     }
 
     private fun initLeakCanary(): Boolean {

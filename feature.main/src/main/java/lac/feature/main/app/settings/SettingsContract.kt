@@ -5,7 +5,17 @@ import lac.core.feature.core.old.BaseView
 
 internal interface SettingsContract {
 
-    interface View : BaseView
+    interface View : BaseView {
+        fun openFrom()
+        fun openTo()
+        fun openCurrency()
+    }
 
-    interface Presenter : BasePresenter
+    interface Presenter : BasePresenter {
+        fun openFrom()
+        fun openTo()
+        fun openCurrency()
+        fun changeNotification(isChecked: Boolean)
+        fun isNotificationEnabled(): Boolean
+    }
 }

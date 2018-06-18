@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".app.home.HomeActivity">
 
-
     <FrameLayout
         android:id="@+id/activity_home_container"
         android:layout_width="match_parent"

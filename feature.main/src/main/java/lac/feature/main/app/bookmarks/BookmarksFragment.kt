@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_bookmarks.*
 import lac.core.feature.core.old.BaseFragment
 import lac.feature.main.R
+import lac.feature.main.R.id.fragment_bookmark_list
 import lac.feature.main.app.bookmarks.dummy.DummyContent
 import lac.feature.main.app.detail.DetailActivity
 import org.koin.android.ext.android.inject
@@ -32,8 +33,6 @@ internal class BookmarksFragment : BaseFragment<BookmarksPresenter>(), Bookmarks
             R.layout.fragment_bookmarks
 
     override fun initViews() {
-        val context = fragment_bookmark_list.context
-        fragment_bookmark_list.layoutManager = LinearLayoutManager(context)
         fragment_bookmark_list.adapter = BookmarksAdapter(DummyContent.ITEMS, mListener)
     }
 
@@ -43,8 +42,6 @@ internal class BookmarksFragment : BaseFragment<BookmarksPresenter>(), Bookmarks
     }
 
     companion object {
-
-        private const val ARG_COLUMN_COUNT = "column-count"
 
         fun newInstance(): BookmarksFragment {
             val fragment = BookmarksFragment()

@@ -1,10 +1,11 @@
-include ':core.app', ':feature.additional', ':plugin.navigator',
+include ':core.app',
         ':core.feature',
         ':core.plugin',
         ':app',
         ':feature.main',
-//        ':plugin.fcm',
-//        ':plugin.featureswitcher',
+        ':feature.additional',
         ':plugin.logger',
-        ':plugin.analytic'
+        ':plugin.analytic',
+        ':plugin.navigator',
+        ':plugin.remoteconfig'
 

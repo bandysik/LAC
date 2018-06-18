@@ -11,10 +11,7 @@ android {
 }
 
 dependencies {
-    implementation project(':core.feature')
+    implementation project(':core.plugin')
 
-    api project(':plugin.logger')
-    api project(':plugin.analytic')
-    api project(':plugin.navigator')
-    api project(':plugin.remoteconfig')
+    api Deps.timber
 }

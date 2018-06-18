@@ -7,7 +7,9 @@ internal class DetailPresenter(private val view: DetailContract.View, private va
     }
 
     override fun start() {
+        view.showProgressBar()
         view.showTextMessage(msg)
+        view.hideProgressBar()
     }
 
     override fun stop() {

@@ -20,30 +20,46 @@ internal class SettingsFragment : BaseFragment<SettingsPresenter>(),
 
     override fun initViews() {
         fragment_settings_from.setOnClickListener {
-            CurrencyDialogFragment.newInstance(30)
-                    .show(childFragmentManager, "dialog")
+            getPresenter().openFrom()
         }
         fragment_settings_to.setOnClickListener {
-            CurrencyDialogFragment.newInstance(30)
-                    .show(childFragmentManager, "dialog")
+            getPresenter().openTo()
         }
         fragment_settings_currency.setOnClickListener {
-            CurrencyDialogFragment.newInstance(30)
-                    .show(childFragmentManager, "dialog")
+            getPresenter().openCurrency()
         }
         fragment_settings_feedback.setOnClickListener {}
 
         fragment_settings_share.setOnClickListener {}
 
         fragment_settings_apps.setOnClickListener {}
+
+        fragment_settings_notification.setOnCheckedChangeListener { buttonView, isChecked ->
+            getPresenter().changeNotification(isChecked)
+        }
+
+        fragment_settings_notification.isChecked = getPresenter().isNotificationEnabled()
+    }
+
+    override fun openFrom() {
+        CurrencyDialogFragment.newInstance(30)
+                .show(childFragmentManager, "dialog")
+    }
+
+    override fun openTo() {
+        CurrencyDialogFragment.newInstance(30)
+                .show(childFragmentManager, "dialog")
+    }
+
+    override fun openCurrency() {
+        CurrencyDialogFragment.newInstance(30)
+                .show(childFragmentManager, "dialog")
     }
 
     override fun onItemClicked(position: Int) {
     }
 
     companion object {
-        private val ARG_PARAM1 = "param1"
-        private val ARG_PARAM2 = "param2"
 
         fun newInstance(): SettingsFragment {
             val fragment = SettingsFragment()

@@ -29,8 +29,6 @@ internal class FeedFragment : BaseFragment<FeedPresenter>(), FeedContract.View {
             R.layout.fragment_feed
 
     override fun initViews() {
-        val context = fragment_feed_list.context
-//        fragment_feed_list.layoutManager = LinearLayoutManager(context)
         fragment_feed_list.adapter = FeedAdapter(DummyContent.ITEMS, mListener)
     }
 
@@ -52,8 +50,6 @@ internal class FeedFragment : BaseFragment<FeedPresenter>(), FeedContract.View {
     }
 
     companion object {
-
-        private val ARG_COLUMN_COUNT = "column-count"
 
         fun newInstance(): FeedFragment {
             val fragment = FeedFragment()

@@ -27,7 +27,6 @@ internal class CurrencyDialogFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        list.layoutManager = LinearLayoutManager(context)
         list.adapter = ItemAdapter(arguments?.getInt(ARG_ITEM_COUNT)!!)
     }
 
