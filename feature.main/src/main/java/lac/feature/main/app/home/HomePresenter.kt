@@ -1,6 +1,7 @@
 package lac.feature.main.app.home
 
 import lac.feature.main.plugin.settings.MainSettings
+import lac.plugin.analytic.A
 
 internal class HomePresenter(private val view: HomeContract.View) : HomeContract.Presenter {
 
@@ -19,14 +20,17 @@ internal class HomePresenter(private val view: HomeContract.View) : HomeContract
     }
 
     override fun onClickShowHome() {
+        A.analytic.eventOpenHome()
         view.showHome()
     }
 
     override fun onClickShowBookmarks() {
+        A.analytic.eventOpenBookmarks()
         view.showBookmarks()
     }
 
     override fun onClickShowSettings() {
+        A.analytic.eventOpenSettings()
         view.showSettings()
     }
 }
