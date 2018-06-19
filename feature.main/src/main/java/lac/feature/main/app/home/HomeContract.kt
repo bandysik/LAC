@@ -5,15 +5,17 @@ import lac.core.feature.core.old.BaseView
 
 internal interface HomeContract {
 
-    interface View : BaseView{
+    interface View : BaseView {
         fun showHome()
         fun showBookmarks()
         fun showSettings()
+        fun showSelectCity(selectedCity: Int)
     }
 
     interface Presenter : BasePresenter {
         fun onClickShowHome()
         fun onClickShowBookmarks()
         fun onClickShowSettings()
+        fun selectCity(position: Int)
     }
 }

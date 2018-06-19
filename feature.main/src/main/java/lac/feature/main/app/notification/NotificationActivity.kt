@@ -14,10 +14,6 @@ import org.koin.android.ext.android.inject
 
 internal class NotificationActivity : BaseActivity<NotificationPresenter>(), NotificationContract.View {
 
-    override fun getPresenter(): NotificationPresenter {
-        return presenter as NotificationPresenter
-    }
-
     private val url: String by argument(ARG_KEY_URL)
 
     private val presenter: NotificationContract.Presenter by inject {
@@ -25,6 +21,10 @@ internal class NotificationActivity : BaseActivity<NotificationPresenter>(), Not
                 Params.NOTIFICATION_VIEW to this,
                 Params.NOTIFICATION_VIEW to url
         )
+    }
+
+    override fun getPresenter(): NotificationPresenter {
+        return presenter as NotificationPresenter
     }
 
     override fun getLayoutResId() =

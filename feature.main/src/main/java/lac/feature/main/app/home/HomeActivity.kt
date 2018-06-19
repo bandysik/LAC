@@ -10,12 +10,14 @@ import lac.feature.main.R
 import lac.feature.main.app.bookmarks.BookmarksFragment
 import lac.feature.main.app.feed.FeedFragment
 import lac.feature.main.app.home.Params.HOME_VIEW
+import lac.feature.main.app.settings.CityDialogFragment
 import lac.feature.main.app.settings.SettingsFragment
 import org.koin.android.ext.android.inject
 
 internal class HomeActivity :
         BaseActivity<HomePresenter>(),
-        HomeContract.View {
+        HomeContract.View,
+        CityDialogFragment.Listener {
 
     override fun getPresenter(): HomePresenter {
         return presenter as HomePresenter
@@ -67,6 +69,15 @@ internal class HomeActivity :
 
     override fun showSettings() {
         showFragment(SettingsFragment.newInstance())
+    }
+
+    override fun showSelectCity(selectedCity: Int) {
+        CityDialogFragment.newInstance(30, selectedCity)
+                .show(supportFragmentManager, "dialog")
+    }
+
+    override fun onItemClicked(position: Int) {
+        getPresenter().selectCity(position)
     }
 
     private fun showFragment(fragment: Fragment) {

@@ -9,5 +9,5 @@
     android:paddingBottom="@dimen/list_item_spacing_half"
     android:paddingTop="@dimen/list_item_spacing_half"
     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-    tools:context=".app.settings.CurrencyDialogFragment"
-    tools:listitem="@layout/fragment_item_list_dialog_item" />
+    tools:context=".app.settings.CityDialogFragment"
+    tools:listitem="@layout/adapter_city" />

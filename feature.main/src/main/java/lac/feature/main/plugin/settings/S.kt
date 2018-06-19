@@ -3,6 +3,7 @@ package lac.feature.main.plugin.settings
 import android.content.Context
 import android.content.SharedPreferences
 
+private const val CITY_ID = "CITY_ID"
 private const val IS_ENABLED_NOTIFICATION = "IS_ENABLED_NOTIFICATION"
 
 class S(context: Context) : Settings {
@@ -15,5 +16,13 @@ class S(context: Context) : Settings {
 
     override fun setEnabledNotification(value: Boolean) {
         sharedPrefs.edit().putBoolean(IS_ENABLED_NOTIFICATION, value).apply()
+    }
+
+    override fun getCityId(): Int {
+        return sharedPrefs.getInt(CITY_ID, -1)
+    }
+
+    override fun setCity(value: Int) {
+        sharedPrefs.edit().putInt(CITY_ID, value).apply()
     }
 }

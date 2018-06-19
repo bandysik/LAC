@@ -4,16 +4,12 @@ import lac.feature.main.plugin.settings.MainSettings
 
 internal class SettingsPresenter(private val view: SettingsContract.View) : SettingsContract.Presenter {
 
-    override fun openFrom() {
-        view.openFrom()
+    override fun onClickChangeCity() {
+        view.openCity(MainSettings.settings.getCityId())
     }
 
-    override fun openTo() {
-        view.openTo()
-    }
-
-    override fun openCurrency() {
-        view.openCurrency()
+    override fun onClickSelectProvider() {
+        view.openProvider()
     }
 
     override fun changeNotification(isChecked: Boolean) {

@@ -8,7 +8,9 @@ import org.koin.android.ext.android.inject
 
 internal class SettingsFragment : BaseFragment<SettingsPresenter>(),
         SettingsContract.View,
-        CurrencyDialogFragment.Listener {
+        CityDialogFragment.Listener,
+        ProviderDialogFragment.Listener {
+
     private val presenter: SettingsContract.Presenter by inject { mapOf(Params.SETTINGS_VIEW to this) }
 
     override fun getPresenter(): SettingsPresenter {
@@ -20,13 +22,10 @@ internal class SettingsFragment : BaseFragment<SettingsPresenter>(),
 
     override fun initViews() {
         fragment_settings_from.setOnClickListener {
-            getPresenter().openFrom()
+            getPresenter().onClickChangeCity()
         }
         fragment_settings_to.setOnClickListener {
-            getPresenter().openTo()
-        }
-        fragment_settings_currency.setOnClickListener {
-            getPresenter().openCurrency()
+            getPresenter().onClickSelectProvider()
         }
         fragment_settings_feedback.setOnClickListener {}
 
@@ -41,22 +40,20 @@ internal class SettingsFragment : BaseFragment<SettingsPresenter>(),
         fragment_settings_notification.isChecked = getPresenter().isNotificationEnabled()
     }
 
-    override fun openFrom() {
-        CurrencyDialogFragment.newInstance(30)
+    override fun openCity(selectedCity:Int) {
+        CityDialogFragment.newInstance(30, selectedCity)
                 .show(childFragmentManager, "dialog")
     }
 
-    override fun openTo() {
-        CurrencyDialogFragment.newInstance(30)
-                .show(childFragmentManager, "dialog")
-    }
-
-    override fun openCurrency() {
-        CurrencyDialogFragment.newInstance(30)
+    override fun openProvider() {
+        ProviderDialogFragment.newInstance(30)
                 .show(childFragmentManager, "dialog")
     }
 
     override fun onItemClicked(position: Int) {
+    }
+
+    override fun onProviderItemClicked(position: Int) {
     }
 
     companion object {

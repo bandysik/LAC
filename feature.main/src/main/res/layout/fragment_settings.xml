@@ -14,30 +14,21 @@
 
         <TextView
             style="@style/SettingsTitle"
-            android:text="From" />
+            android:text="City" />
 
         <Button
             android:id="@+id/fragment_settings_from"
             style="@style/SettingsButton"
-            android:text="Select from" />
+            android:text="Select city" />
 
         <TextView
             style="@style/SettingsTitle"
-            android:text="To" />
+            android:text="Provider" />
 
         <Button
             android:id="@+id/fragment_settings_to"
             style="@style/SettingsButton"
-            android:text="Select to" />
-
-        <TextView
-            style="@style/SettingsTitle"
-            android:text="Currency" />
-
-        <Button
-            android:id="@+id/fragment_settings_currency"
-            style="@style/SettingsButton"
-            android:text="Select currency" />
+            android:text="Select provider" />
 
         <TextView
             style="@style/SettingsTitle"

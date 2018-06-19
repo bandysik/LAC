@@ -6,15 +6,13 @@ import lac.core.feature.core.old.BaseView
 internal interface SettingsContract {
 
     interface View : BaseView {
-        fun openFrom()
-        fun openTo()
-        fun openCurrency()
+        fun openCity(selectedCity: Int)
+        fun openProvider()
     }
 
     interface Presenter : BasePresenter {
-        fun openFrom()
-        fun openTo()
-        fun openCurrency()
+        fun onClickChangeCity()
+        fun onClickSelectProvider()
         fun changeNotification(isChecked: Boolean)
         fun isNotificationEnabled(): Boolean
     }
