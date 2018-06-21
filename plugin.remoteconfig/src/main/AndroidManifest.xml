@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="lac.plugin.remoteconfig" />
+<manifest package="lac.plugin.remoteconfig" />

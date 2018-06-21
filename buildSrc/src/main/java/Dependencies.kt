@@ -10,12 +10,15 @@ object Versions {
     val constraint = "1.1.0"
     val ktx = "0.3"
     val room = "1.0.0"
+    val firebase = "16.0.0"
 
     //OTHER
     val koin = "0.9.3"
     val timber = "4.7.0"
     val stetho = "1.5.0"
     val retrofit = "2.4.0"
+    val leakcanary = "1.5.4"
+    val crashlytics = "2.9.4"
 
     //TEST
     val junit = "4.12"
@@ -37,6 +40,9 @@ object Deps {
 
     val ktx_core = "androidx.core:core-ktx:${Versions.ktx}"
 
+    val firebase_core = "com.google.firebase:firebase-core:${Versions.firebase}"
+    val firebase_config = "com.google.firebase:firebase-config:${Versions.firebase}"
+
     //OTHER
     val koin_core = "org.koin:koin-core:${Versions.koin}"
     val koin_android = "org.koin:koin-android:${Versions.koin}"
@@ -47,6 +53,11 @@ object Deps {
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
     val stetho = "com.facebook.stetho:stetho:${Versions.stetho}"
+
+    val leakcanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakcanary}"
+    val leakcanary_no_op = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.leakcanary}"
+
+    val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
 
     //TEST
     val junit = "junit:junit:${Versions.junit}"

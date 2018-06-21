@@ -3,6 +3,7 @@ package lac.feature.main.app.home
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.CoordinatorLayout
 import android.support.v4.app.Fragment
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home.*
 import lac.core.feature.core.old.BaseActivity
 import lac.core.feature.core.utils.extension.replaceFragment
@@ -12,6 +13,7 @@ import lac.feature.main.app.feed.FeedFragment
 import lac.feature.main.app.home.Params.HOME_VIEW
 import lac.feature.main.app.settings.CityDialogFragment
 import lac.feature.main.app.settings.SettingsFragment
+import lac.plugin.remoteconfig.RC
 import org.koin.android.ext.android.inject
 
 internal class HomeActivity :
@@ -51,6 +53,9 @@ internal class HomeActivity :
             R.layout.activity_home
 
     override fun initViews() {
+        RC.remoteConfig.fetch(this) {
+            Toast.makeText(this, "afasfas", Toast.LENGTH_SHORT).show()
+        }
         activity_home_navigation.setOnNavigationItemSelectedListener(
                 onNavigationItemSelectedListener)
         activity_home_navigation.selectedItemId = navigationCurrentItem

@@ -15,4 +15,5 @@ dependencies {
 
     api Deps.koin_core
     api Deps.koin_android
+    api Deps.timber
 }

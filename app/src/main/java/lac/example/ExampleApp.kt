@@ -1,11 +1,13 @@
 package lac.example
 
 import android.content.Context
+import com.crashlytics.android.Crashlytics
 import com.squareup.leakcanary.LeakCanary
+import io.fabric.sdk.android.Fabric
 import lac.core.app.LacApplication
 import lac.example.impl.AppFirebaseAnalytic
+import lac.example.impl.AppFirebaseRemoteConfig
 import lac.example.impl.AppNavigator
-import lac.example.impl.AppRemoteConfig
 import lac.feature.additional.AdditionalModule
 import lac.feature.main.MainModule
 import lac.plugin.analytic.A
@@ -27,8 +29,15 @@ class ExampleApp : LacApplication() {
         AdditionalModule.init(this)
 
         N.navigator = AppNavigator
-        RC.remoteConfig = AppRemoteConfig
+        RC.remoteConfig = AppFirebaseRemoteConfig()
         A.analytic = AppFirebaseAnalytic(this)
+
+
+        val fabric = Fabric.Builder(this)
+                .kits(Crashlytics())
+                .debuggable(true)           // Enables Crashlytics debugger
+                .build()
+        Fabric.with(fabric)
     }
 
     private fun initLeakCanary(): Boolean {

@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion Versions.compileSdkVersion
@@ -29,7 +30,7 @@ android {
                 keyPassword KEY_PASSWORD
             }
             catch (ex) {
-                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties." + ex.toString())
             }
         }
     }
@@ -61,8 +62,11 @@ dependencies {
     implementation project(':feature.main')
     implementation project(':feature.additional')
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    debugImplementation Deps.leakcanary
+    releaseImplementation Deps.leakcanary_no_op
 
-    api 'com.google.firebase:firebase-core:16.0.1'
+    implementation Deps.firebase_core
+    implementation Deps.firebase_config
+
+    implementation Deps.crashlytics
 }
