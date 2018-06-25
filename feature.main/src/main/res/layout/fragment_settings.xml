@@ -34,10 +34,12 @@
             style="@style/SettingsTitle"
             android:text="Notification" />
 
-        <android.support.v7.widget.SwitchCompat
+        <Switch
             android:id="@+id/fragment_settings_notification"
             style="@style/SettingsSwitch"
-            android:text="Allow to get notification" />
+            android:text="Allow to get notification"
+            android:textOff="off"
+            android:textOn="on" />
 
         <TextView
             style="@style/SettingsTitle"

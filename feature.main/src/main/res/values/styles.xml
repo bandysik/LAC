@@ -5,6 +5,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
+        <item name="android:fontFamily">@font/lobster_two_regular</item>
     </style>
 
     <style name="SettingsButton">
@@ -17,6 +18,13 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
+        <item name="android:switchTextAppearance">@style/SettingsSwitchTextAppearance</item>
+        <item name="android:fontFamily">@font/lobster_two_regular</item>
+    </style>
+
+    <style name="SettingsSwitchTextAppearance"
+           parent="@android:style/TextAppearance.Holo.Small">
+        <item name="android:fontFamily">@font/lobster_two_regular</item>
     </style>
 
     <style name="SettingsText">
