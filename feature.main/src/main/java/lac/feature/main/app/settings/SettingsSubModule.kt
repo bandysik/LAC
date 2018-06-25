@@ -4,7 +4,10 @@ import lac.feature.main.app.settings.Params.SETTINGS_VIEW
 import org.koin.dsl.module.applicationContext
 
 val settingsSubModule = applicationContext {
-    factory { params -> SettingsPresenter(params[SETTINGS_VIEW]) as SettingsContract.Presenter }
+    factory { params ->
+        SettingsPresenter(params[SETTINGS_VIEW],
+                          get()) as SettingsContract.Presenter
+    }
 }
 
 object Params {

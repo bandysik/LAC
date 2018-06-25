@@ -17,7 +17,7 @@ internal class ProviderDialogFragment : BottomSheetDialogFragment() {
 
     private val itemCount: Int by argument(ARG_ITEM_COUNT)
 
-    private var mListener: Listener? = null
+    private var listener: Listener? = null
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -34,14 +34,14 @@ internal class ProviderDialogFragment : BottomSheetDialogFragment() {
         super.onAttach(context)
         val parent = parentFragment
         if (parent != null) {
-            mListener = parent as Listener
+            listener = parent as Listener
         } else {
-            mListener = context as Listener
+            listener = context as Listener
         }
     }
 
     override fun onDetach() {
-        mListener = null
+        listener = null
         super.onDetach()
     }
 
@@ -57,7 +57,7 @@ internal class ProviderDialogFragment : BottomSheetDialogFragment() {
 
         init {
             text.setOnClickListener {
-                mListener?.let {
+                listener?.let {
                     it.onProviderItemClicked(adapterPosition)
                     dismiss()
                 }
@@ -65,7 +65,7 @@ internal class ProviderDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private inner class ItemAdapter internal constructor(private val mItemCount: Int) : RecyclerView.Adapter<ViewHolder>() {
+    private inner class ItemAdapter internal constructor(private val count: Int) : RecyclerView.Adapter<ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             return ViewHolder(LayoutInflater.from(parent.context), parent)
@@ -76,7 +76,7 @@ internal class ProviderDialogFragment : BottomSheetDialogFragment() {
         }
 
         override fun getItemCount(): Int {
-            return mItemCount
+            return count
         }
     }
 

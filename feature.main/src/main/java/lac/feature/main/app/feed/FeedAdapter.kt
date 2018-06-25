@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import lac.feature.main.R
-import lac.feature.main.app.feed.dummy.DummyContent
+import lac.feature.main.data.model.Feed
 
-internal class FeedAdapter(private val values: List<DummyContent.DummyItem>,
-                  private val listener: FeedFragment.FeedFragmentListener?) : RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
+internal class FeedAdapter(private val listener: FeedFragment.FeedFragmentListener?) : RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
+
+    var values: List<Feed> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
@@ -23,7 +24,7 @@ internal class FeedAdapter(private val values: List<DummyContent.DummyItem>,
         holder.idView.text = values[position].id
         holder.contentView.text = values[position].content
 
-        holder.mView.setOnClickListener {
+        holder.view.setOnClickListener {
             listener?.onClickFeedItem(holder.item!!)
         }
     }
@@ -32,14 +33,14 @@ internal class FeedAdapter(private val values: List<DummyContent.DummyItem>,
         return values.size
     }
 
-    inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
+    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val idView: TextView
         val contentView: TextView
-        var item: DummyContent.DummyItem? = null
+        var item: Feed? = null
 
         init {
-            idView = mView.findViewById(R.id.adapter_feed_id) as TextView
-            contentView = mView.findViewById(R.id.adapter_feed_content) as TextView
+            idView = view.findViewById(R.id.adapter_feed_id) as TextView
+            contentView = view.findViewById(R.id.adapter_feed_content) as TextView
         }
 
         override fun toString(): String {

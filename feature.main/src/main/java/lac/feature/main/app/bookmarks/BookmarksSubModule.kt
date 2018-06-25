@@ -4,7 +4,9 @@ import lac.feature.main.app.bookmarks.Params.BOOKMARKS_VIEW
 import org.koin.dsl.module.applicationContext
 
 val bookmarksSubModule = applicationContext {
-    factory { params -> BookmarksPresenter(params[BOOKMARKS_VIEW]) as BookmarksContract.Presenter }
+    factory { params ->
+        BookmarksPresenter(params[BOOKMARKS_VIEW], get()) as BookmarksContract.Presenter
+    }
 }
 
 object Params {

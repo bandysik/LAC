@@ -1,16 +1,15 @@
 package lac.feature.main.app.bookmarks
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_bookmarks.*
 import lac.core.feature.core.old.BaseFragment
 import lac.feature.main.R
-import lac.feature.main.R.id.fragment_bookmark_list
-import lac.feature.main.app.bookmarks.dummy.DummyContent
 import lac.feature.main.app.detail.DetailActivity
+import lac.feature.main.data.model.Bookmark
 import org.koin.android.ext.android.inject
 
 internal class BookmarksFragment : BaseFragment<BookmarksPresenter>(), BookmarksContract.View {
+
     private val presenter: BookmarksContract.Presenter by inject { mapOf(Params.BOOKMARKS_VIEW to this) }
 
     override fun getPresenter(): BookmarksPresenter {
@@ -24,7 +23,7 @@ internal class BookmarksFragment : BaseFragment<BookmarksPresenter>(), Bookmarks
     }
 
     private var mListener = object : BookmarksFragmentListener {
-        override fun onClickBookmarkItem(item: DummyContent.DummyItem) {
+        override fun onClickBookmarkItem(item: Bookmark) {
             DetailActivity.start(context!!)
         }
     }
@@ -33,12 +32,17 @@ internal class BookmarksFragment : BaseFragment<BookmarksPresenter>(), Bookmarks
             R.layout.fragment_bookmarks
 
     override fun initViews() {
-        fragment_bookmark_list.adapter = BookmarksAdapter(DummyContent.ITEMS, mListener)
+        fragment_bookmark_list.adapter = BookmarksAdapter(mListener)
+    }
+
+    override fun showData(data: List<Bookmark>) {
+        (fragment_bookmark_list.adapter as BookmarksAdapter).data = data
+        fragment_bookmark_list.adapter.notifyDataSetChanged()
     }
 
     interface BookmarksFragmentListener {
 
-        fun onClickBookmarkItem(item: DummyContent.DummyItem)
+        fun onClickBookmarkItem(item: Bookmark)
     }
 
     companion object {

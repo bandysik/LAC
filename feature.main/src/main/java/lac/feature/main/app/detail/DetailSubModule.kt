@@ -4,7 +4,7 @@ import lac.feature.main.app.detail.Params.DETAIL_VIEW
 import org.koin.dsl.module.applicationContext
 
 val detailSubModule = applicationContext {
-    factory { params -> DetailPresenter(params[DETAIL_VIEW], "hello") as DetailContract.Presenter }
+    factory { params -> DetailPresenter(params[DETAIL_VIEW], "hello", get()) as DetailContract.Presenter }
 }
 
 object Params {

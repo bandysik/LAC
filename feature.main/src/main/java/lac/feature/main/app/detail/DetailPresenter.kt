@@ -1,7 +1,11 @@
 package lac.feature.main.app.detail
 
-internal class DetailPresenter(private val view: DetailContract.View, private val msg: String) :
-        DetailContract.Presenter {
+import lac.feature.main.data.Repository
+
+internal class DetailPresenter(private val view: DetailContract.View,
+                               private val msg: String,
+                               private val repository: Repository) : DetailContract.Presenter {
+
     override fun onClickPro() {
         view.openPro()
     }

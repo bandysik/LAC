@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import lac.feature.main.R
-import lac.feature.main.app.bookmarks.dummy.DummyContent
+import lac.feature.main.data.model.Bookmark
 
-internal class BookmarksAdapter(private val mValues: List<DummyContent.DummyItem>,
-                       private val mListener: BookmarksFragment.BookmarksFragmentListener?) : RecyclerView.Adapter<BookmarksAdapter.ViewHolder>() {
+internal class BookmarksAdapter(private val listener: BookmarksFragment.BookmarksFragmentListener?) :
+        RecyclerView.Adapter<BookmarksAdapter.ViewHolder>() {
+
+    var data: List<Bookmark> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
@@ -19,31 +21,31 @@ internal class BookmarksAdapter(private val mValues: List<DummyContent.DummyItem
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.mItem = mValues[position]
-        holder.mIdView.text = mValues[position].id
-        holder.mContentView.text = mValues[position].content
+        holder.item = data[position]
+        holder.idView.text = data[position].id
+        holder.contentView.text = data[position].content
 
-        holder.mView.setOnClickListener {
-            mListener?.onClickBookmarkItem(holder.mItem!!)
+        holder.view.setOnClickListener {
+            listener?.onClickBookmarkItem(holder.item!!)
         }
     }
 
     override fun getItemCount(): Int {
-        return mValues.size
+        return data.size
     }
 
-    inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView
-        val mContentView: TextView
-        var mItem: DummyContent.DummyItem? = null
+    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+        val idView: TextView
+        val contentView: TextView
+        var item: Bookmark? = null
 
         init {
-            mIdView = mView.findViewById(R.id.adapter_bookmark_id) as TextView
-            mContentView = mView.findViewById(R.id.adapter_bookmark_text) as TextView
+            idView = view.findViewById(R.id.adapter_bookmark_id) as TextView
+            contentView = view.findViewById(R.id.adapter_bookmark_text) as TextView
         }
 
         override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
+            return super.toString() + " '" + contentView.text + "'"
         }
     }
 }
