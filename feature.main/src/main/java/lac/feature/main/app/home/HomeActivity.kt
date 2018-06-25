@@ -68,6 +68,7 @@ internal class HomeActivity : BaseActivity<HomePresenter>(),
             R.layout.activity_home
 
     override fun initViews() {
+        //TODO move to other place
         RC.remoteConfig.fetch(this) {
             toast("remote config is loaded")
         }

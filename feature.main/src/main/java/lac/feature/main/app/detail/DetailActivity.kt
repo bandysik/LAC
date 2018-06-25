@@ -6,14 +6,10 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_detail.*
 import lac.core.feature.core.old.BaseActivity
 import lac.feature.main.R
-import lac.feature.main.R.id.*
 import lac.plugin.navigator.N
-import lac.plugin.remoteconfig.RC
 import org.koin.android.ext.android.inject
 
-internal class DetailActivity :
-        BaseActivity<DetailContract.Presenter>(),
-        DetailContract.View {
+internal class DetailActivity : BaseActivity<DetailContract.Presenter>(), DetailContract.View {
 
     private val presenter: DetailContract.Presenter by inject { mapOf(Params.DETAIL_VIEW to this) }
 
@@ -46,9 +42,7 @@ internal class DetailActivity :
     }
 
     override fun openPro() {
-        if (RC.remoteConfig.isEnabledPro()) {
-            N.navigator.startPro(this)
-        }
+        N.navigator.startPro(this)
     }
 
     companion object {

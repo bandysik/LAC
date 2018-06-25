@@ -8,7 +8,7 @@ import lac.core.feature.core.utils.gone
 import lac.core.feature.core.utils.visible
 import lac.feature.main.R
 import lac.feature.main.app.detail.DetailActivity
-import lac.feature.main.data.model.Feed
+import lac.feature.main.data.model.remote.Feed
 import org.koin.android.ext.android.inject
 
 internal class FeedFragment : BaseFragment<FeedPresenter>(), FeedContract.View {
@@ -18,7 +18,7 @@ internal class FeedFragment : BaseFragment<FeedPresenter>(), FeedContract.View {
         return presenter as FeedPresenter
     }
 
-    private var mListener = object : FeedFragmentListener {
+    private var listener = object : FeedFragmentListener {
         override fun onClickFeedItem(item: Feed) {
             val intent = Intent(context, DetailActivity::class.java)
             startActivity(intent)
@@ -29,7 +29,7 @@ internal class FeedFragment : BaseFragment<FeedPresenter>(), FeedContract.View {
             R.layout.fragment_feed
 
     override fun initViews() {
-        fragment_feed_list.adapter = FeedAdapter(mListener)
+        fragment_feed_list.adapter = FeedAdapter(listener)
     }
 
     override fun hideProgressBar() {

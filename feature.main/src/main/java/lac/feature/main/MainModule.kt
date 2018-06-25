@@ -11,6 +11,8 @@ import lac.feature.main.data.Repository
 import lac.feature.main.data.StubRepository
 import lac.feature.main.plugin.settings.MainSettings
 import lac.feature.main.plugin.settings.S
+import lac.plugin.analytic.A
+import lac.plugin.remoteconfig.RC
 import org.koin.android.ext.android.startKoin
 import org.koin.dsl.module.applicationContext
 
@@ -18,6 +20,9 @@ object MainModule {
 
     val mainModule = applicationContext {
         bean { StubRepository() as Repository }
+        bean { RC.remoteConfig }
+        bean { MainSettings.settings }
+        bean { A.analytic }
 //        bean { StubRepository() as Repository }//TODO retrofit
 //        bean { StubRepository() as Repository }//TODO database
     }

@@ -1,36 +1,38 @@
 package lac.feature.main.app.home
 
-import lac.feature.main.plugin.settings.MainSettings
-import lac.plugin.analytic.A
+import lac.feature.main.plugin.settings.Settings
+import lac.plugin.analytic.Analytic
 
-internal class HomePresenter(private val view: HomeContract.View) : HomeContract.Presenter {
+internal class HomePresenter(private val view: HomeContract.View,
+                             private val settings: Settings,
+                             private val analytic: Analytic) : HomeContract.Presenter {
 
     override fun start() {
-        val cityId = MainSettings.settings.getCityId()
+        val cityId = settings.getCityId()
         if (cityId == -1) {
             view.showSelectCity(cityId)
         }
     }
 
     override fun selectCity(position: Int) {
-        MainSettings.settings.setCity(position)
+        settings.setCity(position)
     }
 
     override fun stop() {
     }
 
     override fun onClickShowHome() {
-        A.analytic.eventOpenHome()
+        analytic.eventOpenHome()
         view.showHome()
     }
 
     override fun onClickShowBookmarks() {
-        A.analytic.eventOpenBookmarks()
+        analytic.eventOpenBookmarks()
         view.showBookmarks()
     }
 
     override fun onClickShowSettings() {
-        A.analytic.eventOpenSettings()
+        analytic.eventOpenSettings()
         view.showSettings()
     }
 }

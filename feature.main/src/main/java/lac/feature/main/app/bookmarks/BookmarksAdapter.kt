@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import lac.feature.main.R
-import lac.feature.main.data.model.Bookmark
+import lac.feature.main.data.model.remote.Bookmark
 
 internal class BookmarksAdapter(private val listener: BookmarksFragment.BookmarksFragmentListener?) :
         RecyclerView.Adapter<BookmarksAdapter.ViewHolder>() {

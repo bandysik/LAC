@@ -1,11 +1,11 @@
 package lac.feature.main.data
 
-import lac.feature.main.data.model.Bookmark
-import lac.feature.main.data.model.DetailViewModel
-import lac.feature.main.data.model.Feed
-import lac.feature.main.data.model.City
-import lac.feature.main.data.model.Provider
-import lac.feature.main.data.model.SettingsViewModel
+import lac.feature.main.data.model.remote.Bookmark
+import lac.feature.main.data.model.viewModel.DetailViewModel
+import lac.feature.main.data.model.remote.Feed
+import lac.feature.main.data.model.remote.City
+import lac.feature.main.data.model.remote.Provider
+import lac.feature.main.data.model.viewModel.SettingsViewModel
 
 interface Repository {
     fun getBookmarks(): List<Bookmark>

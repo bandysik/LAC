@@ -5,8 +5,7 @@ import org.koin.dsl.module.applicationContext
 
 val settingsSubModule = applicationContext {
     factory { params ->
-        SettingsPresenter(params[SETTINGS_VIEW],
-                          get()) as SettingsContract.Presenter
+        SettingsPresenter(params[SETTINGS_VIEW], get(), get()) as SettingsContract.Presenter
     }
 }
 

@@ -1,13 +1,17 @@
 package lac.feature.main.app.detail
 
 import lac.feature.main.data.Repository
+import lac.plugin.remoteconfig.RemoteConfig
 
 internal class DetailPresenter(private val view: DetailContract.View,
                                private val msg: String,
-                               private val repository: Repository) : DetailContract.Presenter {
+                               private val repository: Repository,
+                               private val remoteConfig: RemoteConfig) : DetailContract.Presenter {
 
     override fun onClickPro() {
-        view.openPro()
+        if (remoteConfig.isEnabledPro()) {
+            view.openPro()
+        }
     }
 
     override fun start() {
