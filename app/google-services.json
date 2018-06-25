@@ -25,10 +25,6 @@
         {
           "client_id": "779456813802-0vuhkto3qbv9669q6nmi6kmsaeatnnve.apps.googleusercontent.com",
           "client_type": 3
-        },
-        {
-          "client_id": "779456813802-0vuhkto3qbv9669q6nmi6kmsaeatnnve.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
@@ -56,16 +52,12 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:779456813802:android:1c829acb11e6b446",
+        "mobilesdk_app_id": "1:779456813802:android:b70a0f3e1634a2db",
         "android_client_info": {
-          "package_name": "by.renteasy"
+          "package_name": "bandysik.pdp.release"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "779456813802-0vuhkto3qbv9669q6nmi6kmsaeatnnve.apps.googleusercontent.com",
-          "client_type": 3
-        },
         {
           "client_id": "779456813802-0vuhkto3qbv9669q6nmi6kmsaeatnnve.apps.googleusercontent.com",
           "client_type": 3
