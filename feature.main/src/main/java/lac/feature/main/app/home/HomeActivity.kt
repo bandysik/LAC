@@ -1,10 +1,12 @@
 package lac.feature.main.app.home
 
+import android.content.BroadcastReceiver
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.CoordinatorLayout
 import android.support.v4.app.Fragment
-import android.widget.Toast
+import androidx.core.widget.toast
 import kotlinx.android.synthetic.main.activity_home.*
+import lac.core.feature.core.network.Connectivity
 import lac.core.feature.core.old.BaseActivity
 import lac.core.feature.core.utils.extension.replaceFragment
 import lac.feature.main.R
@@ -16,10 +18,9 @@ import lac.feature.main.app.settings.SettingsFragment
 import lac.plugin.remoteconfig.RC
 import org.koin.android.ext.android.inject
 
-internal class HomeActivity :
-        BaseActivity<HomePresenter>(),
-        HomeContract.View,
-        CityDialogFragment.Listener {
+internal class HomeActivity : BaseActivity<HomePresenter>(),
+                              HomeContract.View,
+                              CityDialogFragment.Listener {
 
     override fun getPresenter(): HomePresenter {
         return presenter as HomePresenter
@@ -28,6 +29,20 @@ internal class HomeActivity :
     private val presenter: HomeContract.Presenter by inject { mapOf(HOME_VIEW to this) }
 
     private var navigationCurrentItem by state(R.id.navigation_home)
+
+    private val broadcastConnectivity: BroadcastReceiver by lazy {
+        Connectivity.getBroadcastReceiver({ toast("disconnected") }, { toast("connected") })
+    }
+
+    override fun onStart() {
+        super.onStart()
+        registerReceiver(broadcastConnectivity, Connectivity.intentFilter)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        unregisterReceiver(broadcastConnectivity)
+    }
 
     private val onNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -54,10 +69,10 @@ internal class HomeActivity :
 
     override fun initViews() {
         RC.remoteConfig.fetch(this) {
-            Toast.makeText(this, "afasfas", Toast.LENGTH_SHORT).show()
+            toast("remote config is loaded")
         }
         activity_home_navigation.setOnNavigationItemSelectedListener(
-                onNavigationItemSelectedListener)
+            onNavigationItemSelectedListener)
         activity_home_navigation.selectedItemId = navigationCurrentItem
 
         val layoutParams = activity_home_navigation.layoutParams as CoordinatorLayout.LayoutParams
@@ -78,7 +93,7 @@ internal class HomeActivity :
 
     override fun showSelectCity(selectedCity: Int) {
         CityDialogFragment.newInstance(30, selectedCity)
-                .show(supportFragmentManager, "dialog")
+            .show(supportFragmentManager, "dialog")
     }
 
     override fun onItemClicked(position: Int) {
