@@ -7,5 +7,6 @@ include ':core.app',
         ':plugin.logger',
         ':plugin.analytic',
         ':plugin.navigator',
-        ':plugin.remoteconfig'
+        ':plugin.remoteconfig',
+        ':plugin.admin'
 

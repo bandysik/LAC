@@ -1,10 +1,10 @@
 package lac.feature.main.data
 
-import lac.feature.main.data.model.remote.Bookmark
+import lac.feature.main.domain.model.Bookmark
 import lac.feature.main.data.model.viewModel.DetailViewModel
-import lac.feature.main.data.model.remote.Feed
-import lac.feature.main.data.model.remote.City
-import lac.feature.main.data.model.remote.Provider
+import lac.feature.main.domain.model.Feed
+import lac.feature.main.domain.model.City
+import lac.feature.main.domain.model.Provider
 import lac.feature.main.data.model.viewModel.SettingsViewModel
 
 class StubRepository : Repository {

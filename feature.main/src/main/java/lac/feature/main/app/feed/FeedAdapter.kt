@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import lac.feature.main.R
-import lac.feature.main.data.model.remote.Feed
+import lac.feature.main.domain.model.Feed
 
 internal class FeedAdapter(private val listener: FeedFragment.FeedFragmentListener?) : RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 

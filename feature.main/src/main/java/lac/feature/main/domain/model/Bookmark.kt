@@ -1,3 +1,3 @@
-package lac.feature.main.data.model.remote
+package lac.feature.main.domain.model
 
 class Bookmark(val id: String, val content: String)

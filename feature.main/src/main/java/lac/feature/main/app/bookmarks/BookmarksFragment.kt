@@ -7,7 +7,7 @@ import lac.core.feature.core.utils.gone
 import lac.core.feature.core.utils.visible
 import lac.feature.main.R
 import lac.feature.main.app.detail.DetailActivity
-import lac.feature.main.data.model.remote.Bookmark
+import lac.feature.main.domain.model.Bookmark
 import org.koin.android.ext.android.inject
 
 internal class BookmarksFragment : BaseFragment<BookmarksPresenter>(), BookmarksContract.View {

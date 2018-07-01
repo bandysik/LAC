@@ -22,16 +22,16 @@ internal class HomeActivity : BaseActivity<HomePresenter>(),
                               HomeContract.View,
                               CityDialogFragment.Listener {
 
-    override fun getPresenter(): HomePresenter {
-        return presenter as HomePresenter
-    }
-
     private val presenter: HomeContract.Presenter by inject { mapOf(HOME_VIEW to this) }
 
     private var navigationCurrentItem by state(R.id.navigation_home)
 
     private val broadcastConnectivity: BroadcastReceiver by lazy {
         Connectivity.getBroadcastReceiver({ toast("disconnected") }, { toast("connected") })
+    }
+
+    override fun getPresenter(): HomePresenter {
+        return presenter as HomePresenter
     }
 
     override fun onStart() {

@@ -27,4 +27,7 @@ dependencies {
     api Deps.retrofit_converter_gson
 
     api Deps.arch_room
+
+    api Deps.rx_kotlin
+    api Deps.rx_android
 }

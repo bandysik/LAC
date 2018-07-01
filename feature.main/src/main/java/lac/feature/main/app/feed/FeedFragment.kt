@@ -8,7 +8,7 @@ import lac.core.feature.core.utils.gone
 import lac.core.feature.core.utils.visible
 import lac.feature.main.R
 import lac.feature.main.app.detail.DetailActivity
-import lac.feature.main.data.model.remote.Feed
+import lac.feature.main.domain.model.Feed
 import org.koin.android.ext.android.inject
 
 internal class FeedFragment : BaseFragment<FeedPresenter>(), FeedContract.View {

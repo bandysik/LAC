@@ -19,6 +19,8 @@ object Versions {
     val retrofit = "2.4.0"
     val leakcanary = "1.5.4"
     val crashlytics = "2.9.4"
+    val rx_kotlin = "2.2.0"
+    val rx_android = "2.0.2"
 
     //TEST
     val junit = "4.12"
@@ -58,6 +60,9 @@ object Deps {
     val leakcanary_no_op = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.leakcanary}"
 
     val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
+
+    val rx_kotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rx_kotlin}"
+    val rx_android = "io.reactivex.rxjava2:rxandroid:${Versions.rx_android}"
 
     //TEST
     val junit = "junit:junit:${Versions.junit}"
