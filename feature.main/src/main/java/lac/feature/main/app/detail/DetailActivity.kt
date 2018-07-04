@@ -6,7 +6,7 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_detail.*
 import lac.core.feature.core.old.BaseActivity
 import lac.feature.main.R
-import lac.plugin.navigator.N
+import lac.plugin.navigator.ImplNavigator
 import org.koin.android.ext.android.inject
 
 internal class DetailActivity : BaseActivity<DetailContract.Presenter>(), DetailContract.View {
@@ -42,7 +42,7 @@ internal class DetailActivity : BaseActivity<DetailContract.Presenter>(), Detail
     }
 
     override fun openPro() {
-        N.navigator.startPro(this)
+        ImplNavigator.navigator.startPro(this)
     }
 
     companion object {

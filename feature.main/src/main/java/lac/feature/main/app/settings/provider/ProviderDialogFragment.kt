@@ -1,33 +1,45 @@
-package lac.feature.main.app.settings
+package lac.feature.main.app.settings.provider
 
 import android.content.Context
 import android.os.Bundle
-import android.support.design.widget.BottomSheetDialogFragment
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.adapter_provider.view.*
 import kotlinx.android.synthetic.main.fragment_provider_dialog.*
+import lac.core.feature.core.old.BaseBottomSheetDialogFragment
 import lac.core.feature.core.utils.extension.argument
 import lac.feature.main.R
+import lac.feature.main.domain.model.Provider
+import org.koin.android.ext.android.inject
 
-internal class ProviderDialogFragment : BottomSheetDialogFragment() {
+internal class ProviderDialogFragment : BaseBottomSheetDialogFragment<ProviderDialogPresenter>(),
+                                        ProviderDialogContract.View {
 
-    private val itemCount: Int by argument(ARG_ITEM_COUNT)
-
+    private val presenter: ProviderDialogContract.Presenter by inject { mapOf(Params.PROVIDER_DIALOG_VIEW to this) }
+    private val selectedProviders: ArrayList<Int> by argument(ARG_SELECTED_PROVIDERS)
     private var listener: Listener? = null
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_provider_dialog, container, false)
+    override fun getPresenter(): ProviderDialogPresenter {
+        return presenter as ProviderDialogPresenter
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        list.adapter = ItemAdapter(itemCount)
+    override fun getLayoutResId(): Int {
+        return R.layout.fragment_provider_dialog
+    }
+
+    override fun initViews() {
+        fragent_provider_dialog_list.adapter = ItemAdapter(selectedProviders)
+    }
+
+    override fun showData(data: List<Provider>) {
+    }
+
+    override fun hideProgressBar() {
+    }
+
+    override fun showProgressBar() {
     }
 
     override fun onAttach(context: Context) {
@@ -51,7 +63,7 @@ internal class ProviderDialogFragment : BottomSheetDialogFragment() {
 
     private inner class ViewHolder internal constructor(inflater: LayoutInflater,
                                                         parent: ViewGroup) : RecyclerView.ViewHolder(
-            inflater.inflate(R.layout.adapter_provider, parent, false)) {
+        inflater.inflate(R.layout.adapter_provider, parent, false)) {
 
         internal val text: TextView = itemView.adapter_provider_text
 
@@ -65,27 +77,38 @@ internal class ProviderDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private inner class ItemAdapter internal constructor(private val count: Int) : RecyclerView.Adapter<ViewHolder>() {
+    private inner class ItemAdapter internal constructor(private val selectedProviders: ArrayList<Int>) :
+            RecyclerView.Adapter<ViewHolder>() {
+
+        var data: ArrayList<Provider> = ArrayList()
+            set(value) {
+                field.clear()
+                field.addAll(value)
+                notifyDataSetChanged()
+            }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             return ViewHolder(LayoutInflater.from(parent.context), parent)
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.text.text = "provider $position"
+            val text = data[position].name
+            holder.text.text = text
         }
 
         override fun getItemCount(): Int {
-            return count
+            return data.size
         }
     }
 
     companion object {
-        const val ARG_ITEM_COUNT = "item_count"
-        fun newInstance(itemCount: Int): ProviderDialogFragment =
+        const val TAG = "ProviderDialogFragment"
+        const val ARG_SELECTED_PROVIDERS = "selected_providers"
+
+        fun newInstance(selectedProviders: ArrayList<Int>): ProviderDialogFragment =
                 ProviderDialogFragment().apply {
                     arguments = Bundle().apply {
-                        putInt(ARG_ITEM_COUNT, itemCount)
+                        putIntegerArrayList(ARG_SELECTED_PROVIDERS, selectedProviders)
                     }
                 }
     }

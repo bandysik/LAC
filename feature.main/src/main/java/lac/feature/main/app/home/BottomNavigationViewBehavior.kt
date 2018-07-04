@@ -13,9 +13,7 @@ internal class BottomNavigationViewBehavior : CoordinatorLayout.Behavior<BottomN
                                child: BottomNavigationView?,
                                layoutDirection: Int): Boolean {
         height = child!!.height
-        return super.onLayoutChild(parent,
-                child,
-                layoutDirection)
+        return super.onLayoutChild(parent, child, layoutDirection)
     }
 
     override fun onStartNestedScroll(coordinatorLayout: CoordinatorLayout,
@@ -34,7 +32,8 @@ internal class BottomNavigationViewBehavior : CoordinatorLayout.Behavior<BottomN
                                 dyConsumed: Int,
                                 dxUnconsumed: Int,
                                 dyUnconsumed: Int,
-                                @ViewCompat.NestedScrollType type: Int) {
+                                @ViewCompat.NestedScrollType
+                                type: Int) {
         if (dyConsumed > 0) {
             slideDown(child)
         } else if (dyConsumed < 0) {
@@ -45,12 +44,14 @@ internal class BottomNavigationViewBehavior : CoordinatorLayout.Behavior<BottomN
     private fun slideUp(child: BottomNavigationView) {
         child.clearAnimation()
         child.animate()
-                .translationY(0f).duration = 200
+            .translationY(0f)
+            .duration = 200
     }
 
     private fun slideDown(child: BottomNavigationView) {
         child.clearAnimation()
         child.animate()
-                .translationY(height.toFloat()).duration = 200
+            .translationY(height.toFloat())
+            .duration = 200
     }
 }

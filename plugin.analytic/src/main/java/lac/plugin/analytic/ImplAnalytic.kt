@@ -1,9 +1,9 @@
 package lac.plugin.analytic
 
-object A {
+object ImplAnalytic {
     lateinit var analytic: Analytic
 }
-//object A : KoinComponent {
+//object ImplAnalytic : KoinComponent {
 //    private val analyticModule = applicationContext {
 //        bean { FileAnalytic() as Analytic }
 //    }
@@ -12,5 +12,5 @@ object A {
 //        startKoin(listOf(analyticModule))
 //    }
 //
-//    val analytic: Analytic by A.inject()
+//    val analytic: Analytic by ImplAnalytic.inject()
 //}

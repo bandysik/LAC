@@ -1,5 +1,5 @@
 package lac.plugin.remoteconfig
 
-object RC{
+object ImplRemoteConfig {
     lateinit var remoteConfig: RemoteConfig
 }

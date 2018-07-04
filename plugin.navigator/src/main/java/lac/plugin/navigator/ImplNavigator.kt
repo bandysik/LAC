@@ -1,5 +1,5 @@
 package lac.plugin.navigator
 
-object N {
+object ImplNavigator {
     lateinit var navigator: Navigator
 }

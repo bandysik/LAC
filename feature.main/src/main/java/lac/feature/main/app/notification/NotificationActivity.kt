@@ -12,15 +12,13 @@ import lac.core.feature.core.utils.extension.argument
 import lac.feature.main.R
 import org.koin.android.ext.android.inject
 
-internal class NotificationActivity : BaseActivity<NotificationPresenter>(), NotificationContract.View {
+internal class NotificationActivity : BaseActivity<NotificationPresenter>(),
+                                      NotificationContract.View {
 
     private val url: String by argument(ARG_KEY_URL)
 
     private val presenter: NotificationContract.Presenter by inject {
-        mapOf(
-                Params.NOTIFICATION_VIEW to this,
-                Params.NOTIFICATION_VIEW to url
-        )
+        mapOf(Params.NOTIFICATION_VIEW to this, Params.NOTIFICATION_VIEW to url)
     }
 
     override fun getPresenter(): NotificationPresenter {

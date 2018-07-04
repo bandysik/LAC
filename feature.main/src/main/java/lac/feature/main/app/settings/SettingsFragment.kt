@@ -4,12 +4,15 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.fragment_settings.*
 import lac.core.feature.core.old.BaseFragment
 import lac.feature.main.R
+import lac.feature.main.app.settings.city.CityDialogFragment
+import lac.feature.main.app.settings.provider.ProviderDialogFragment
 import org.koin.android.ext.android.inject
+import java.util.*
 
 internal class SettingsFragment : BaseFragment<SettingsPresenter>(),
-        SettingsContract.View,
-        CityDialogFragment.Listener,
-        ProviderDialogFragment.Listener {
+                                  SettingsContract.View,
+                                  CityDialogFragment.SelectCityListener,
+                                  ProviderDialogFragment.Listener {
 
     private val presenter: SettingsContract.Presenter by inject { mapOf(Params.SETTINGS_VIEW to this) }
 
@@ -40,17 +43,17 @@ internal class SettingsFragment : BaseFragment<SettingsPresenter>(),
         fragment_settings_notification.isChecked = getPresenter().isNotificationEnabled()
     }
 
-    override fun openCity(selectedCity:Int) {
-        CityDialogFragment.newInstance(30, selectedCity)
-                .show(childFragmentManager, "dialog")
+    override fun openCities(selectedCity: Int) {
+        CityDialogFragment.newInstance(selectedCity)
+            .show(childFragmentManager, CityDialogFragment.TAG)
     }
 
-    override fun openProvider() {
-        ProviderDialogFragment.newInstance(30)
-                .show(childFragmentManager, "dialog")
+    override fun openProviders(selectedProviders: ArrayList<Int>) {
+        ProviderDialogFragment.newInstance(selectedProviders)
+            .show(childFragmentManager, ProviderDialogFragment.TAG)
     }
 
-    override fun onItemClicked(position: Int) {
+    override fun onSelectCity(position: Int) {
     }
 
     override fun onProviderItemClicked(position: Int) {

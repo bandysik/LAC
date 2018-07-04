@@ -13,14 +13,14 @@ import lac.feature.main.R
 import lac.feature.main.app.bookmarks.BookmarksFragment
 import lac.feature.main.app.feed.FeedFragment
 import lac.feature.main.app.home.Params.HOME_VIEW
-import lac.feature.main.app.settings.CityDialogFragment
 import lac.feature.main.app.settings.SettingsFragment
-import lac.plugin.remoteconfig.RC
+import lac.feature.main.app.settings.city.CityDialogFragment
+import lac.plugin.remoteconfig.ImplRemoteConfig
 import org.koin.android.ext.android.inject
 
 internal class HomeActivity : BaseActivity<HomePresenter>(),
                               HomeContract.View,
-                              CityDialogFragment.Listener {
+                              CityDialogFragment.SelectCityListener {
 
     private val presenter: HomeContract.Presenter by inject { mapOf(HOME_VIEW to this) }
 
@@ -69,7 +69,7 @@ internal class HomeActivity : BaseActivity<HomePresenter>(),
 
     override fun initViews() {
         //TODO move to other place
-        RC.remoteConfig.fetch(this) {
+        ImplRemoteConfig.remoteConfig.fetch(this) {
             toast("remote config is loaded")
         }
         activity_home_navigation.setOnNavigationItemSelectedListener(
@@ -93,11 +93,11 @@ internal class HomeActivity : BaseActivity<HomePresenter>(),
     }
 
     override fun showSelectCity(selectedCity: Int) {
-        CityDialogFragment.newInstance(30, selectedCity)
+        CityDialogFragment.newInstance(selectedCity)
             .show(supportFragmentManager, "dialog")
     }
 
-    override fun onItemClicked(position: Int) {
+    override fun onSelectCity(position: Int) {
         getPresenter().selectCity(position)
     }
 

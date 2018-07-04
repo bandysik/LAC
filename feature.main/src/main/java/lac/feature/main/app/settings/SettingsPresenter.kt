@@ -8,11 +8,11 @@ internal class SettingsPresenter(private val view: SettingsContract.View,
                                  private val settings: Settings) : SettingsContract.Presenter {
 
     override fun onClickChangeCity() {
-        view.openCity(settings.getCityId())
+        view.openCities(settings.getCityId())
     }
 
     override fun onClickSelectProvider() {
-        view.openProvider()
+        view.openProviders(settings.getProviders())
     }
 
     override fun changeNotification(isChecked: Boolean) {

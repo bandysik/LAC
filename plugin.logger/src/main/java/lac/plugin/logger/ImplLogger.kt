@@ -6,7 +6,7 @@ import org.koin.standalone.KoinComponent
 import org.koin.standalone.StandAloneContext.startKoin
 import org.koin.standalone.inject
 
-object L : KoinComponent {
+object ImplLogger : KoinComponent {
     private val loggerModule = applicationContext {
         bean { FileLog() as Logger }
     }
@@ -15,6 +15,6 @@ object L : KoinComponent {
         startKoin(listOf(loggerModule))
     }
 
-    val logger: Logger by L.inject()
+    val logger: Logger by ImplLogger.inject()
 
 }

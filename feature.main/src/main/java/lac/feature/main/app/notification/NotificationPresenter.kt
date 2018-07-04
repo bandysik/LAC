@@ -1,7 +1,7 @@
 package lac.feature.main.app.notification
 
-internal class NotificationPresenter(private val view: NotificationContract.View, private val url: String) :
-        NotificationContract.Presenter {
+internal class NotificationPresenter(private val view: NotificationContract.View,
+                                     private val url: String) : NotificationContract.Presenter {
 
     override fun onStartLoadPage() {
         view.showProgressBar()

@@ -1,4 +1,4 @@
-package lac.example.impl
+package lac.example.app
 
 import android.app.Activity
 import android.content.Intent

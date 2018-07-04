@@ -5,7 +5,10 @@ import lac.feature.main.app.notification.Params.NOTIFICATION_VIEW
 import org.koin.dsl.module.applicationContext
 
 val notificationSubModule = applicationContext {
-    factory { params -> NotificationPresenter(params[NOTIFICATION_VIEW], params[NOTIFICATION_URL]) as NotificationContract.Presenter }
+    factory { params ->
+        NotificationPresenter(params[NOTIFICATION_VIEW],
+                              params[NOTIFICATION_URL]) as NotificationContract.Presenter
+    }
 }
 
 object Params {
