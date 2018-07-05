@@ -1,16 +1,16 @@
 package lac.feature.main.app.notification
 
-import lac.core.feature.core.old.BasePresenter
-import lac.core.feature.core.old.BaseProgressView
-import lac.core.feature.core.old.BaseView
+import lac.core.feature.core.newest.presentation.BasePresenter
+import lac.core.feature.core.newest.presentation.BaseProgressView
+import lac.core.feature.core.newest.presentation.BaseView
 
 internal interface NotificationContract {
 
-    interface View : BaseView, BaseProgressView {
+    interface View : BaseView<Presenter>, BaseProgressView {
         fun openUrl(url: String)
     }
 
-    interface Presenter : BasePresenter {
+    interface Presenter : BasePresenter<View> {
         fun onFinishLoadPage()
         fun onStartLoadPage()
     }

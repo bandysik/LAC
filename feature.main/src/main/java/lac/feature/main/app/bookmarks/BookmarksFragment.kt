@@ -2,7 +2,7 @@ package lac.feature.main.app.bookmarks
 
 import android.os.Bundle
 import kotlinx.android.synthetic.main.fragment_bookmarks.*
-import lac.core.feature.core.old.BaseFragment
+import lac.core.feature.core.newest.presentation.BaseFragment
 import lac.core.feature.core.utils.gone
 import lac.core.feature.core.utils.visible
 import lac.feature.main.R
@@ -10,9 +10,10 @@ import lac.feature.main.app.detail.DetailActivity
 import lac.feature.main.domain.model.Bookmark
 import org.koin.android.ext.android.inject
 
-internal class BookmarksFragment : BaseFragment<BookmarksPresenter>(), BookmarksContract.View {
+internal class BookmarksFragment : BaseFragment<BookmarksContract.View, BookmarksContract.Presenter>(),
+                                   BookmarksContract.View {
 
-    private val presenter: BookmarksContract.Presenter by inject { mapOf(Params.BOOKMARKS_VIEW to this) }
+    override val presenter: BookmarksContract.Presenter by inject { mapOf(Params.BOOKMARKS_VIEW to this) }
 
     private var listener = object : BookmarksFragmentListener {
         override fun onClickBookmarkItem(item: Bookmark) {
@@ -20,15 +21,11 @@ internal class BookmarksFragment : BaseFragment<BookmarksPresenter>(), Bookmarks
         }
     }
 
-    override fun getPresenter(): BookmarksPresenter {
-        return presenter as BookmarksPresenter
-    }
-
-    override fun hideProgressBar() {
+    override fun hideProgress() {
         fragment_bookmark_loading.gone()
     }
 
-    override fun showProgressBar() {
+    override fun showProgress() {
         fragment_bookmark_loading.visible()
     }
 

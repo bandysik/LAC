@@ -1,21 +1,21 @@
-package lac.core.feature.core.old
+package lac.core.feature.core.newest.presentation
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.support.design.widget.BottomSheetDialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import lac.core.feature.core.Pikkel
 import lac.core.feature.core.PikkelDelegate
 
-abstract class BaseFragment<out Presenter : BasePresenter> : Fragment(), BaseView,
+abstract class BaseBottomSheetDialogFragment<V : BaseView<P>, out P : BasePresenter<V>> :
+        BottomSheetDialogFragment(),
+        BaseView<P>,
         Pikkel by PikkelDelegate() {
 
     abstract fun getLayoutResId(): Int
 
     abstract fun initViews()
-
-    abstract fun getPresenter(): Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +24,8 @@ abstract class BaseFragment<out Presenter : BasePresenter> : Fragment(), BaseVie
     }
 
     override fun onDestroy() {
+        presenter.stop()
         super.onDestroy()
-        getPresenter().stop()
     }
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -38,7 +38,7 @@ abstract class BaseFragment<out Presenter : BasePresenter> : Fragment(), BaseVie
         super.onViewCreated(view, savedInstanceState)
         initViews()
 
-        getPresenter().start()
+        presenter.start()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

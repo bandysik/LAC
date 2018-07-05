@@ -1,17 +1,17 @@
 package lac.feature.main.app.detail
 
-import lac.core.feature.core.old.BasePresenter
-import lac.core.feature.core.old.BaseProgressView
-import lac.core.feature.core.old.BaseView
+import lac.core.feature.core.newest.presentation.BasePresenter
+import lac.core.feature.core.newest.presentation.BaseProgressView
+import lac.core.feature.core.newest.presentation.BaseView
 
 internal interface DetailContract {
 
-    interface View : BaseView, BaseProgressView {
+    interface View : BaseView<Presenter>, BaseProgressView {
         fun showTextMessage(msg: String)
         fun openPro()
     }
 
-    interface Presenter : BasePresenter {
+    interface Presenter : BasePresenter<View> {
         fun onClickPro()
     }
 }

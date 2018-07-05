@@ -1,11 +1,13 @@
 package lac.feature.main.app.home
 
+import lac.core.feature.core.newest.presentation.AbstractPresenter
 import lac.feature.main.plugin.settings.Settings
 import lac.plugin.analytic.Analytic
 
-internal class HomePresenter(private val view: HomeContract.View,
+internal class HomePresenter(override var view: HomeContract.View,
                              private val settings: Settings,
-                             private val analytic: Analytic) : HomeContract.Presenter {
+                             private val analytic: Analytic) : AbstractPresenter<HomeContract.View, HomeContract.Presenter>(),
+                                                               HomeContract.Presenter {
 
     override fun start() {
         val cityId = settings.getCityId()

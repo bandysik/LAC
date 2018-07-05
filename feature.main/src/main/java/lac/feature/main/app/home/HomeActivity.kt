@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment
 import androidx.core.widget.toast
 import kotlinx.android.synthetic.main.activity_home.*
 import lac.core.feature.core.network.Connectivity
-import lac.core.feature.core.old.BaseActivity
+import lac.core.feature.core.newest.presentation.BaseActivity
 import lac.core.feature.core.utils.extension.replaceFragment
 import lac.feature.main.R
 import lac.feature.main.app.bookmarks.BookmarksFragment
@@ -18,20 +18,16 @@ import lac.feature.main.app.settings.city.CityDialogFragment
 import lac.plugin.remoteconfig.ImplRemoteConfig
 import org.koin.android.ext.android.inject
 
-internal class HomeActivity : BaseActivity<HomePresenter>(),
+internal class HomeActivity : BaseActivity<HomeContract.View, HomeContract.Presenter>(),
                               HomeContract.View,
                               CityDialogFragment.SelectCityListener {
 
-    private val presenter: HomeContract.Presenter by inject { mapOf(HOME_VIEW to this) }
+    override val presenter: HomeContract.Presenter by inject { mapOf(HOME_VIEW to this) }
 
     private var navigationCurrentItem by state(R.id.navigation_home)
 
     private val broadcastConnectivity: BroadcastReceiver by lazy {
         Connectivity.getBroadcastReceiver({ toast("disconnected") }, { toast("connected") })
-    }
-
-    override fun getPresenter(): HomePresenter {
-        return presenter as HomePresenter
     }
 
     override fun onStart() {
@@ -98,7 +94,7 @@ internal class HomeActivity : BaseActivity<HomePresenter>(),
     }
 
     override fun onSelectCity(position: Int) {
-        getPresenter().selectCity(position)
+        presenter.selectCity(position)
     }
 
     private fun showFragment(fragment: Fragment) {

@@ -8,25 +8,21 @@ import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.adapter_city.view.*
 import kotlinx.android.synthetic.main.fragment_city_dialog.*
-import lac.core.feature.core.old.BaseBottomSheetDialogFragment
+import lac.core.feature.core.newest.presentation.BaseBottomSheetDialogFragment
 import lac.core.feature.core.utils.extension.argument
 import lac.feature.main.R
 import lac.feature.main.domain.model.City
 import org.koin.android.ext.android.inject
 
-internal class CityDialogFragment : BaseBottomSheetDialogFragment<CityDialogPresenter>(),
+internal class CityDialogFragment : BaseBottomSheetDialogFragment<CityDialogContract.View, CityDialogContract.Presenter>(),
                                     CityDialogContract.View {
 
     override fun showData(data: List<City>) {
     }
 
-    private val presenter: CityDialogContract.Presenter by inject { mapOf(Params.CITY_DIALOG_VIEW to this) }
+    override val presenter: CityDialogContract.Presenter by inject { mapOf(Params.CITY_DIALOG_VIEW to this) }
     private val selectedCity: Int by argument(ARG_SELECTED_CITY)
     private var selectCityListener: SelectCityListener? = null
-
-    override fun getPresenter(): CityDialogPresenter {
-        return presenter as CityDialogPresenter
-    }
 
     override fun getLayoutResId(): Int {
         return R.layout.fragment_city_dialog
@@ -36,10 +32,10 @@ internal class CityDialogFragment : BaseBottomSheetDialogFragment<CityDialogPres
         fragment_city_dialog_list.adapter = CityAdapter(selectedCity)
     }
 
-    override fun hideProgressBar() {
+    override fun hideProgress() {
     }
 
-    override fun showProgressBar() {
+    override fun showProgress() {
     }
 
     override fun onAttach(context: Context) {

@@ -1,13 +1,15 @@
 package lac.feature.main.app.settings.provider
 
-import lac.core.feature.core.old.BaseDataView
-import lac.core.feature.core.old.BasePresenter
-import lac.core.feature.core.old.BaseProgressView
-import lac.core.feature.core.old.BaseView
+import lac.core.feature.core.newest.presentation.BaseDataView
+import lac.core.feature.core.newest.presentation.BasePresenter
+import lac.core.feature.core.newest.presentation.BaseProgressView
+import lac.core.feature.core.newest.presentation.BaseView
 import lac.feature.main.domain.model.Provider
 
 interface ProviderDialogContract {
-    interface View : BaseView, BaseProgressView, BaseDataView<List<Provider>>
+    interface View : BaseView<Presenter>,
+                     BaseProgressView,
+                     BaseDataView<List<Provider>>
 
-    interface Presenter : BasePresenter
+    interface Presenter : BasePresenter<View>
 }

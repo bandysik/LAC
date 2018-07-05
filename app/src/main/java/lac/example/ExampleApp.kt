@@ -13,7 +13,7 @@ import lac.feature.main.MainModule
 import lac.plugin.analytic.ImplAnalytic
 import lac.plugin.navigator.ImplNavigator
 import lac.plugin.remoteconfig.ImplRemoteConfig
-
+import org.koin.android.ext.android.startKoin
 
 class ExampleApp : LacApplication() {
     init {
@@ -28,10 +28,11 @@ class ExampleApp : LacApplication() {
         initFeatureModules()
         initPluginModules()
 
-        val fabric = Fabric.Builder(this)
-                .kits(Crashlytics())
-                .debuggable(true)           // Enables Crashlytics debugger
-                .build()
+        val fabric =
+                Fabric.Builder(this)
+                    .kits(Crashlytics())
+                    .debuggable(true)           // Enables Crashlytics debugger
+                    .build()
         Fabric.with(fabric)
     }
 
@@ -42,8 +43,7 @@ class ExampleApp : LacApplication() {
     }
 
     private fun initFeatureModules() {
-        MainModule.init(this)
-        AdditionalModule.init(this)
+        startKoin(this, MainModule.init(this) + AdditionalModule.init())
     }
 
     private fun initLeakCanary(): Boolean {

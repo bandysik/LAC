@@ -4,28 +4,25 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import kotlinx.android.synthetic.main.activity_detail.*
-import lac.core.feature.core.old.BaseActivity
+import lac.core.feature.core.newest.presentation.BaseActivity
 import lac.feature.main.R
 import lac.plugin.navigator.ImplNavigator
 import org.koin.android.ext.android.inject
 
-internal class DetailActivity : BaseActivity<DetailContract.Presenter>(), DetailContract.View {
+internal class DetailActivity : BaseActivity<DetailContract.View, DetailContract.Presenter>(),
+                                DetailContract.View {
 
-    private val presenter: DetailContract.Presenter by inject { mapOf(Params.DETAIL_VIEW to this) }
-
-    override fun getPresenter(): DetailPresenter {
-        return presenter as DetailPresenter
-    }
+    override val presenter: DetailContract.Presenter by inject { mapOf(Params.DETAIL_VIEW to this) }
 
     override fun showTextMessage(msg: String) {
         activity_detail_text.text = msg
     }
 
-    override fun hideProgressBar() {
+    override fun hideProgress() {
         activity_detail_progressbar.visibility = View.GONE
     }
 
-    override fun showProgressBar() {
+    override fun showProgress() {
         activity_detail_progressbar.visibility = View.VISIBLE
     }
 

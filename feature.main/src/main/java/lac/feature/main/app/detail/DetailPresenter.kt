@@ -1,12 +1,14 @@
 package lac.feature.main.app.detail
 
+import lac.core.feature.core.newest.presentation.AbstractPresenter
 import lac.feature.main.data.Repository
 import lac.plugin.remoteconfig.RemoteConfig
 
-internal class DetailPresenter(private val view: DetailContract.View,
+internal class DetailPresenter(override var view: DetailContract.View,
                                private val msg: String,
                                private val repository: Repository,
-                               private val remoteConfig: RemoteConfig) : DetailContract.Presenter {
+                               private val remoteConfig: RemoteConfig) : AbstractPresenter<DetailContract.View, DetailContract.Presenter>(),
+                                                                         DetailContract.Presenter {
 
     override fun onClickPro() {
         if (remoteConfig.isEnabledPro()) {
@@ -15,11 +17,11 @@ internal class DetailPresenter(private val view: DetailContract.View,
     }
 
     override fun start() {
-        view.showProgressBar()
+        view.showProgress()
         view.showTextMessage(msg)
-        view.hideProgressBar()
+        view.hideProgress()
     }
-
-    override fun stop() {
-    }
+//
+//    override fun stop() {
+//    }
 }

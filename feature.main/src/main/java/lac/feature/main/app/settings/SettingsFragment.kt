@@ -2,33 +2,29 @@ package lac.feature.main.app.settings
 
 import android.os.Bundle
 import kotlinx.android.synthetic.main.fragment_settings.*
-import lac.core.feature.core.old.BaseFragment
+import lac.core.feature.core.newest.presentation.BaseFragment
 import lac.feature.main.R
 import lac.feature.main.app.settings.city.CityDialogFragment
 import lac.feature.main.app.settings.provider.ProviderDialogFragment
 import org.koin.android.ext.android.inject
 import java.util.*
 
-internal class SettingsFragment : BaseFragment<SettingsPresenter>(),
+internal class SettingsFragment : BaseFragment<SettingsContract.View, SettingsContract.Presenter>(),
                                   SettingsContract.View,
                                   CityDialogFragment.SelectCityListener,
                                   ProviderDialogFragment.Listener {
 
-    private val presenter: SettingsContract.Presenter by inject { mapOf(Params.SETTINGS_VIEW to this) }
-
-    override fun getPresenter(): SettingsPresenter {
-        return presenter as SettingsPresenter
-    }
+    override val presenter: SettingsContract.Presenter by inject { mapOf(Params.SETTINGS_VIEW to this) }
 
     override fun getLayoutResId() =
             R.layout.fragment_settings
 
     override fun initViews() {
         fragment_settings_from.setOnClickListener {
-            getPresenter().onClickChangeCity()
+            presenter.onClickChangeCity()
         }
         fragment_settings_to.setOnClickListener {
-            getPresenter().onClickSelectProvider()
+            presenter.onClickSelectProvider()
         }
         fragment_settings_feedback.setOnClickListener {}
 
@@ -37,10 +33,10 @@ internal class SettingsFragment : BaseFragment<SettingsPresenter>(),
         fragment_settings_apps.setOnClickListener {}
 
         fragment_settings_notification.setOnCheckedChangeListener { buttonView, isChecked ->
-            getPresenter().changeNotification(isChecked)
+            presenter.changeNotification(isChecked)
         }
 
-        fragment_settings_notification.isChecked = getPresenter().isNotificationEnabled()
+        fragment_settings_notification.isChecked = presenter.isNotificationEnabled()
     }
 
     override fun openCities(selectedCity: Int) {

@@ -1,17 +1,17 @@
 package lac.feature.main.app.settings
 
-import lac.core.feature.core.old.BasePresenter
-import lac.core.feature.core.old.BaseView
+import lac.core.feature.core.newest.presentation.BasePresenter
+import lac.core.feature.core.newest.presentation.BaseView
 import java.util.*
 
 internal interface SettingsContract {
 
-    interface View : BaseView {
+    interface View : BaseView<Presenter> {
         fun openCities(selectedCity: Int)
         fun openProviders(selectedProviders: ArrayList<Int>)
     }
 
-    interface Presenter : BasePresenter {
+    interface Presenter : BasePresenter<View> {
         fun onClickChangeCity()
         fun onClickSelectProvider()
         fun changeNotification(isChecked: Boolean)

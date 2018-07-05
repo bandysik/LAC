@@ -8,22 +8,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.adapter_provider.view.*
 import kotlinx.android.synthetic.main.fragment_provider_dialog.*
-import lac.core.feature.core.old.BaseBottomSheetDialogFragment
+import lac.core.feature.core.newest.presentation.BaseBottomSheetDialogFragment
 import lac.core.feature.core.utils.extension.argument
 import lac.feature.main.R
 import lac.feature.main.domain.model.Provider
 import org.koin.android.ext.android.inject
 
-internal class ProviderDialogFragment : BaseBottomSheetDialogFragment<ProviderDialogPresenter>(),
+internal class ProviderDialogFragment : BaseBottomSheetDialogFragment<ProviderDialogContract.View, ProviderDialogContract.Presenter>(),
                                         ProviderDialogContract.View {
 
-    private val presenter: ProviderDialogContract.Presenter by inject { mapOf(Params.PROVIDER_DIALOG_VIEW to this) }
+    override val presenter: ProviderDialogContract.Presenter by inject { mapOf(Params.PROVIDER_DIALOG_VIEW to this) }
     private val selectedProviders: ArrayList<Int> by argument(ARG_SELECTED_PROVIDERS)
     private var listener: Listener? = null
-
-    override fun getPresenter(): ProviderDialogPresenter {
-        return presenter as ProviderDialogPresenter
-    }
 
     override fun getLayoutResId(): Int {
         return R.layout.fragment_provider_dialog
@@ -36,10 +32,10 @@ internal class ProviderDialogFragment : BaseBottomSheetDialogFragment<ProviderDi
     override fun showData(data: List<Provider>) {
     }
 
-    override fun hideProgressBar() {
+    override fun hideProgress() {
     }
 
-    override fun showProgressBar() {
+    override fun showProgress() {
     }
 
     override fun onAttach(context: Context) {

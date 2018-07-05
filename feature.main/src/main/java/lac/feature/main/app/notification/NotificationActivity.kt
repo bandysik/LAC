@@ -7,22 +7,18 @@ import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.activity_notification.*
-import lac.core.feature.core.old.BaseActivity
+import lac.core.feature.core.newest.presentation.BaseActivity
 import lac.core.feature.core.utils.extension.argument
 import lac.feature.main.R
 import org.koin.android.ext.android.inject
 
-internal class NotificationActivity : BaseActivity<NotificationPresenter>(),
+internal class NotificationActivity : BaseActivity<NotificationContract.View, NotificationContract.Presenter>(),
                                       NotificationContract.View {
 
     private val url: String by argument(ARG_KEY_URL)
 
-    private val presenter: NotificationContract.Presenter by inject {
+    override val presenter: NotificationContract.Presenter by inject {
         mapOf(Params.NOTIFICATION_VIEW to this, Params.NOTIFICATION_VIEW to url)
-    }
-
-    override fun getPresenter(): NotificationPresenter {
-        return presenter as NotificationPresenter
     }
 
     override fun getLayoutResId() =
@@ -42,11 +38,11 @@ internal class NotificationActivity : BaseActivity<NotificationPresenter>(),
         }
     }
 
-    override fun hideProgressBar() {
+    override fun hideProgress() {
         activity_notification_progressbar.visibility = View.GONE
     }
 
-    override fun showProgressBar() {
+    override fun showProgress() {
         activity_notification_progressbar.visibility = View.VISIBLE
     }
 
