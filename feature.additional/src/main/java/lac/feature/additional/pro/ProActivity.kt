@@ -1,7 +1,7 @@
 package lac.feature.additional.pro
 
 import kotlinx.android.synthetic.main.activity_pro.*
-import lac.core.feature.core.newest.presentation.BaseActivity
+import lac.core.feature.core.clean.BaseActivity
 import lac.feature.additional.R
 import lac.plugin.admin.Admin
 import org.koin.android.ext.android.inject

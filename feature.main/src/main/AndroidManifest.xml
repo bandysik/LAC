@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name="lac.feature.main.app.home.HomeActivity"
+            android:name="lac.feature.main.app.mobile.home.HomeActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -12,14 +12,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="lac.feature.main.app.detail.DetailActivity"
+            android:name="lac.feature.main.app.mobile.detail.DetailActivity"
             android:label="@string/title_activity_detail"
-            android:parentActivityName="lac.feature.main.app.home.HomeActivity">
+            android:parentActivityName="lac.feature.main.app.mobile.home.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="lac.feature.main.app.home.HomeActivity" />
+                android:value="lac.feature.main.app.mobile.home.HomeActivity" />
         </activity>
-        <activity android:name="lac.feature.main.app.notification.NotificationActivity">
+        <activity android:name="lac.feature.main.app.mobile.notification.NotificationActivity">
             <intent-filter>
                 <action android:name="push_notification" />
                 <category android:name="android.intent.category.DEFAULT" />

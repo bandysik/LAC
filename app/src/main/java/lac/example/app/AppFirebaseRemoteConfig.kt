@@ -13,7 +13,7 @@ class AppFirebaseRemoteConfig : RemoteConfig {
 // will use fetch data from the Remote Config service, rather than cached parameter values,
 // if cached parameter values are more than cacheExpiration seconds old.
 // See Best Practices in the README for more information.
-        val fetch = mFirebaseRemoteConfig.fetch(0L)
+        val fetch = mFirebaseRemoteConfig.fetch(1000L)
         fetch.addOnCompleteListener(activity) { task ->
             if (task.isSuccessful) {
                 Toast.makeText(activity, "Fetch Succeeded", Toast.LENGTH_SHORT)

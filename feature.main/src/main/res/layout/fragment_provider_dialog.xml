@@ -9,5 +9,5 @@
     android:paddingBottom="@dimen/list_item_spacing_half"
     android:paddingTop="@dimen/list_item_spacing_half"
     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-    tools:context=".app.settings.provider.ProviderDialogFragment"
+    tools:context=".app.mobile.settings.provider.ProviderDialogFragment"
     tools:listitem="@layout/adapter_city" />

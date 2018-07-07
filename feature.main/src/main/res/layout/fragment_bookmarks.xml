@@ -6,7 +6,7 @@
     android:name="lac.feature.main.bookmark.BookmarksFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".app.bookmarks.BookmarksFragment">
+    tools:context=".app.mobile.bookmarks.BookmarksFragment">
 
 
     <android.support.v7.widget.RecyclerView

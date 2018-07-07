@@ -1,8 +1,8 @@
 package lac.feature.additional.pro
 
-import lac.core.feature.core.newest.presentation.BasePresenter
-import lac.core.feature.core.newest.presentation.BaseView
-import lac.core.feature.core.newest.presentation.BaseProgressView
+import lac.core.feature.core.clean.presenter.BasePresenter
+import lac.core.feature.core.clean.view.BaseView
+import lac.core.feature.core.clean.view.BaseProgressView
 
 interface ProContract {
     interface View : BaseView<Presenter>,
