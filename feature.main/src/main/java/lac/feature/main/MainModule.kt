@@ -1,6 +1,8 @@
 package lac.feature.main
 
 import android.app.Application
+import lac.core.feature.core.utils.rx.ApplicationSchedulerProvider
+import lac.core.feature.core.utils.rx.SchedulerProvider
 import lac.feature.main.app.bookmarks.bookmarksSubModule
 import lac.feature.main.app.detail.detailSubModule
 import lac.feature.main.app.feed.feedSubModule
@@ -25,6 +27,7 @@ object MainModule {
         bean { ImplRemoteConfig.remoteConfig }
         bean { MainSettings.settings }
         bean { ImplAnalytic.analytic }
+        bean { ApplicationSchedulerProvider() as SchedulerProvider }
 //        bean { StubRepository() as Repository }//TODO retrofit
 //        bean { StubRepository() as Repository }//TODO database
     }

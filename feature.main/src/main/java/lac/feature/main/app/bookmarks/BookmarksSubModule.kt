@@ -5,7 +5,7 @@ import org.koin.dsl.module.applicationContext
 
 val bookmarksSubModule = applicationContext {
     factory { params ->
-        BookmarksPresenter(params[BOOKMARKS_VIEW], get()) as BookmarksContract.Presenter
+        BookmarksPresenter(params[BOOKMARKS_VIEW], get(), get()) as BookmarksContract.Presenter
     }
 }
 

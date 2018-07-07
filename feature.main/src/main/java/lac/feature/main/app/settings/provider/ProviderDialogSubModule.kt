@@ -6,6 +6,7 @@ import org.koin.dsl.module.applicationContext
 val providerDialogSubModule = applicationContext {
     factory { params ->
         ProviderDialogPresenter(params[PROVIDER_DIALOG_VIEW],
+                                get(),
                                 get()) as ProviderDialogContract.Presenter
     }
 }

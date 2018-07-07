@@ -5,7 +5,7 @@ import org.koin.dsl.module.applicationContext
 
 val cityDialogSubModule = applicationContext {
     factory { params ->
-        CityDialogPresenter(params[CITY_DIALOG_VIEW], get()) as CityDialogContract.Presenter
+        CityDialogPresenter(params[CITY_DIALOG_VIEW], get(), get()) as CityDialogContract.Presenter
     }
 }
 
