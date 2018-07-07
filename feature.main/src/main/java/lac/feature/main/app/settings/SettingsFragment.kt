@@ -1,6 +1,7 @@
 package lac.feature.main.app.settings
 
 import android.os.Bundle
+import android.widget.CompoundButton
 import kotlinx.android.synthetic.main.fragment_settings.*
 import lac.core.feature.core.newest.presentation.BaseFragment
 import lac.feature.main.R
@@ -10,9 +11,9 @@ import org.koin.android.ext.android.inject
 import java.util.*
 
 internal class SettingsFragment : BaseFragment<SettingsContract.View, SettingsContract.Presenter>(),
-                                  SettingsContract.View,
-                                  CityDialogFragment.SelectCityListener,
-                                  ProviderDialogFragment.Listener {
+        SettingsContract.View,
+        CityDialogFragment.SelectCityListener,
+        ProviderDialogFragment.Listener {
 
     override val presenter: SettingsContract.Presenter by inject { mapOf(Params.SETTINGS_VIEW to this) }
 
@@ -32,21 +33,20 @@ internal class SettingsFragment : BaseFragment<SettingsContract.View, SettingsCo
 
         fragment_settings_apps.setOnClickListener {}
 
-        fragment_settings_notification.setOnCheckedChangeListener { buttonView, isChecked ->
-            presenter.changeNotification(isChecked)
-        }
+        fragment_settings_notification.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener
+        { buttonView, isChecked -> presenter.changeNotification(isChecked) })
 
         fragment_settings_notification.isChecked = presenter.isNotificationEnabled()
     }
 
     override fun openCities(selectedCity: Int) {
         CityDialogFragment.newInstance(selectedCity)
-            .show(childFragmentManager, CityDialogFragment.TAG)
+                .show(childFragmentManager, CityDialogFragment.TAG)
     }
 
     override fun openProviders(selectedProviders: ArrayList<Int>) {
         ProviderDialogFragment.newInstance(selectedProviders)
-            .show(childFragmentManager, ProviderDialogFragment.TAG)
+                .show(childFragmentManager, ProviderDialogFragment.TAG)
     }
 
     override fun onSelectCity(position: Int) {

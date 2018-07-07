@@ -15,7 +15,9 @@ import lac.feature.main.domain.model.Provider
 import org.koin.android.ext.android.inject
 
 internal class ProviderDialogFragment : BaseBottomSheetDialogFragment<ProviderDialogContract.View, ProviderDialogContract.Presenter>(),
-                                        ProviderDialogContract.View {
+        ProviderDialogContract.View {
+    override fun showError(error: Throwable?) {
+    }
 
     override val presenter: ProviderDialogContract.Presenter by inject { mapOf(Params.PROVIDER_DIALOG_VIEW to this) }
     private val selectedProviders: ArrayList<Int> by argument(ARG_SELECTED_PROVIDERS)
@@ -30,6 +32,7 @@ internal class ProviderDialogFragment : BaseBottomSheetDialogFragment<ProviderDi
     }
 
     override fun showData(data: List<Provider>) {
+        (fragent_provider_dialog_list.adapter as ItemAdapter).data = data as ArrayList<Provider>
     }
 
     override fun hideProgress() {
@@ -59,7 +62,7 @@ internal class ProviderDialogFragment : BaseBottomSheetDialogFragment<ProviderDi
 
     private inner class ViewHolder internal constructor(inflater: LayoutInflater,
                                                         parent: ViewGroup) : RecyclerView.ViewHolder(
-        inflater.inflate(R.layout.adapter_provider, parent, false)) {
+            inflater.inflate(R.layout.adapter_provider, parent, false)) {
 
         internal val text: TextView = itemView.adapter_provider_text
 

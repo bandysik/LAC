@@ -1,5 +1,4 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,12 +33,9 @@
             style="@style/SettingsTitle"
             android:text="Notification" />
 
-        <Switch
+        <lac.core.feature.core.widget.SwitcherView
             android:id="@+id/fragment_settings_notification"
-            style="@style/SettingsSwitch"
-            android:text="Allow to get notification"
-            android:textOff="off"
-            android:textOn="on" />
+            style="@style/SettingsSwitch" />
 
         <TextView
             style="@style/SettingsTitle"

@@ -15,9 +15,12 @@ import lac.feature.main.domain.model.City
 import org.koin.android.ext.android.inject
 
 internal class CityDialogFragment : BaseBottomSheetDialogFragment<CityDialogContract.View, CityDialogContract.Presenter>(),
-                                    CityDialogContract.View {
+        CityDialogContract.View {
+    override fun showError(error: Throwable?) {
+    }
 
     override fun showData(data: List<City>) {
+        (fragment_city_dialog_list.adapter as CityAdapter).data = data as ArrayList<City>
     }
 
     override val presenter: CityDialogContract.Presenter by inject { mapOf(Params.CITY_DIALOG_VIEW to this) }
@@ -59,7 +62,7 @@ internal class CityDialogFragment : BaseBottomSheetDialogFragment<CityDialogCont
 
     private inner class ViewHolder internal constructor(inflater: LayoutInflater,
                                                         parent: ViewGroup) : RecyclerView.ViewHolder(
-        inflater.inflate(R.layout.adapter_city, parent, false)) {
+            inflater.inflate(R.layout.adapter_city, parent, false)) {
 
         internal val text: TextView = itemView.adapter_city_text
 

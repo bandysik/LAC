@@ -12,6 +12,8 @@ import org.koin.android.ext.android.inject
 
 internal class BookmarksFragment : BaseFragment<BookmarksContract.View, BookmarksContract.Presenter>(),
                                    BookmarksContract.View {
+    override fun showError(error: Throwable?) {
+    }
 
     override val presenter: BookmarksContract.Presenter by inject { mapOf(Params.BOOKMARKS_VIEW to this) }
 
