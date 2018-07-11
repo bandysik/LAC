@@ -15,7 +15,7 @@ internal class BookmarksFragment : BaseFragment<BookmarksContract.View, Bookmark
     override fun showError(error: Throwable?) {
     }
 
-    override val presenter: BookmarksContract.Presenter by inject { mapOf(Params.BOOKMARKS_VIEW to this) }
+    override val presenter: BookmarksContract.Presenter by inject { mapOf(Params.VIEW to this) }
 
     private var listener = object : BookmarksFragmentListener {
         override fun onClickBookmarkItem(item: Bookmark) {

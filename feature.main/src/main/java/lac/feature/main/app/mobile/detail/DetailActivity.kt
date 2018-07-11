@@ -12,7 +12,7 @@ import org.koin.android.ext.android.inject
 internal class DetailActivity : BaseActivity<DetailContract.View, DetailContract.Presenter>(),
                                 DetailContract.View {
 
-    override val presenter: DetailContract.Presenter by inject { mapOf(Params.DETAIL_VIEW to this) }
+    override val presenter: DetailContract.Presenter by inject { mapOf(Params.VIEW to this) }
 
     override fun showTextMessage(msg: String) {
         activity_detail_text.text = msg

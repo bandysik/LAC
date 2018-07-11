@@ -15,7 +15,7 @@ internal class SettingsFragment : BaseFragment<SettingsContract.View, SettingsCo
                                   CityDialogFragment.SelectCityListener,
                                   ProviderDialogFragment.Listener {
 
-    override val presenter: SettingsContract.Presenter by inject { mapOf(Params.SETTINGS_VIEW to this) }
+    override val presenter: SettingsContract.Presenter by inject { mapOf(Params.VIEW to this) }
 
     override fun getLayoutResId() =
             R.layout.fragment_settings

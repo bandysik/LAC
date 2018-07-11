@@ -1,5 +1,6 @@
 package lac.example
 
+import android.app.Application
 import android.content.Context
 import com.crashlytics.android.Crashlytics
 import com.squareup.leakcanary.LeakCanary
@@ -15,7 +16,7 @@ import lac.plugin.navigator.ImplNavigator
 import lac.plugin.remoteconfig.ImplRemoteConfig
 import org.koin.android.ext.android.startKoin
 
-class ExampleApp : LacApplication() {
+class ExampleApp : Application() {
     init {
         instance = this
     }

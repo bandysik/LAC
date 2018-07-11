@@ -18,7 +18,7 @@ internal class NotificationActivity : BaseActivity<NotificationContract.View, No
     private val url: String by argument(ARG_KEY_URL)
 
     override val presenter: NotificationContract.Presenter by inject {
-        mapOf(Params.NOTIFICATION_VIEW to this, Params.NOTIFICATION_VIEW to url)
+        mapOf(Params.VIEW to this, Params.VIEW to url)
     }
 
     override fun getLayoutResId() =

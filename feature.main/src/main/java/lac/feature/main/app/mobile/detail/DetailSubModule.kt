@@ -1,11 +1,11 @@
 package lac.feature.main.app.mobile.detail
 
-import lac.feature.main.app.mobile.detail.Params.DETAIL_VIEW
+import lac.feature.main.app.mobile.detail.Params.VIEW
 import org.koin.dsl.module.applicationContext
 
 val detailSubModule = applicationContext {
     factory { params ->
-        DetailPresenter(params[DETAIL_VIEW],
+        DetailPresenter(params[VIEW],
                         "hello",
                         get(),
                         get()) as DetailContract.Presenter
@@ -13,5 +13,5 @@ val detailSubModule = applicationContext {
 }
 
 object Params {
-    const val DETAIL_VIEW = "DETAIL_VIEW"
+    const val VIEW = "VIEW"
 }

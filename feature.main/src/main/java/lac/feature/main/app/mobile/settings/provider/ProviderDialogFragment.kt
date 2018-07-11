@@ -19,7 +19,7 @@ internal class ProviderDialogFragment : BaseBottomSheetDialogFragment<ProviderDi
     override fun showError(error: Throwable?) {
     }
 
-    override val presenter: ProviderDialogContract.Presenter by inject { mapOf(Params.PROVIDER_DIALOG_VIEW to this) }
+    override val presenter: ProviderDialogContract.Presenter by inject { mapOf(Params.VIEW to this) }
     private val selectedProviders: ArrayList<Int> by argument(ARG_SELECTED_PROVIDERS)
     private var listener: Listener? = null
 

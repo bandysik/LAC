@@ -1,16 +1,16 @@
 package lac.feature.main.app.mobile.settings.provider
 
-import lac.feature.main.app.mobile.settings.provider.Params.PROVIDER_DIALOG_VIEW
+import lac.feature.main.app.mobile.settings.provider.Params.VIEW
 import org.koin.dsl.module.applicationContext
 
 val providerDialogSubModule = applicationContext {
     factory { params ->
-        ProviderDialogPresenter(params[PROVIDER_DIALOG_VIEW],
+        ProviderDialogPresenter(params[VIEW],
                                 get(),
                                 get()) as ProviderDialogContract.Presenter
     }
 }
 
 object Params {
-    const val PROVIDER_DIALOG_VIEW = "PROVIDER_DIALOG_VIEW"
+    const val VIEW = "VIEW"
 }

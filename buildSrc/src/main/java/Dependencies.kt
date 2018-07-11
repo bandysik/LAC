@@ -10,7 +10,8 @@ object Versions {
     val constraint = "1.1.0"
     val ktx = "0.3"
     val room = "1.0.0"
-    val firebase = "16.0.0"
+    val firebase = "16.0.1"
+    val firebaseConfig = "16.0.0"
 
     //OTHER
     val koin = "0.9.3"
@@ -43,7 +44,8 @@ object Deps {
     val ktx_core = "androidx.core:core-ktx:${Versions.ktx}"
 
     val firebase_core = "com.google.firebase:firebase-core:${Versions.firebase}"
-    val firebase_config = "com.google.firebase:firebase-config:${Versions.firebase}"
+    val firebase_config = "com.google.firebase:firebase-config:${Versions.firebaseConfig}"
+    val firebase_database = "com.google.firebase:firebase-database:${Versions.firebase}"
 
     //OTHER
     val koin_core = "org.koin:koin-core:${Versions.koin}"

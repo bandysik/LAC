@@ -16,7 +16,7 @@ internal class FeedFragment : BaseFragment<FeedContract.View, FeedContract.Prese
     override fun showError(error: Throwable?) {
     }
 
-    override val presenter: FeedContract.Presenter by inject { mapOf(Params.FEED_VIEW to this) }
+    override val presenter: FeedContract.Presenter by inject { mapOf(Params.VIEW to this) }
 
     private var listener = object : FeedFragmentListener {
         override fun onClickFeedItem(item: Feed) {

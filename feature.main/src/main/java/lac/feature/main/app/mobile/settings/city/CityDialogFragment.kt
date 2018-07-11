@@ -23,7 +23,7 @@ internal class CityDialogFragment : BaseBottomSheetDialogFragment<CityDialogCont
         (fragment_city_dialog_list.adapter as CityAdapter).data = data as ArrayList<City>
     }
 
-    override val presenter: CityDialogContract.Presenter by inject { mapOf(Params.CITY_DIALOG_VIEW to this) }
+    override val presenter: CityDialogContract.Presenter by inject { mapOf(Params.VIEW to this) }
     private val selectedCity: Int by argument(ARG_SELECTED_CITY)
     private var selectCityListener: SelectCityListener? = null
 

@@ -12,7 +12,7 @@ import lac.core.feature.core.utils.extension.replaceFragment
 import lac.feature.main.R
 import lac.feature.main.app.mobile.bookmarks.BookmarksFragment
 import lac.feature.main.app.mobile.feed.FeedFragment
-import lac.feature.main.app.mobile.home.Params.HOME_VIEW
+import lac.feature.main.app.mobile.home.Params.VIEW
 import lac.feature.main.app.mobile.settings.SettingsFragment
 import lac.feature.main.app.mobile.settings.city.CityDialogFragment
 import lac.plugin.remoteconfig.ImplRemoteConfig
@@ -22,7 +22,7 @@ internal class HomeActivity : BaseActivity<HomeContract.View, HomeContract.Prese
                               HomeContract.View,
                               CityDialogFragment.SelectCityListener {
 
-    override val presenter: HomeContract.Presenter by inject { mapOf(HOME_VIEW to this) }
+    override val presenter: HomeContract.Presenter by inject { mapOf(VIEW to this) }
 
     private var navigationCurrentItem by state(R.id.navigation_home)
 
