@@ -1,3 +1,3 @@
 package lac.feature.main.app.domain.model
 
-class Bookmark(val id: String, val content: String)
+data class Bookmark(val id: String, val content: String)

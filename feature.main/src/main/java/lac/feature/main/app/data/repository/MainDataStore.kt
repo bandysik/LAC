@@ -8,15 +8,19 @@ import lac.feature.main.app.data.model.DataFeed
 import lac.feature.main.app.data.model.DataProvider
 
 interface MainDataStore {
-    fun putBookmarks(bookmarks:List<DataBookmark>): Completable
+    fun clearBookmarks(): Completable
+    fun saveBookmarks(bookmarks: List<DataBookmark>): Completable
     fun getBookmarks(): Single<List<DataBookmark>>
 
-    fun putCities(cities:List<DataCity>): Completable
+    fun clearCities(): Completable
+    fun saveCities(cities: List<DataCity>): Completable
     fun getCities(): Single<List<DataCity>>
 
-    fun putProviders(providers:List<DataProvider>): Completable
+    fun clearProviders(): Completable
+    fun saveProviders(providers: List<DataProvider>): Completable
     fun getProviders(): Single<List<DataProvider>>
 
-    fun putFeeds(feeds:List<DataFeed>): Completable
+    fun clearFeeds(): Completable
+    fun saveFeeds(feeds: List<DataFeed>): Completable
     fun getFeeds(): Single<List<DataFeed>>
 }

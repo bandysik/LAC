@@ -25,6 +25,8 @@ dependencies {
 
     api Deps.retrofit
     api Deps.retrofit_converter_gson
+    api Deps.retrofit_adapter
+    api Deps.okHttpLogger
 
     api Deps.arch_room
 

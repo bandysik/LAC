@@ -7,8 +7,29 @@ class MainDataStoreFactory(val mainCache: MainCache,
                            val mainCacheDataStore: MainCacheDataStore,
                            val mainRemoteDataStore: MainRemoteDataStore) {
 
-    fun retrieveDataStore(): MainDataStore {
-        if (mainCache.isCached() && !mainCache.isExpired()) {
+    fun retrieveDataStoreCities(): MainDataStore {
+        if (mainCache.isCachedCities() && !mainCache.isExpiredCities()) {
+            return retrieveCacheDataStore()
+        }
+        return retrieveRemoteDataStore()
+    }
+
+    fun retrieveDataStoreBookmarks(): MainDataStore {
+        if (mainCache.isCachedBookmarks() && !mainCache.isExpiredBookmarks()) {
+            return retrieveCacheDataStore()
+        }
+        return retrieveRemoteDataStore()
+    }
+
+    fun retrieveDataStoreFeeds(): MainDataStore {
+        if (mainCache.isCachedFeeds() && !mainCache.isExpiredFeeds()) {
+            return retrieveCacheDataStore()
+        }
+        return retrieveRemoteDataStore()
+    }
+
+    fun retrieveDataStoreProviders(): MainDataStore {
+        if (mainCache.isCachedProviders() && !mainCache.isExpiredProviders()) {
             return retrieveCacheDataStore()
         }
         return retrieveRemoteDataStore()

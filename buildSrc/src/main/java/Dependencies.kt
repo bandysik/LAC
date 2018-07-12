@@ -18,6 +18,7 @@ object Versions {
     val timber = "4.7.0"
     val stetho = "1.5.0"
     val retrofit = "2.4.0"
+    val okHttpVersion = "3.8.1"
     val leakcanary = "1.5.4"
     val crashlytics = "2.9.4"
     val rx_kotlin = "2.2.0"
@@ -53,6 +54,8 @@ object Deps {
 
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val retrofit_converter_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    val retrofit_adapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
+    val okHttpLogger = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttpVersion}"
 
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 

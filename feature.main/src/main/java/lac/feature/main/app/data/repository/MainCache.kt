@@ -8,19 +8,31 @@ import lac.feature.main.app.data.model.DataFeed
 import lac.feature.main.app.data.model.DataProvider
 
 interface MainCache{
-    fun putBookmarks(bookmarks:List<DataBookmark>): Completable
+    fun clearBookmarks(): Completable
+    fun saveBookmarks(bookmarks:List<DataBookmark>): Completable
     fun getBookmarks(): Single<List<DataBookmark>>
+    fun isCachedBookmarks(): Boolean
+    fun setLastCacheTimeBookmarks(lastCache: Long)
+    fun isExpiredBookmarks(): Boolean
 
-    fun putCities(cities:List<DataCity>): Completable
+    fun clearCities(): Completable
+    fun saveCities(cities:List<DataCity>): Completable
     fun getCities(): Single<List<DataCity>>
+    fun isCachedCities(): Boolean
+    fun setLastCacheTimeCities(lastCache: Long)
+    fun isExpiredCities(): Boolean
 
-    fun putProviders(providers:List<DataProvider>): Completable
+    fun clearProviders(): Completable
+    fun saveProviders(providers:List<DataProvider>): Completable
     fun getProviders(): Single<List<DataProvider>>
+    fun isCachedProviders(): Boolean
+    fun setLastCacheTimeProviders(lastCache: Long)
+    fun isExpiredProviders(): Boolean
 
-    fun putFeeds(feeds:List<DataFeed>): Completable
+    fun clearFeeds(): Completable
+    fun saveFeeds(feeds:List<DataFeed>): Completable
     fun getFeeds(): Single<List<DataFeed>>
-
-    fun isCached(): Boolean
-    fun setLastCacheTime(lastCache: Long)
-    fun isExpired(): Boolean
+    fun isCachedFeeds(): Boolean
+    fun setLastCacheTimeFeeds(lastCache: Long)
+    fun isExpiredFeeds(): Boolean
 }

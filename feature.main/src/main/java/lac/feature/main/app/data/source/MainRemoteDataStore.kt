@@ -10,32 +10,48 @@ import lac.feature.main.app.data.repository.MainDataStore
 import lac.feature.main.app.data.repository.MainRemote
 
 class MainRemoteDataStore(val mainRemote: MainRemote) : MainDataStore {
-    override fun putBookmarks(bookmarks: List<DataBookmark>): Completable {
-        return mainRemote.putBookmarks(bookmarks)
+    override fun clearBookmarks(): Completable {
+        throw UnsupportedOperationException()
+    }
+
+    override fun clearCities(): Completable {
+        throw UnsupportedOperationException()
+    }
+
+    override fun clearProviders(): Completable {
+        throw UnsupportedOperationException()
+    }
+
+    override fun clearFeeds(): Completable {
+        throw UnsupportedOperationException()
+    }
+
+    override fun saveBookmarks(bookmarks: List<DataBookmark>): Completable {
+        throw UnsupportedOperationException()
     }
 
     override fun getBookmarks(): Single<List<DataBookmark>> {
         return mainRemote.getBookmarks()
     }
 
-    override fun putCities(cities: List<DataCity>): Completable {
-        return mainRemote.putCities(cities)
+    override fun saveCities(cities: List<DataCity>): Completable {
+        throw UnsupportedOperationException()
     }
 
     override fun getCities(): Single<List<DataCity>> {
         return mainRemote.getCities()
     }
 
-    override fun putProviders(providers: List<DataProvider>): Completable {
-        return mainRemote.putProviders(providers)
+    override fun saveProviders(providers: List<DataProvider>): Completable {
+        throw UnsupportedOperationException()
     }
 
     override fun getProviders(): Single<List<DataProvider>> {
         return mainRemote.getProviders()
     }
 
-    override fun putFeeds(feeds: List<DataFeed>): Completable {
-        return mainRemote.putFeeds(feeds)
+    override fun saveFeeds(feeds: List<DataFeed>): Completable {
+        throw UnsupportedOperationException()
     }
 
     override fun getFeeds(): Single<List<DataFeed>> {
