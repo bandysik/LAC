@@ -9,7 +9,7 @@ import lac.feature.main.app.data.model.DataProvider
 import lac.feature.main.app.data.repository.MainDataStore
 import lac.feature.main.app.data.repository.MainRemote
 
-class MainRemoteDataStore(val mainRemote: MainRemote) : MainDataStore {
+class MainRemoteDataStore(private val mainRemote: MainRemote) : MainDataStore {
     override fun clearBookmarks(): Completable {
         throw UnsupportedOperationException()
     }
@@ -31,7 +31,7 @@ class MainRemoteDataStore(val mainRemote: MainRemote) : MainDataStore {
     }
 
     override fun getBookmarks(): Single<List<DataBookmark>> {
-        return mainRemote.getBookmarks()
+        throw UnsupportedOperationException()
     }
 
     override fun saveCities(cities: List<DataCity>): Completable {

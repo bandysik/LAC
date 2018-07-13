@@ -6,6 +6,9 @@ import lac.feature.main.app.remote.model.RemoteFeed
 import lac.feature.main.app.remote.model.RemoteProvider
 import retrofit2.http.GET
 
+const val propose = "https://renteasy-4a2f0.firebaseio.com/items/8017/propose.json?print=pretty"
+const val cities = "https://renteasy-4a2f0.firebaseio.com/cities.json?print=pretty"
+
 interface MainService {
 
     @GET("cities.json")

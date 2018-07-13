@@ -3,12 +3,12 @@ package lac.feature.main.app.mobile.feed
 import lac.core.feature.core.clean.presenter.AbstractPresenter
 import lac.core.feature.core.utils.extension.with
 import lac.core.feature.core.utils.rx.SchedulerProvider
-import lac.feature.main.old.data.Repository
+import lac.feature.main.app.domain.repository.MainRepository
 
 internal class FeedPresenter(override var view: FeedContract.View,
                              private val schedulerProvider: SchedulerProvider,
-                             private val repository: Repository) : AbstractPresenter<FeedContract.View, FeedContract.Presenter>(),
-                                                                   FeedContract.Presenter {
+                             private val repository: MainRepository) : AbstractPresenter<FeedContract.View, FeedContract.Presenter>(),
+                                                                       FeedContract.Presenter {
 
     override fun request() {
         view.showProgress()

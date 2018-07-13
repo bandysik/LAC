@@ -12,5 +12,6 @@ android {
 }
 
 dependencies {
+    implementation project(':core.plugin')
     api Deps.firebase_database
 }

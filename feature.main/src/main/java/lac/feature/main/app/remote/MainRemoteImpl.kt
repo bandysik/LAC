@@ -9,10 +9,10 @@ import lac.feature.main.app.remote.mapper.RemoteCityMapper
 import lac.feature.main.app.remote.mapper.RemoteFeedMapper
 import lac.feature.main.app.remote.mapper.RemoteProviderMapper
 
-class MainRemoteImpl(val mainService: MainService,
-                     val remoteCityMapper: RemoteCityMapper,
-                     val remoteFeedMapper: RemoteFeedMapper,
-                     val remoteProviderMapper: RemoteProviderMapper) : MainRemote {
+class MainRemoteImpl(private val mainService: MainService,
+                     private val remoteCityMapper: RemoteCityMapper,
+                     private val remoteFeedMapper: RemoteFeedMapper,
+                     private val remoteProviderMapper: RemoteProviderMapper) : MainRemote {
 
     override fun getCities(): Single<List<DataCity>> {
         return mainService.getCities()

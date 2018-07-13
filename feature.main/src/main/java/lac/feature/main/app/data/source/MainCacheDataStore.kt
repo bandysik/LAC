@@ -9,7 +9,7 @@ import lac.feature.main.app.data.model.DataProvider
 import lac.feature.main.app.data.repository.MainCache
 import lac.feature.main.app.data.repository.MainDataStore
 
-class MainCacheDataStore(val mainCache: MainCache) : MainDataStore {
+class MainCacheDataStore(private val mainCache: MainCache) : MainDataStore {
     override fun clearBookmarks(): Completable {
         return mainCache.clearBookmarks()
     }

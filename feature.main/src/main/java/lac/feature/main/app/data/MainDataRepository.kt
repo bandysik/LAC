@@ -18,11 +18,11 @@ import lac.feature.main.app.domain.model.Feed
 import lac.feature.main.app.domain.model.Provider
 import lac.feature.main.app.domain.repository.MainRepository
 
-class MainDataRepository(val factory: MainDataStoreFactory,
-                         val bookmarkMapper: DataBookmarkMapper,
-                         val cityMapper: DataCityMapper,
-                         val feedMapper: DataFeedMapper,
-                         val providerMapper: DataProviderMapper) : MainRepository {
+class MainDataRepository(private val factory: MainDataStoreFactory,
+                         private val bookmarkMapper: DataBookmarkMapper,
+                         private val cityMapper: DataCityMapper,
+                         private val feedMapper: DataFeedMapper,
+                         private val providerMapper: DataProviderMapper) : MainRepository {
 
     override fun clearBookmarks(): Completable {
         return factory.retrieveCacheDataStore()
@@ -40,7 +40,7 @@ class MainDataRepository(val factory: MainDataStoreFactory,
     }
 
     override fun getBookmarks(): Single<List<Bookmark>> {
-        val dataStore = factory.retrieveDataStoreCities()
+        val dataStore = factory.retrieveDataStoreBookmarks()
         return dataStore.getBookmarks()
             .flatMap {
                 if (dataStore is MainRemoteDataStore) {
@@ -104,7 +104,7 @@ class MainDataRepository(val factory: MainDataStoreFactory,
     }
 
     override fun getProviders(): Single<List<Provider>> {
-        val dataStore = factory.retrieveDataStoreCities()
+        val dataStore = factory.retrieveDataStoreProviders()
         return dataStore.getProviders()
             .flatMap {
                 if (dataStore is MainRemoteDataStore) {
@@ -136,7 +136,7 @@ class MainDataRepository(val factory: MainDataStoreFactory,
     }
 
     override fun getFeed(): Single<List<Feed>> {
-        val dataStore = factory.retrieveDataStoreCities()
+        val dataStore = factory.retrieveDataStoreFeeds()
         return dataStore.getFeeds()
             .flatMap {
                 if (dataStore is MainRemoteDataStore) {

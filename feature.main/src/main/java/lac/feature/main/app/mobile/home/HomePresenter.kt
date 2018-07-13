@@ -1,26 +1,23 @@
 package lac.feature.main.app.mobile.home
 
 import lac.core.feature.core.clean.presenter.AbstractPresenter
-import lac.feature.main.plugin.settings.Settings
+import lac.feature.main.app.cache.PreferencesHelper
 import lac.plugin.analytic.Analytic
 
 internal class HomePresenter(override var view: HomeContract.View,
-                             private val settings: Settings,
+                             private val settings: PreferencesHelper,
                              private val analytic: Analytic) : AbstractPresenter<HomeContract.View, HomeContract.Presenter>(),
                                                                HomeContract.Presenter {
 
     override fun start() {
-        val cityId = settings.getCityId()
+        val cityId = settings.cityId
         if (cityId == -1) {
             view.showSelectCity(cityId)
         }
     }
 
     override fun selectCity(position: Int) {
-        settings.setCity(position)
-    }
-
-    override fun stop() {
+        settings.cityId = position
     }
 
     override fun onClickShowHome() {

@@ -57,8 +57,10 @@ android {
 }
 
 dependencies {
+    implementation project(':core.app')
+
     implementation project(':feature.main')
-//    implementation project(':feature.additional')
+    implementation project(':feature.additional')
 
     debugImplementation Deps.leakcanary
     releaseImplementation Deps.leakcanary_no_op

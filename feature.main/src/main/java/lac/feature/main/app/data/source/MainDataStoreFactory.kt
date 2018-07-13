@@ -3,9 +3,9 @@ package lac.feature.main.app.data.source
 import lac.feature.main.app.data.repository.MainCache
 import lac.feature.main.app.data.repository.MainDataStore
 
-class MainDataStoreFactory(val mainCache: MainCache,
-                           val mainCacheDataStore: MainCacheDataStore,
-                           val mainRemoteDataStore: MainRemoteDataStore) {
+class MainDataStoreFactory(private val mainCache: MainCache,
+                           private val mainCacheDataStore: MainCacheDataStore,
+                           private val mainRemoteDataStore: MainRemoteDataStore) {
 
     fun retrieveDataStoreCities(): MainDataStore {
         if (mainCache.isCachedCities() && !mainCache.isExpiredCities()) {

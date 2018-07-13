@@ -3,12 +3,12 @@ package lac.feature.main.app.mobile.settings.provider
 import lac.core.feature.core.clean.presenter.AbstractPresenter
 import lac.core.feature.core.utils.extension.with
 import lac.core.feature.core.utils.rx.SchedulerProvider
-import lac.feature.main.old.data.Repository
+import lac.feature.main.app.domain.repository.MainRepository
 
 class ProviderDialogPresenter(override var view: ProviderDialogContract.View,
                               private val schedulerProvider: SchedulerProvider,
-                              private val repository: Repository) : AbstractPresenter<ProviderDialogContract.View, ProviderDialogContract.Presenter>(),
-                                                                    ProviderDialogContract.Presenter {
+                              private val repository: MainRepository) : AbstractPresenter<ProviderDialogContract.View, ProviderDialogContract.Presenter>(),
+                                                                        ProviderDialogContract.Presenter {
 
     override fun request() {
         view.showProgress()

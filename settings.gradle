@@ -1,4 +1,6 @@
-include ':core.feature',
+include ':core.app',
+        ':core.feature',
+        ':core.plugin',
         ':app',
         ':feature.main',
         ':feature.additional',
