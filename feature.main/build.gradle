@@ -17,4 +17,5 @@ dependencies {
     api project(':plugin.analytic')
     api project(':plugin.navigator')
     api project(':plugin.remoteconfig')
+    api project(':plugin.admin')
 }

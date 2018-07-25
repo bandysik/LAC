@@ -19,16 +19,26 @@ class MainRemoteImpl(private val mainService: MainService,
 
     override fun getCities(): Single<List<DataCity>> {
         return mainService.getCities()
-            .map { response ->
-                val itemsMapType = object : TypeToken<Map<String, RemoteCity>>() {}.type
-                val gson = Gson().fromJson<Map<String, RemoteCity>>(response, itemsMapType)
-                val keys = gson.keys
-                keys.map {it->
-                    val remoteCity = gson[it]!!
-                    remoteCityMapper.mapFromRemote(remoteCity)
+            .map {
+                val itemsListType = object : TypeToken<List<RemoteCity>>() {}.type
+                val listItemsDes = Gson().fromJson<List<RemoteCity>>(it, itemsListType)
+                listItemsDes.map { listItem ->
+                    remoteCityMapper.mapFromRemote(listItem)
                 }
             }
     }
+//        return mainService.getCities()
+//            .map { response ->
+////                val itemsMapType = object : TypeToken<Map<String, RemoteCity>>() {}.type
+////                val gson = Gson().fromJson<Map<String, RemoteCity>>(response.toString(), itemsMapType)
+////                null
+//                val keys = gson.keys
+//                keys.map {it->
+////                    val remoteCity = gson[it]!!
+////                    remoteCityMapper.mapFromRemote(remoteCity)
+////                }
+//            }
+//    }
 
     override fun getProviders(): Single<List<DataProvider>> {
         return mainService.getProviders()

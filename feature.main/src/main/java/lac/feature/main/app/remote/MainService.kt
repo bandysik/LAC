@@ -13,11 +13,11 @@ interface MainService {
 
     //    {"8017":{"code":"8017","name":"Минск"},"80152":{"code":"80152","name":"Гродно"},
     @GET("cities.json?print=pretty")
-    fun getCities(): Single<Object>
+    fun getCities(): Single<String>
 
-//    class CitiesResponse {
-//        lateinit var cities: Map<String, RemoteCity>
-//    }
+    class CitiesResponse {
+        lateinit var cities: List<RemoteCity>
+    }
 
     @GET("items/8017/propose.json?print=pretty")
     fun getFeeds(): Single<FeedsResponse>

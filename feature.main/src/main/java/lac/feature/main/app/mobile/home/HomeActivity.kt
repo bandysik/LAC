@@ -15,6 +15,7 @@ import lac.feature.main.app.mobile.feed.FeedFragment
 import lac.feature.main.app.mobile.home.Params.VIEW
 import lac.feature.main.app.mobile.settings.SettingsFragment
 import lac.feature.main.app.mobile.settings.city.CityDialogFragment
+import lac.plugin.admin.Admin
 import lac.plugin.remoteconfig.ImplRemoteConfig
 import org.koin.android.ext.android.inject
 
@@ -82,6 +83,7 @@ internal class HomeActivity : BaseActivity<HomeContract.View, HomeContract.Prese
 
     override fun showBookmarks() {
         showFragment(BookmarksFragment.newInstance())
+//        Admin.fill()
     }
 
     override fun showSettings() {

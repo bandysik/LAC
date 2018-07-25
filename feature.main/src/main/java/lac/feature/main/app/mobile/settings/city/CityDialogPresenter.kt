@@ -18,7 +18,9 @@ class CityDialogPresenter(override var view: CityDialogContract.View,
                 .subscribe({ cities ->
                                view.showData(cities)
                                view.hideProgress()
-                           }, { error -> view.showError(error) })
+                           }, { error ->
+                               view.showError(error)
+                           })
         }
     }
 

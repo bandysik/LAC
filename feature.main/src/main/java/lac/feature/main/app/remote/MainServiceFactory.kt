@@ -21,7 +21,7 @@ object MainServiceFactory {
     private fun makeMainService(okHttpClient: OkHttpClient, gson: Gson): MainService {
         val retrofit =
                 Retrofit.Builder()
-                    .baseUrl("https://renteasy-4a2f0.firebaseio.com/")
+                    .baseUrl("https://renteasy-4a2f0.firebaseio.com/v1_0/")
                     .client(okHttpClient)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(gson))

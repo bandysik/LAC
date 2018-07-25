@@ -6,6 +6,6 @@ import lac.feature.main.app.remote.model.RemoteCity
 
 class RemoteCityMapper : RemoteMapper<RemoteCity, DataCity> {
     override fun mapFromRemote(type: RemoteCity): DataCity {
-        return DataCity(type.id, type.content)
+        return DataCity(type.code, type.name)
     }
 }
