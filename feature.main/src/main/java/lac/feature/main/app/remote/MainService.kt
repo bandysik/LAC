@@ -11,21 +11,22 @@ const val cities = "https://renteasy-4a2f0.firebaseio.com/cities.json?print=pret
 
 interface MainService {
 
-    @GET("cities.json")
-    fun getCities(): Single<CitiesResponse>
+    //    {"8017":{"code":"8017","name":"Минск"},"80152":{"code":"80152","name":"Гродно"},
+    @GET("cities.json?print=pretty")
+    fun getCities(): Single<Object>
 
-    class CitiesResponse {
-        lateinit var cities: List<RemoteCity>
-    }
+//    class CitiesResponse {
+//        lateinit var cities: Map<String, RemoteCity>
+//    }
 
-    @GET("feeds.json")
+    @GET("items/8017/propose.json?print=pretty")
     fun getFeeds(): Single<FeedsResponse>
 
     class FeedsResponse {
         lateinit var feeds: List<RemoteFeed>
     }
 
-    @GET("providers.json")
+    @GET("providers.json?print=pretty")
     fun getProviders(): Single<ProvidersResponse>
 
     class ProvidersResponse {

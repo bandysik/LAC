@@ -27,7 +27,10 @@ class ExampleApp : LacApplication() {
 
         initFeatureModules()
         initPluginModules()
+        initFabric()
+    }
 
+    private fun initFabric() {
         val fabric =
                 Fabric.Builder(this)
                     .kits(Crashlytics())

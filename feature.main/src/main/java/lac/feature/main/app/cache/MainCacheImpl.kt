@@ -110,72 +110,86 @@ class MainCacheImpl(dbOpenHelper: DbOpenHelper,
         return preferencesHelper.lastCacheTimeBookmarks
     }
 
+    //TODO
     override fun clearCities(): Completable {
-        throw UnsupportedOperationException()
+        return Completable.complete()
     }
 
+    //TODO
     override fun saveCities(cities: List<DataCity>): Completable {
-        throw UnsupportedOperationException()
+        return Completable.complete()
     }
 
+    //TODO
     override fun getCities(): Single<List<DataCity>> {
-        throw UnsupportedOperationException()
+        return Single.just(emptyList())
     }
 
+    //TODO
     override fun isCachedCities(): Boolean {
-        throw UnsupportedOperationException()
+        return false
     }
 
+    //TODO
     override fun setLastCacheTimeCities(lastCache: Long) {
-        throw UnsupportedOperationException()
     }
 
+    //TODO
     override fun isExpiredCities(): Boolean {
-        throw UnsupportedOperationException()
+        return true
     }
 
+    //TODO
     override fun clearProviders(): Completable {
-        throw UnsupportedOperationException()
+        return Completable.complete()
     }
 
+    //TODO
     override fun saveProviders(providers: List<DataProvider>): Completable {
-        throw UnsupportedOperationException()
+        return Completable.complete()
     }
 
+    //TODO
     override fun getProviders(): Single<List<DataProvider>> {
-        throw UnsupportedOperationException()
+        return Single.just(emptyList())
     }
 
+    //TODO
     override fun isCachedProviders(): Boolean {
-        throw UnsupportedOperationException()
+        return false
     }
 
+    //TODO
     override fun setLastCacheTimeProviders(lastCache: Long) {
-        throw UnsupportedOperationException()
     }
 
+    //TODO
     override fun isExpiredProviders(): Boolean {
-        throw UnsupportedOperationException()
+        return true
     }
 
+    //TODO
     override fun clearFeeds(): Completable {
-        throw UnsupportedOperationException()
+        return Completable.complete()
     }
 
+    //TODO
     override fun saveFeeds(feeds: List<DataFeed>): Completable {
-        throw UnsupportedOperationException()
+        return Completable.complete()
     }
 
+    //TODO
     override fun getFeeds(): Single<List<DataFeed>> {
-        throw UnsupportedOperationException()
+        return Single.just(emptyList())
     }
 
+    //TODO
     override fun isCachedFeeds(): Boolean {
-        throw UnsupportedOperationException()
+        return false
     }
 
+    //TODO
     override fun setLastCacheTimeFeeds(lastCache: Long) {
-        throw UnsupportedOperationException()
     }
 
     override fun isExpiredFeeds(): Boolean {

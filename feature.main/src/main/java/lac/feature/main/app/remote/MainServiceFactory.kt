@@ -3,6 +3,8 @@ package lac.feature.main.app.remote
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
+import lac.feature.main.app.remote.model.RemoteCity
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -19,7 +21,7 @@ object MainServiceFactory {
     private fun makeMainService(okHttpClient: OkHttpClient, gson: Gson): MainService {
         val retrofit =
                 Retrofit.Builder()
-                    .baseUrl("https://joe-birch-dsdb.squarespace.com/s/")
+                    .baseUrl("https://renteasy-4a2f0.firebaseio.com/")
                     .client(okHttpClient)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(gson))
@@ -39,6 +41,7 @@ object MainServiceFactory {
         return GsonBuilder().setLenient()
             .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+//            .registerTypeAdapter(object : TypeToken<Map<Int, RemoteCity>>() {}.type,)
             .create()
     }
 

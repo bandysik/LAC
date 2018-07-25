@@ -15,10 +15,10 @@ class MainDataStoreFactory(private val mainCache: MainCache,
     }
 
     fun retrieveDataStoreBookmarks(): MainDataStore {
-        if (mainCache.isCachedBookmarks() && !mainCache.isExpiredBookmarks()) {
+//        if (mainCache.isCachedBookmarks() && !mainCache.isExpiredBookmarks()) {
             return retrieveCacheDataStore()
-        }
-        return retrieveRemoteDataStore()
+//        }
+//        return retrieveRemoteDataStore()
     }
 
     fun retrieveDataStoreFeeds(): MainDataStore {
