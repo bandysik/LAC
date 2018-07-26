@@ -59,13 +59,11 @@ class MainCacheImpl(dbOpenHelper: DbOpenHelper,
         }
     }
 
-    override fun saveBookmarks(bookmarks: List<DataBookmark>): Completable {
+    override fun saveBookmark(bookmark: DataBookmark): Completable {
         return Completable.defer {
             database.beginTransaction()
             try {
-                bookmarks.forEach {
-                    saveBookmark(cacheBookmarkMapper.mapToCached(it))
-                }
+                saveBookmark(cacheBookmarkMapper.mapToCached(bookmark))
                 database.setTransactionSuccessful()
             } finally {
                 database.endTransaction()
@@ -283,6 +281,21 @@ class MainCacheImpl(dbOpenHelper: DbOpenHelper,
 
             updatesCursor.close()
             Single.just<List<DataFeed>>(feeds)
+        }
+    }
+
+    override fun getFeedById(feedId: String): Single<DataFeed> {
+        return Single.defer<DataFeed> {
+            val updatesCursor = database.rawQuery(MainConstants.QUERY_GET_FEED_BY_ID, arrayOf(feedId))
+            var feed: DataFeed? = null
+
+            while (updatesCursor.moveToNext()) {
+                val cachedFeed = dbFeedMapper.parseCursor(updatesCursor)
+                feed = cacheFeedMapper.mapFromCached(cachedFeed)
+            }
+
+            updatesCursor.close()
+            Single.just<DataFeed>(feed)
         }
     }
 

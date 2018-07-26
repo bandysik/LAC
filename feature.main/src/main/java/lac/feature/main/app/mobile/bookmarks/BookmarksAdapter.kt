@@ -22,7 +22,7 @@ internal class BookmarksAdapter(private val listener: BookmarksFragment.Bookmark
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.item = data[position]
-        holder.idView.text = data[position].id
+//        holder.idView.text = data[position].id
         holder.contentView.text = data[position].content
 
         holder.view.setOnClickListener {
@@ -35,12 +35,12 @@ internal class BookmarksAdapter(private val listener: BookmarksFragment.Bookmark
     }
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val idView: TextView
+//        val idView: TextView
         val contentView: TextView
         var item: Bookmark? = null
 
         init {
-            idView = view.findViewById(R.id.adapter_bookmark_id) as TextView
+//            idView = view.findViewById(R.id.adapter_bookmark_id) as TextView
             contentView = view.findViewById(R.id.adapter_bookmark_text) as TextView
         }
 

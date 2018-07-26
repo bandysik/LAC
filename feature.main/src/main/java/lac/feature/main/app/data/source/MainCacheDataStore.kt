@@ -10,6 +10,7 @@ import lac.feature.main.app.data.repository.MainCache
 import lac.feature.main.app.data.repository.MainDataStore
 
 class MainCacheDataStore(private val mainCache: MainCache) : MainDataStore {
+
     override fun clearBookmarks(): Completable {
         return mainCache.clearBookmarks()
     }
@@ -26,8 +27,8 @@ class MainCacheDataStore(private val mainCache: MainCache) : MainDataStore {
         return mainCache.clearFeeds()
     }
 
-    override fun saveBookmarks(bookmarks: List<DataBookmark>): Completable {
-        return mainCache.saveBookmarks(bookmarks)
+    override fun saveBookmark(bookmark: DataBookmark): Completable {
+        return mainCache.saveBookmark(bookmark)
             .doOnComplete {
                 mainCache.setLastCacheTimeBookmarks(System.currentTimeMillis())
             }
@@ -68,5 +69,9 @@ class MainCacheDataStore(private val mainCache: MainCache) : MainDataStore {
 
     override fun getFeeds(): Single<List<DataFeed>> {
         return mainCache.getFeeds()
+    }
+
+    override fun getFeedById(feedId: String): Single<DataFeed> {
+        return mainCache.getFeedById(feedId)
     }
 }

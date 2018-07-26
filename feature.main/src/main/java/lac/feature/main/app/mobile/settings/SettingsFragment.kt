@@ -11,9 +11,9 @@ import org.koin.android.ext.android.inject
 import java.util.*
 
 internal class SettingsFragment : BaseFragment<SettingsContract.View, SettingsContract.Presenter>(),
-                                  SettingsContract.View,
-                                  CityDialogFragment.SelectCityListener,
-                                  ProviderDialogFragment.Listener {
+        SettingsContract.View,
+        CityDialogFragment.SelectCityListener,
+        ProviderDialogFragment.Listener {
 
     override val presenter: SettingsContract.Presenter by inject { mapOf(Params.VIEW to this) }
 
@@ -34,7 +34,7 @@ internal class SettingsFragment : BaseFragment<SettingsContract.View, SettingsCo
         fragment_settings_apps.setOnClickListener {}
 
         fragment_settings_notification.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener
-        { buttonView, isChecked -> presenter.changeNotification(isChecked) })
+        { _, isChecked -> presenter.changeNotification(isChecked) })
 
         fragment_settings_notification.isChecked = presenter.isNotificationEnabled()
     }

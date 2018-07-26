@@ -9,7 +9,7 @@ import lac.feature.main.app.domain.model.Provider
 
 interface MainRepository {
     fun clearBookmarks(): Completable
-    fun saveBookmarks(bookmarks: List<Bookmark>): Completable
+    fun saveBookmark(bookmark: Bookmark): Completable
     fun getBookmarks(): Single<List<Bookmark>>
 
     fun clearCities(): Completable
@@ -23,4 +23,5 @@ interface MainRepository {
     fun clearFeed(): Completable
     fun saveFeed(feeds: List<Feed>): Completable
     fun getFeed(): Single<List<Feed>>
+    fun getFeedById(feedId: String): Single<Feed>
 }

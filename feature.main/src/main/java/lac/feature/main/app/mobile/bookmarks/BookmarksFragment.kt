@@ -19,7 +19,7 @@ internal class BookmarksFragment : BaseFragment<BookmarksContract.View, Bookmark
 
     private var listener = object : BookmarksFragmentListener {
         override fun onClickBookmarkItem(item: Bookmark) {
-            DetailActivity.start(context!!)
+            DetailActivity.start(context!!, item)
         }
     }
 

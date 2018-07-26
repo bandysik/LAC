@@ -1,14 +1,13 @@
 package lac.feature.main.app.mobile.feed
 
-import android.content.Intent
 import android.os.Bundle
 import kotlinx.android.synthetic.main.fragment_feed.*
 import lac.core.feature.core.clean.BaseFragment
 import lac.core.feature.core.utils.gone
 import lac.core.feature.core.utils.visible
 import lac.feature.main.R
-import lac.feature.main.app.mobile.detail.DetailActivity
 import lac.feature.main.app.domain.model.Feed
+import lac.feature.main.app.mobile.detail.DetailActivity
 import org.koin.android.ext.android.inject
 
 internal class FeedFragment : BaseFragment<FeedContract.View, FeedContract.Presenter>(),
@@ -21,8 +20,7 @@ internal class FeedFragment : BaseFragment<FeedContract.View, FeedContract.Prese
 
     private var listener = object : FeedFragmentListener {
         override fun onClickFeedItem(item: Feed) {
-            val intent = Intent(context, DetailActivity::class.java)
-            startActivity(intent)
+            DetailActivity.start(context!!, item)
         }
     }
 

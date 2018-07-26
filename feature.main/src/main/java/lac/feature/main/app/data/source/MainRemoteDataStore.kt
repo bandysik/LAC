@@ -10,6 +10,10 @@ import lac.feature.main.app.data.repository.MainDataStore
 import lac.feature.main.app.data.repository.MainRemote
 
 class MainRemoteDataStore(private val mainRemote: MainRemote) : MainDataStore {
+    override fun getFeedById(feedId: String): Single<DataFeed> {
+        throw UnsupportedOperationException()
+    }
+
     override fun clearBookmarks(): Completable {
         throw UnsupportedOperationException()
     }
@@ -26,7 +30,7 @@ class MainRemoteDataStore(private val mainRemote: MainRemote) : MainDataStore {
         throw UnsupportedOperationException()
     }
 
-    override fun saveBookmarks(bookmarks: List<DataBookmark>): Completable {
+    override fun saveBookmark(bookmark: DataBookmark): Completable {
         throw UnsupportedOperationException()
     }
 

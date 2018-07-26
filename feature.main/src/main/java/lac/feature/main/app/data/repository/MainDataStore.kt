@@ -9,7 +9,7 @@ import lac.feature.main.app.data.model.DataProvider
 
 interface MainDataStore {
     fun clearBookmarks(): Completable
-    fun saveBookmarks(bookmarks: List<DataBookmark>): Completable
+    fun saveBookmark(bookmark: DataBookmark): Completable
     fun getBookmarks(): Single<List<DataBookmark>>
 
     fun clearCities(): Completable
@@ -23,4 +23,5 @@ interface MainDataStore {
     fun clearFeeds(): Completable
     fun saveFeeds(feeds: List<DataFeed>): Completable
     fun getFeeds(): Single<List<DataFeed>>
+    fun getFeedById(feedId: String): Single<DataFeed>
 }

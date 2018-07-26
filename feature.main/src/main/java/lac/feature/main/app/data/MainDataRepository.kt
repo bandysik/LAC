@@ -6,7 +6,6 @@ import lac.feature.main.app.data.mapper.DataBookmarkMapper
 import lac.feature.main.app.data.mapper.DataCityMapper
 import lac.feature.main.app.data.mapper.DataFeedMapper
 import lac.feature.main.app.data.mapper.DataProviderMapper
-import lac.feature.main.app.data.model.DataBookmark
 import lac.feature.main.app.data.model.DataCity
 import lac.feature.main.app.data.model.DataFeed
 import lac.feature.main.app.data.model.DataProvider
@@ -26,39 +25,31 @@ class MainDataRepository(private val factory: MainDataStoreFactory,
 
     override fun clearBookmarks(): Completable {
         return factory.retrieveCacheDataStore()
-            .clearBookmarks()
+                .clearBookmarks()
     }
 
-    override fun saveBookmarks(bookmarks: List<Bookmark>): Completable {
-        val bookmarksEntities = bookmarks.map { bookmarkMapper.mapToEntity(it) }
-        return saveDataBookmarks(bookmarksEntities)
-    }
-
-    fun saveDataBookmarks(bookmarks: List<DataBookmark>): Completable {
+    override fun saveBookmark(bookmark: Bookmark): Completable {
         return factory.retrieveCacheDataStore()
-            .saveBookmarks(bookmarks)
+                .saveBookmark(bookmarkMapper.mapToEntity(bookmark))
     }
+
 
     override fun getBookmarks(): Single<List<Bookmark>> {
         val dataStore = factory.retrieveDataStoreBookmarks()
         return dataStore.getBookmarks()
-            .flatMap {
-                if (dataStore is MainRemoteDataStore) {
-                    saveDataBookmarks(it).toSingle { it }
-                } else {
+                .flatMap {
                     Single.just(it)
                 }
-            }
-            .map { list ->
-                list.map { listItem ->
-                    bookmarkMapper.mapFromEntity(listItem)
+                .map { list ->
+                    list.map { listItem ->
+                        bookmarkMapper.mapFromEntity(listItem)
+                    }
                 }
-            }
     }
 
     override fun clearCities(): Completable {
         return factory.retrieveCacheDataStore()
-            .clearCities()
+                .clearCities()
     }
 
     override fun saveCities(cities: List<City>): Completable {
@@ -68,29 +59,29 @@ class MainDataRepository(private val factory: MainDataStoreFactory,
 
     fun saveDataCities(cities: List<DataCity>): Completable {
         return factory.retrieveCacheDataStore()
-            .saveCities(cities)
+                .saveCities(cities)
     }
 
     override fun getCities(): Single<List<City>> {
         val dataStore = factory.retrieveDataStoreCities()
         return dataStore.getCities()
-            .flatMap {
-                if (dataStore is MainRemoteDataStore) {
-                    saveDataCities(it).toSingle { it }
-                } else {
-                    Single.just(it)
+                .flatMap {
+                    if (dataStore is MainRemoteDataStore) {
+                        saveDataCities(it).toSingle { it }
+                    } else {
+                        Single.just(it)
+                    }
                 }
-            }
-            .map { list ->
-                list.map { listItem ->
-                    cityMapper.mapFromEntity(listItem)
+                .map { list ->
+                    list.map { listItem ->
+                        cityMapper.mapFromEntity(listItem)
+                    }
                 }
-            }
     }
 
     override fun clearProviders(): Completable {
         return factory.retrieveCacheDataStore()
-            .clearProviders()
+                .clearProviders()
     }
 
     override fun saveProviders(providers: List<Provider>): Completable {
@@ -100,29 +91,29 @@ class MainDataRepository(private val factory: MainDataStoreFactory,
 
     fun saveDataProviders(providers: List<DataProvider>): Completable {
         return factory.retrieveCacheDataStore()
-            .saveProviders(providers)
+                .saveProviders(providers)
     }
 
     override fun getProviders(): Single<List<Provider>> {
         val dataStore = factory.retrieveDataStoreProviders()
         return dataStore.getProviders()
-            .flatMap {
-                if (dataStore is MainRemoteDataStore) {
-                    saveDataProviders(it).toSingle { it }
-                } else {
-                    Single.just(it)
+                .flatMap {
+                    if (dataStore is MainRemoteDataStore) {
+                        saveDataProviders(it).toSingle { it }
+                    } else {
+                        Single.just(it)
+                    }
                 }
-            }
-            .map { list ->
-                list.map { listItem ->
-                    providerMapper.mapFromEntity(listItem)
+                .map { list ->
+                    list.map { listItem ->
+                        providerMapper.mapFromEntity(listItem)
+                    }
                 }
-            }
     }
 
     override fun clearFeed(): Completable {
         return factory.retrieveCacheDataStore()
-            .clearFeeds()
+                .clearFeeds()
     }
 
     override fun saveFeed(feeds: List<Feed>): Completable {
@@ -132,23 +123,34 @@ class MainDataRepository(private val factory: MainDataStoreFactory,
 
     fun saveDataFeeds(feeds: List<DataFeed>): Completable {
         return factory.retrieveCacheDataStore()
-            .saveFeeds(feeds)
+                .saveFeeds(feeds)
     }
 
     override fun getFeed(): Single<List<Feed>> {
         val dataStore = factory.retrieveDataStoreFeeds()
         return dataStore.getFeeds()
-            .flatMap {
-                if (dataStore is MainRemoteDataStore) {
-                    saveDataFeeds(it).toSingle { it }
-                } else {
+                .flatMap {
+                    if (dataStore is MainRemoteDataStore) {
+                        saveDataFeeds(it).toSingle { it }
+                    } else {
+                        Single.just(it)
+                    }
+                }
+                .map { list ->
+                    list.map { listItem ->
+                        feedMapper.mapFromEntity(listItem)
+                    }
+                }
+    }
+
+    override fun getFeedById(feedId: String): Single<Feed> {
+        val dataStore = factory.retrieveCacheDataStore()
+        return dataStore.getFeedById(feedId)
+                .flatMap {
                     Single.just(it)
                 }
-            }
-            .map { list ->
-                list.map { listItem ->
-                    feedMapper.mapFromEntity(listItem)
+                .map {
+                    feedMapper.mapFromEntity(it)
                 }
-            }
     }
 }

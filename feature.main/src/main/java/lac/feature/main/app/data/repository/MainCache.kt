@@ -9,7 +9,7 @@ import lac.feature.main.app.data.model.DataProvider
 
 interface MainCache{
     fun clearBookmarks(): Completable
-    fun saveBookmarks(bookmarks:List<DataBookmark>): Completable
+    fun saveBookmark(bookmark:DataBookmark): Completable
     fun getBookmarks(): Single<List<DataBookmark>>
     fun isCachedBookmarks(): Boolean
     fun setLastCacheTimeBookmarks(lastCache: Long)
@@ -35,4 +35,5 @@ interface MainCache{
     fun isCachedFeeds(): Boolean
     fun setLastCacheTimeFeeds(lastCache: Long)
     fun isExpiredFeeds(): Boolean
+    fun getFeedById(feedId: String): Single<DataFeed>
 }
