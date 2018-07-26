@@ -14,6 +14,7 @@ import org.koin.android.ext.android.inject
 internal class FeedFragment : BaseFragment<FeedContract.View, FeedContract.Presenter>(),
                               FeedContract.View {
     override fun showError(error: Throwable?) {
+        fragment_feed_loading.gone()
     }
 
     override val presenter: FeedContract.Presenter by inject { mapOf(Params.VIEW to this) }

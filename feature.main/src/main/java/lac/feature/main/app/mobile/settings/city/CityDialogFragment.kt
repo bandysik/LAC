@@ -92,7 +92,7 @@ internal class CityDialogFragment : BaseBottomSheetDialogFragment<CityDialogCont
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val marker = if (selectedCity == position) "*" else ""
-            val text = "$marker ${data[position]}"
+            val text = "$marker ${data[position].name}"
             holder.text.text = text
         }
 

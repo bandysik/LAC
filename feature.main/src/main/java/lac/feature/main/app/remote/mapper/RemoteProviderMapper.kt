@@ -6,6 +6,6 @@ import lac.feature.main.app.remote.model.RemoteProvider
 
 class RemoteProviderMapper : RemoteMapper<RemoteProvider, DataProvider> {
     override fun mapFromRemote(type: RemoteProvider): DataProvider {
-        return DataProvider(type.id, type.content)
+        return DataProvider(type.id, type.name)
     }
 }

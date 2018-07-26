@@ -15,6 +15,9 @@ import lac.feature.main.app.cache.mapper.CacheCityMapper
 import lac.feature.main.app.cache.mapper.CacheFeedMapper
 import lac.feature.main.app.cache.mapper.CacheProviderMapper
 import lac.feature.main.app.cache.model.CacheBookmark
+import lac.feature.main.app.cache.model.CacheCity
+import lac.feature.main.app.cache.model.CacheFeed
+import lac.feature.main.app.cache.model.CacheProvider
 import lac.feature.main.app.data.model.DataBookmark
 import lac.feature.main.app.data.model.DataCity
 import lac.feature.main.app.data.model.DataFeed
@@ -87,9 +90,10 @@ class MainCacheImpl(dbOpenHelper: DbOpenHelper,
     }
 
     private fun saveBookmark(bookmark: CacheBookmark) {
-        database.insert(Db.BookmarkTable.TABLE_NAME,
-                        null,
-                        dbBookmarkMapper.toContentValues(bookmark))
+        val u = database.update(Db.BookmarkTable.TABLE_NAME, dbBookmarkMapper.toContentValues(bookmark), "${Db.BookmarkTable.BOOKMARK_ID}=?", arrayOf(bookmark.id))
+        if (u == 0) {
+            database.insertWithOnConflict(Db.BookmarkTable.TABLE_NAME, null, dbBookmarkMapper.toContentValues(bookmark), SQLiteDatabase.CONFLICT_REPLACE)
+        }
     }
 
     override fun isCachedBookmarks(): Boolean {
@@ -101,101 +105,197 @@ class MainCacheImpl(dbOpenHelper: DbOpenHelper,
     }
 
     override fun isExpiredBookmarks(): Boolean {
-        val currentTime = System.currentTimeMillis()
-        val lastUpdateTime = this.getLastCacheUpdateBookmarksTimeMillis()
-        return currentTime - lastUpdateTime > EXPIRATION_TIME
+        return isExpired(this.getLastCacheUpdateBookmarksTimeMillis())
     }
 
     private fun getLastCacheUpdateBookmarksTimeMillis(): Long {
         return preferencesHelper.lastCacheTimeBookmarks
     }
 
-    //TODO
     override fun clearCities(): Completable {
-        return Completable.complete()
+        return Completable.defer {
+            database.beginTransaction()
+            try {
+                database.delete(Db.CitiesTable.TABLE_NAME, null, null)
+                database.setTransactionSuccessful()
+            } finally {
+                database.endTransaction()
+            }
+            Completable.complete()
+        }
     }
 
-    //TODO
     override fun saveCities(cities: List<DataCity>): Completable {
-        return Completable.complete()
+        return Completable.defer {
+            database.beginTransaction()
+            try {
+                cities.forEach {
+                    saveCity(cacheCityMapper.mapToCached(it))
+                }
+                database.setTransactionSuccessful()
+            } finally {
+                database.endTransaction()
+            }
+            Completable.complete()
+        }
     }
 
-    //TODO
+    private fun saveCity(city: CacheCity) {
+        val u = database.update(Db.CitiesTable.TABLE_NAME, dbCityMapper.toContentValues(city), "${Db.CitiesTable.CITY_ID}=?", arrayOf(city.id))
+        if (u == 0) {
+            database.insertWithOnConflict(Db.CitiesTable.TABLE_NAME, null, dbCityMapper.toContentValues(city), SQLiteDatabase.CONFLICT_REPLACE)
+        }
+    }
+
     override fun getCities(): Single<List<DataCity>> {
-        return Single.just(emptyList())
+        return Single.defer<List<DataCity>> {
+            val updatesCursor = database.rawQuery(MainConstants.QUERY_GET_ALL_CITIES, null)
+            val cities = mutableListOf<DataCity>()
+
+            while (updatesCursor.moveToNext()) {
+                val cachedCity = dbCityMapper.parseCursor(updatesCursor)
+                cities.add(cacheCityMapper.mapFromCached(cachedCity))
+            }
+
+            updatesCursor.close()
+            Single.just<List<DataCity>>(cities)
+        }
     }
 
-    //TODO
     override fun isCachedCities(): Boolean {
-        return false
+        return database.rawQuery(MainConstants.QUERY_GET_ALL_CITIES, null).count > 0
     }
 
-    //TODO
     override fun setLastCacheTimeCities(lastCache: Long) {
+        preferencesHelper.lastCacheTimeCities = lastCache
     }
 
-    //TODO
     override fun isExpiredCities(): Boolean {
-        return true
+        return isExpired(this.getLastCacheUpdateCitiesTimeMillis())
     }
 
-    //TODO
     override fun clearProviders(): Completable {
-        return Completable.complete()
+        return Completable.defer {
+            database.beginTransaction()
+            try {
+                database.delete(Db.ProvidersTable.TABLE_NAME, null, null)
+                database.setTransactionSuccessful()
+            } finally {
+                database.endTransaction()
+            }
+            Completable.complete()
+        }
     }
 
-    //TODO
     override fun saveProviders(providers: List<DataProvider>): Completable {
-        return Completable.complete()
+        return Completable.defer {
+            database.beginTransaction()
+            try {
+                providers.forEach {
+                    saveProvider(cacheProviderMapper.mapToCached(it))
+                }
+                database.setTransactionSuccessful()
+            } finally {
+                database.endTransaction()
+            }
+            Completable.complete()
+        }
     }
 
-    //TODO
+    private fun saveProvider(provider: CacheProvider) {
+        val u = database.update(Db.ProvidersTable.TABLE_NAME, dbProviderMapper.toContentValues(provider), "${Db.ProvidersTable.PROVIDER_ID}=?", arrayOf(provider.id))
+        if (u == 0) {
+            database.insertWithOnConflict(Db.ProvidersTable.TABLE_NAME, null, dbProviderMapper.toContentValues(provider), SQLiteDatabase.CONFLICT_REPLACE)
+        }
+    }
+
     override fun getProviders(): Single<List<DataProvider>> {
-        return Single.just(emptyList())
+        return Single.defer<List<DataProvider>> {
+            val updatesCursor = database.rawQuery(MainConstants.QUERY_GET_ALL_PROVIDERS, null)
+            val providers = mutableListOf<DataProvider>()
+
+            while (updatesCursor.moveToNext()) {
+                val cachedProvider = dbProviderMapper.parseCursor(updatesCursor)
+                providers.add(cacheProviderMapper.mapFromCached(cachedProvider))
+            }
+
+            updatesCursor.close()
+            Single.just<List<DataProvider>>(providers)
+        }
     }
 
-    //TODO
     override fun isCachedProviders(): Boolean {
-        return false
+        return database.rawQuery(MainConstants.QUERY_GET_ALL_PROVIDERS, null).count > 0
     }
 
-    //TODO
     override fun setLastCacheTimeProviders(lastCache: Long) {
+        preferencesHelper.lastCacheTimeProviders = lastCache
     }
 
-    //TODO
     override fun isExpiredProviders(): Boolean {
-        return true
+        return isExpired(this.getLastCacheUpdateProvidersTimeMillis())
     }
 
-    //TODO
     override fun clearFeeds(): Completable {
-        return Completable.complete()
+        return Completable.defer {
+            database.beginTransaction()
+            try {
+                database.delete(Db.FeedsTable.TABLE_NAME, null, null)
+                database.setTransactionSuccessful()
+            } finally {
+                database.endTransaction()
+            }
+            Completable.complete()
+        }
     }
 
-    //TODO
     override fun saveFeeds(feeds: List<DataFeed>): Completable {
-        return Completable.complete()
+        return Completable.defer {
+            database.beginTransaction()
+            try {
+                feeds.forEach {
+                    saveFeed(cacheFeedMapper.mapToCached(it))
+                }
+                database.setTransactionSuccessful()
+            } finally {
+                database.endTransaction()
+            }
+            Completable.complete()
+        }
     }
 
-    //TODO
+    private fun saveFeed(feed: CacheFeed) {
+        val u = database.update(Db.FeedsTable.TABLE_NAME, dbFeedMapper.toContentValues(feed), "${Db.FeedsTable.FEED_ID}=?", arrayOf(feed.id))
+        if (u == 0) {
+            database.insertWithOnConflict(Db.FeedsTable.TABLE_NAME, null, dbFeedMapper.toContentValues(feed), SQLiteDatabase.CONFLICT_REPLACE)
+        }
+    }
+
     override fun getFeeds(): Single<List<DataFeed>> {
-        return Single.just(emptyList())
+        return Single.defer<List<DataFeed>> {
+            val updatesCursor = database.rawQuery(MainConstants.QUERY_GET_ALL_FEEDS, null)
+            val feeds = mutableListOf<DataFeed>()
+
+            while (updatesCursor.moveToNext()) {
+                val cachedFeed = dbFeedMapper.parseCursor(updatesCursor)
+                feeds.add(cacheFeedMapper.mapFromCached(cachedFeed))
+            }
+
+            updatesCursor.close()
+            Single.just<List<DataFeed>>(feeds)
+        }
     }
 
-    //TODO
     override fun isCachedFeeds(): Boolean {
-        return false
+        return database.rawQuery(MainConstants.QUERY_GET_ALL_FEEDS, null).count > 0
     }
 
-    //TODO
     override fun setLastCacheTimeFeeds(lastCache: Long) {
+        preferencesHelper.lastCacheTimeFeeds = lastCache
     }
 
     override fun isExpiredFeeds(): Boolean {
-        val currentTime = System.currentTimeMillis()
-        val lastUpdateTime = this.getLastCacheUpdateFeedsTimeMillis()
-        return currentTime - lastUpdateTime > EXPIRATION_TIME
+        return isExpired(this.getLastCacheUpdateFeedsTimeMillis())
     }
 
     private fun getLastCacheUpdateFeedsTimeMillis(): Long {
@@ -208,5 +308,10 @@ class MainCacheImpl(dbOpenHelper: DbOpenHelper,
 
     private fun getLastCacheUpdateProvidersTimeMillis(): Long {
         return preferencesHelper.lastCacheTimeProviders
+    }
+
+    private fun isExpired(lastUpdateTime: Long): Boolean {
+        val currentTime = System.currentTimeMillis()
+        return currentTime - lastUpdateTime > EXPIRATION_TIME
     }
 }

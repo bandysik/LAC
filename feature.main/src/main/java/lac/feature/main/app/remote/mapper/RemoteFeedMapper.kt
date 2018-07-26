@@ -6,6 +6,6 @@ import lac.feature.main.app.remote.model.RemoteFeed
 
 class RemoteFeedMapper : RemoteMapper<RemoteFeed, DataFeed> {
     override fun mapFromRemote(type: RemoteFeed): DataFeed {
-        return DataFeed(type.id, type.content)
+        return DataFeed(type.id, type.city, type.created, type.description, type.provider, type.providerLink)
     }
 }

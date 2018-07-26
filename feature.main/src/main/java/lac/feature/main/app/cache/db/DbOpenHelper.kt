@@ -11,7 +11,7 @@ class DbOpenHelper(val context: Context) : SQLiteOpenHelper(context,
                                                             DATABASE_VERSION) {
 
     companion object {
-        val DATABASE_NAME = "buffer-clean-arch-boilerplate.db"
+        val DATABASE_NAME = "pdp.db"
         val DATABASE_VERSION = 1
     }
 
@@ -28,6 +28,9 @@ class DbOpenHelper(val context: Context) : SQLiteOpenHelper(context,
         db.beginTransaction()
         try {
             db.execSQL(Db.BookmarkTable.CREATE)
+            db.execSQL(Db.CitiesTable.CREATE)
+            db.execSQL(Db.ProvidersTable.CREATE)
+            db.execSQL(Db.FeedsTable.CREATE)
             db.setTransactionSuccessful()
         } finally {
             db.endTransaction()

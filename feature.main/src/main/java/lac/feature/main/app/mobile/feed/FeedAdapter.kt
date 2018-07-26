@@ -21,8 +21,8 @@ internal class FeedAdapter(private val listener: FeedFragment.FeedFragmentListen
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.item = values[position]
-        holder.idView.text = values[position].id
-        holder.contentView.text = values[position].content
+//        holder.idView.text = values[position].id
+        holder.contentView.text = values[position].description
 
         holder.view.setOnClickListener {
             listener?.onClickFeedItem(holder.item!!)
@@ -34,12 +34,12 @@ internal class FeedAdapter(private val listener: FeedFragment.FeedFragmentListen
     }
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val idView: TextView
+//        val idView: TextView
         val contentView: TextView
         var item: Feed? = null
 
         init {
-            idView = view.findViewById(R.id.adapter_feed_id) as TextView
+//            idView = view.findViewById(R.id.adapter_feed_id) as TextView
             contentView = view.findViewById(R.id.adapter_feed_content) as TextView
         }
 

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imageView"
@@ -14,24 +12,37 @@
         android:background="@color/colorAccent" />
 
     <TextView
-        android:id="@+id/adapter_feed_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:text="Text" />
-
-    <TextView
         android:id="@+id/adapter_feed_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:textAppearance="?attr/textAppearanceListItem"
+        android:background="#3eeeeeee"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/adapter_feed_id"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:text="Text" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="ывафывафывафыв ывафывафывафыв ывафывафывафыв ывафывафывафыв ывафывафывафыв ывафывафывафыв" />
+
+    <!--<TextView-->
+    <!--android:id="@+id/adapter_feed_id"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="@dimen/text_margin"-->
+    <!--android:textAppearance="?attr/textAppearanceListItem"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/imageView"-->
+    <!--tools:text="Text" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/adapter_feed_content"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="@dimen/text_margin"-->
+    <!--android:layout_marginEnd="8dp"-->
+    <!--android:layout_marginStart="8dp"-->
+    <!--android:textAppearance="?attr/textAppearanceListItem"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toEndOf="@+id/adapter_feed_id"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/imageView"-->
+    <!--tools:text="Text" />-->
 </android.support.constraint.ConstraintLayout>

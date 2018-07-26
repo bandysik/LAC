@@ -6,10 +6,10 @@ import lac.feature.main.app.domain.model.Feed
 
 class DataFeedMapper : DataMapper<DataFeed, Feed> {
     override fun mapFromEntity(type: DataFeed): Feed {
-        return Feed(type.id, type.content)
+        return Feed(type.id, type.city, type.created, type.description, type.provider, type.providerLink)
     }
 
     override fun mapToEntity(type: Feed): DataFeed {
-        return DataFeed(type.id, type.content)
+        return DataFeed(type.id, type.city, type.created, type.description, type.provider, type.providerLink)
     }
 }

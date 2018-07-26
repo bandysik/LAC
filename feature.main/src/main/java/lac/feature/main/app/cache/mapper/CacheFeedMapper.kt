@@ -6,10 +6,10 @@ import lac.feature.main.app.data.model.DataFeed
 
 class CacheFeedMapper : CacheMapper<CacheFeed, DataFeed> {
     override fun mapFromCached(type: CacheFeed): DataFeed {
-        return DataFeed(type.id, type.content)
+        return DataFeed(type.id, type.city, type.created, type.description, type.provider, type.providerLink)
     }
 
     override fun mapToCached(type: DataFeed): CacheFeed {
-        return CacheFeed(type.id, type.content)
+        return CacheFeed(type.id, type.city, type.created, type.description, type.provider, type.providerLink)
     }
 }

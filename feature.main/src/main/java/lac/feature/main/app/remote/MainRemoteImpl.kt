@@ -1,7 +1,5 @@
 package lac.feature.main.app.remote
 
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import io.reactivex.Single
 import lac.feature.main.app.data.model.DataCity
 import lac.feature.main.app.data.model.DataFeed
@@ -10,7 +8,6 @@ import lac.feature.main.app.data.repository.MainRemote
 import lac.feature.main.app.remote.mapper.RemoteCityMapper
 import lac.feature.main.app.remote.mapper.RemoteFeedMapper
 import lac.feature.main.app.remote.mapper.RemoteProviderMapper
-import lac.feature.main.app.remote.model.RemoteCity
 
 class MainRemoteImpl(private val mainService: MainService,
                      private val remoteCityMapper: RemoteCityMapper,
@@ -19,42 +16,28 @@ class MainRemoteImpl(private val mainService: MainService,
 
     override fun getCities(): Single<List<DataCity>> {
         return mainService.getCities()
-            .map {
-                val itemsListType = object : TypeToken<List<RemoteCity>>() {}.type
-                val listItemsDes = Gson().fromJson<List<RemoteCity>>(it, itemsListType)
-                listItemsDes.map { listItem ->
-                    remoteCityMapper.mapFromRemote(listItem)
+                .map { response ->
+                    response.cities.map { it ->
+                        remoteCityMapper.mapFromRemote(it)
+                    }
                 }
-            }
     }
-//        return mainService.getCities()
-//            .map { response ->
-////                val itemsMapType = object : TypeToken<Map<String, RemoteCity>>() {}.type
-////                val gson = Gson().fromJson<Map<String, RemoteCity>>(response.toString(), itemsMapType)
-////                null
-//                val keys = gson.keys
-//                keys.map {it->
-////                    val remoteCity = gson[it]!!
-////                    remoteCityMapper.mapFromRemote(remoteCity)
-////                }
-//            }
-//    }
 
     override fun getProviders(): Single<List<DataProvider>> {
         return mainService.getProviders()
-            .map {
-                it.providers.map { listItem ->
-                    remoteProviderMapper.mapFromRemote(listItem)
+                .map {
+                    it.providers.map { listItem ->
+                        remoteProviderMapper.mapFromRemote(listItem)
+                    }
                 }
-            }
     }
 
     override fun getFeeds(): Single<List<DataFeed>> {
         return mainService.getFeeds()
-            .map {
-                it.feeds.map { listItem ->
-                    remoteFeedMapper.mapFromRemote(listItem)
+                .map {
+                    it.feeds.map { listItem ->
+                        remoteFeedMapper.mapFromRemote(listItem)
+                    }
                 }
-            }
     }
 }
