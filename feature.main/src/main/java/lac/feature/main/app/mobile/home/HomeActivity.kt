@@ -6,22 +6,21 @@ import android.support.design.widget.CoordinatorLayout
 import android.support.v4.app.Fragment
 import androidx.core.widget.toast
 import kotlinx.android.synthetic.main.activity_home.*
-import lac.core.feature.core.utils.network.Connectivity
 import lac.core.feature.core.clean.BaseActivity
 import lac.core.feature.core.utils.extension.replaceFragment
+import lac.core.feature.core.utils.network.Connectivity
 import lac.feature.main.R
 import lac.feature.main.app.mobile.bookmarks.BookmarksFragment
 import lac.feature.main.app.mobile.feed.FeedFragment
 import lac.feature.main.app.mobile.home.Params.VIEW
 import lac.feature.main.app.mobile.settings.SettingsFragment
 import lac.feature.main.app.mobile.settings.city.CityDialogFragment
-import lac.plugin.admin.Admin
 import lac.plugin.remoteconfig.ImplRemoteConfig
 import org.koin.android.ext.android.inject
 
 internal class HomeActivity : BaseActivity<HomeContract.View, HomeContract.Presenter>(),
-                              HomeContract.View,
-                              CityDialogFragment.SelectCityListener {
+        HomeContract.View,
+        CityDialogFragment.SelectCityListener {
 
     override val presenter: HomeContract.Presenter by inject { mapOf(VIEW to this) }
 
@@ -66,11 +65,11 @@ internal class HomeActivity : BaseActivity<HomeContract.View, HomeContract.Prese
 
     override fun initViews() {
         //TODO move to other place
-        ImplRemoteConfig.remoteConfig.fetch(this) {
+        ImplRemoteConfig.remoteConfig.fetch {
             toast("remote config is loaded")
         }
         activity_home_navigation.setOnNavigationItemSelectedListener(
-            onNavigationItemSelectedListener)
+                onNavigationItemSelectedListener)
         activity_home_navigation.selectedItemId = navigationCurrentItem
 
         val layoutParams = activity_home_navigation.layoutParams as CoordinatorLayout.LayoutParams
@@ -92,7 +91,7 @@ internal class HomeActivity : BaseActivity<HomeContract.View, HomeContract.Prese
 
     override fun showSelectCity(selectedCity: Int) {
         CityDialogFragment.newInstance(selectedCity)
-            .show(supportFragmentManager, "dialog")
+                .show(supportFragmentManager, "dialog")
     }
 
     override fun onSelectCity(position: Int) {
