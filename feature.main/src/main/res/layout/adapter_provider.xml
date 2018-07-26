@@ -5,7 +5,7 @@
     android:id="@+id/adapter_provider_text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
+    android:background="?android:attr/selectableItemBackground"
     android:paddingBottom="@dimen/list_item_spacing_half"
     android:paddingLeft="@dimen/list_item_spacing"
     android:paddingRight="@dimen/list_item_spacing"
