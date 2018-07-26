@@ -1,0 +1,52 @@
+{
+  "feeds": [{
+      "city": "80152",
+      "created": "20180725",
+      "description": "Ищу девушку для совместной аренды жилья !!!Работаю(не студентка )!!!Все подробности в ЛС !!!",
+      "id": "-LIHl5x3-cfKx-ogs-0I",
+      "provider": "vk",
+      "providerLink": "https://new.vk.com/wall-66179230_16703"
+    },
+    {
+      "city": "80152",
+      "created": "20180725",
+      "description": "тест1",
+      "id": "-LIHl5x8R1ASJJs0LKk4",
+      "provider": "vk",
+      "providerLink": "https://google.com"
+    },
+    {
+      "city": "80152",
+      "created": "20180725",
+      "description": "тест2",
+      "id": "-LIHl5xAnridwLXXPlBW",
+      "provider": "vk",
+      "providerLink": "https://google.com"
+    },
+
+    {
+      "city": "80152",
+      "created": "20180725",
+      "description": "Работаю(не студентка )!!!Все подробности в ЛС !!!",
+      "id": "-LIHl5x3-cfKx-ogs-1I",
+      "provider": "vk",
+      "providerLink": "https://new.vk.com/wall-66179230_16703"
+    },
+    {
+      "city": "80152",
+      "created": "20180725",
+      "description": "тест12",
+      "id": "-LIHl5x8R1ASJJs0L3k4",
+      "provider": "vk",
+      "providerLink": "https://google.com"
+    },
+    {
+      "city": "80152",
+      "created": "20180725",
+      "description": "тест21",
+      "id": "-LIHl5xAnridw4XXPlBW",
+      "provider": "vk",
+      "providerLink": "https://google.com"
+    }
+  ]
+}
