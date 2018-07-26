@@ -39,8 +39,8 @@ object MainServiceFactory {
 
     private fun makeGson(): Gson {
         return GsonBuilder().setLenient()
-            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+//            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+//            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
 //            .registerTypeAdapter(object : TypeToken<Map<Int, RemoteCity>>() {}.type,)
             .create()
     }

@@ -8,19 +8,19 @@ import lac.feature.main.app.domain.repository.MainRepository
 class CityDialogPresenter(override var view: CityDialogContract.View,
                           private val schedulerProvider: SchedulerProvider,
                           private val repository: MainRepository) : AbstractPresenter<CityDialogContract.View, CityDialogContract.Presenter>(),
-                                                                    CityDialogContract.Presenter {
+        CityDialogContract.Presenter {
 
     override fun request() {
         view.showProgress()
         launch {
             repository.getCities()
-                .with(schedulerProvider)
-                .subscribe({ cities ->
-                               view.showData(cities)
-                               view.hideProgress()
-                           }, { error ->
-                               view.showError(error)
-                           })
+                    .with(schedulerProvider)
+                    .subscribe({ cities ->
+                        view.showData(cities)
+                        view.hideProgress()
+                    }, { error ->
+                        view.showError(error)
+                    })
         }
     }
 
@@ -28,6 +28,4 @@ class CityDialogPresenter(override var view: CityDialogContract.View,
         request()
     }
 
-//    override fun stop() {
-//    }
 }

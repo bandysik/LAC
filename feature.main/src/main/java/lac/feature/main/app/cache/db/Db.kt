@@ -10,7 +10,7 @@ object Db {
         const val CREATE =
                 "CREATE TABLE $TABLE_NAME " +
                         "(" +
-                        "$BOOKMARK_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                        "$BOOKMARK_ID TEXT PRIMARY KEY NOT NULL," +
                         "$CONTENT TEXT NOT NULL" +
                         "); "
     }
@@ -24,7 +24,7 @@ object Db {
         const val CREATE =
                 "CREATE TABLE $TABLE_NAME " +
                         "(" +
-                        "$CITY_ID INTEGER PRIMARY KEY NOT NULL," +
+                        "$CITY_ID TEXT PRIMARY KEY NOT NULL," +
                         "$NAME TEXT NOT NULL" +
                         "); "
     }
@@ -38,7 +38,7 @@ object Db {
         const val CREATE =
                 "CREATE TABLE $TABLE_NAME " +
                         "(" +
-                        "$PROVIDER_ID STRING PRIMARY KEY NOT NULL," +
+                        "$PROVIDER_ID TEXT PRIMARY KEY NOT NULL," +
                         "$NAME TEXT NOT NULL" +
                         "); "
     }
@@ -56,7 +56,7 @@ object Db {
         const val CREATE =
                 "CREATE TABLE $TABLE_NAME " +
                         "(" +
-                        "$FEED_ID STRING PRIMARY KEY NOT NULL," +
+                        "$FEED_ID TEXT PRIMARY KEY NOT NULL," +
                         "$CITY TEXT NOT NULL," +
                         "$CREATED TEXT NOT NULL," +
                         "$DESCRIPTION TEXT NOT NULL," +

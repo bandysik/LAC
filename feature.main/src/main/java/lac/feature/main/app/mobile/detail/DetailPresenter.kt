@@ -8,7 +8,7 @@ internal class DetailPresenter(override var view: DetailContract.View,
                                private val msg: String,
                                private val repository: MainRepository,
                                private val remoteConfig: RemoteConfig) : AbstractPresenter<DetailContract.View, DetailContract.Presenter>(),
-                                                                         DetailContract.Presenter {
+        DetailContract.Presenter {
 
     override fun onClickPro() {
         if (remoteConfig.isEnabledPro()) {
@@ -21,7 +21,4 @@ internal class DetailPresenter(override var view: DetailContract.View,
         view.showTextMessage(msg)
         view.hideProgress()
     }
-//
-//    override fun stop() {
-//    }
 }
