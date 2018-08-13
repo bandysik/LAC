@@ -15,7 +15,6 @@ import lac.feature.main.app.mobile.feed.FeedFragment
 import lac.feature.main.app.mobile.home.Params.VIEW
 import lac.feature.main.app.mobile.settings.SettingsFragment
 import lac.feature.main.app.mobile.settings.city.CityDialogFragment
-import lac.plugin.remoteconfig.ImplRemoteConfig
 import org.koin.android.ext.android.inject
 
 internal class HomeActivity : BaseActivity<HomeContract.View, HomeContract.Presenter>(),
@@ -36,8 +35,8 @@ internal class HomeActivity : BaseActivity<HomeContract.View, HomeContract.Prese
     }
 
     override fun onStop() {
-        super.onStop()
         unregisterReceiver(broadcastConnectivity)
+        super.onStop()
     }
 
     private val onNavigationItemSelectedListener =
@@ -65,9 +64,9 @@ internal class HomeActivity : BaseActivity<HomeContract.View, HomeContract.Prese
 
     override fun initViews() {
         //TODO move to other place
-        ImplRemoteConfig.remoteConfig.fetch {
-            toast("remote config is loaded")
-        }
+//        RemoteConfig.remoteConfig.fetch {
+//            toast("remote config is loaded")
+//        }
         activity_home_navigation.setOnNavigationItemSelectedListener(
                 onNavigationItemSelectedListener)
         activity_home_navigation.selectedItemId = navigationCurrentItem

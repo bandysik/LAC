@@ -3,7 +3,7 @@ package lac.feature.additional.pro
 import kotlinx.android.synthetic.main.activity_pro.*
 import lac.core.feature.core.clean.BaseActivity
 import lac.feature.additional.R
-import lac.plugin.admin.Admin
+import lac.plugin.imageloader.ImageLoader
 import org.koin.android.ext.android.inject
 
 class ProActivity : BaseActivity<ProContract.View, ProContract.Presenter>(), ProContract.View {
@@ -18,7 +18,7 @@ class ProActivity : BaseActivity<ProContract.View, ProContract.Presenter>(), Pro
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
-            Admin.fill()
+//            Admin.fill()
         }
     }
 
@@ -39,5 +39,9 @@ class ProActivity : BaseActivity<ProContract.View, ProContract.Presenter>(), Pro
     }
 
     override fun showData() {
+    }
+
+    override fun showImage(string: String) {
+        ImageLoader.imageLoader.load(this, string, activity_pro_imageview)
     }
 }

@@ -9,7 +9,7 @@ import lac.core.feature.core.utils.extension.argument
 import lac.feature.main.R
 import lac.feature.main.app.domain.model.Bookmark
 import lac.feature.main.app.domain.model.Feed
-import lac.plugin.navigator.ImplNavigator
+import lac.plugin.navigator.Navigator
 import org.koin.android.ext.android.inject
 
 internal class DetailActivity : BaseActivity<DetailContract.View, DetailContract.Presenter>(),
@@ -57,7 +57,7 @@ internal class DetailActivity : BaseActivity<DetailContract.View, DetailContract
     }
 
     override fun openPro() {
-        ImplNavigator.navigator.startPro(this)
+        Navigator.navigator.startPro(this)
     }
 
     companion object {

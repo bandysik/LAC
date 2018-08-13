@@ -8,6 +8,7 @@ interface ProContract {
     interface View : BaseView<Presenter>,
                      BaseProgressView {
         fun showData()
+        fun showImage(string:String)
     }
 
     interface Presenter : BasePresenter<View> {

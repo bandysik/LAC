@@ -4,14 +4,12 @@ import com.crashlytics.android.Crashlytics
 import com.squareup.leakcanary.LeakCanary
 import io.fabric.sdk.android.Fabric
 import lac.core.app.LacApplication
-import lac.example.app.AppFirebaseAnalytic
-import lac.example.app.AppFirebaseRemoteConfig
-import lac.example.app.AppImageLoader
-import lac.example.app.AppNavigator
+import lac.example.app.*
 import lac.feature.additional.AdditionalModule
 import lac.feature.main.MainModule
 import lac.plugin.analytic.Analytic
 import lac.plugin.imageloader.ImageLoader
+import lac.plugin.logger.Logger
 import lac.plugin.navigator.Navigator
 import lac.plugin.remoteconfig.RemoteConfig
 import org.koin.android.ext.android.startKoin
@@ -26,6 +24,10 @@ class ExampleApp : LacApplication() {
         initFeatureModules()
         initPluginModules()
         initFabric()
+
+        RemoteConfig.remoteConfig.fetch {
+//            toast("remote config is loaded")
+        }
     }
 
     private fun initFabric() {
@@ -41,7 +43,8 @@ class ExampleApp : LacApplication() {
         Navigator.navigator = AppNavigator
         RemoteConfig.remoteConfig = AppFirebaseRemoteConfig()
         Analytic.analytic = AppFirebaseAnalytic(this)
-        ImageLoader.analytic = AppImageLoader
+        ImageLoader.imageLoader = AppImageLoader
+        Logger.logger = AppLogger
     }
 
     private fun initFeatureModules() {

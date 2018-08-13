@@ -37,8 +37,8 @@ import lac.feature.main.app.remote.MainServiceFactory
 import lac.feature.main.app.remote.mapper.RemoteCityMapper
 import lac.feature.main.app.remote.mapper.RemoteFeedMapper
 import lac.feature.main.app.remote.mapper.RemoteProviderMapper
-import lac.plugin.analytic.ImplAnalytic
-import lac.plugin.remoteconfig.ImplRemoteConfig
+import lac.plugin.analytic.Analytic
+import lac.plugin.remoteconfig.RemoteConfig
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module.Module
 import org.koin.dsl.module.applicationContext
@@ -47,8 +47,8 @@ object MainModule {
 
     val mainModule = applicationContext {
 //        bean { StubRepository() as Repository }
-        bean { ImplRemoteConfig.remoteConfig }
-        bean { ImplAnalytic.analytic }
+        bean { RemoteConfig.remoteConfig }
+        bean { Analytic.analytic }
         bean { ApplicationSchedulerProvider() as SchedulerProvider }
         bean { PreferencesHelper(androidApplication()) }
         bean {
