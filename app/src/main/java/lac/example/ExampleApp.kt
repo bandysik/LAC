@@ -1,24 +1,22 @@
 package lac.example
 
-import android.content.Context
 import com.crashlytics.android.Crashlytics
 import com.squareup.leakcanary.LeakCanary
 import io.fabric.sdk.android.Fabric
 import lac.core.app.LacApplication
 import lac.example.app.AppFirebaseAnalytic
 import lac.example.app.AppFirebaseRemoteConfig
+import lac.example.app.AppImageLoader
 import lac.example.app.AppNavigator
 import lac.feature.additional.AdditionalModule
 import lac.feature.main.MainModule
-import lac.plugin.analytic.ImplAnalytic
-import lac.plugin.navigator.ImplNavigator
-import lac.plugin.remoteconfig.ImplRemoteConfig
+import lac.plugin.analytic.Analytic
+import lac.plugin.imageloader.ImageLoader
+import lac.plugin.navigator.Navigator
+import lac.plugin.remoteconfig.RemoteConfig
 import org.koin.android.ext.android.startKoin
 
 class ExampleApp : LacApplication() {
-    init {
-        instance = this
-    }
 
     override fun onCreate() {
         super.onCreate()
@@ -40,9 +38,10 @@ class ExampleApp : LacApplication() {
     }
 
     private fun initPluginModules() {
-        ImplNavigator.navigator = AppNavigator
-        ImplRemoteConfig.remoteConfig = AppFirebaseRemoteConfig()
-        ImplAnalytic.analytic = AppFirebaseAnalytic(this)
+        Navigator.navigator = AppNavigator
+        RemoteConfig.remoteConfig = AppFirebaseRemoteConfig()
+        Analytic.analytic = AppFirebaseAnalytic(this)
+        ImageLoader.analytic = AppImageLoader
     }
 
     private fun initFeatureModules() {
@@ -59,11 +58,4 @@ class ExampleApp : LacApplication() {
         return false
     }
 
-    companion object {
-        private var instance: ExampleApp? = null
-
-        fun applicationContext(): Context {
-            return instance!!.applicationContext
-        }
-    }
 }
