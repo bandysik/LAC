@@ -32,6 +32,10 @@ The project is based on the principles of clean architecture and multi-modularit
 - Multi-modularity
 - Multi-plugin structure
 
+All proguard files contains in folder **proguard**
+
+All keystore files contains in folder **keystore**
+
 ## Modularity
 ![Modularity](https://github.com/bandysik/LAC/blob/master/art/Modularity.png)
 
@@ -65,7 +69,7 @@ Just base module without any logic ;) (for future)
 ### core.feature
 Base module for features.
 
-This modulecontains base resources for all feature modules. Here placed base style of application, color-schemes, strings etc.
+This module contains base resources for all feature modules. Here placed base style of application, color-schemes, strings etc.
 >You can use MVP, MVVM or other patterns for building screens of application (for current project it is MVP)
 >Also, in current implementation of project, it is place for base UI-elements.
 >We can use this module for utils classes.
@@ -115,16 +119,19 @@ Current project based on MVP and Clean.
 ![Architecture](https://github.com/bandysik/LAC/blob/master/art/Architecture.png)
 
 We have the following packages:
-- cache - for locale cache
-- data - 
+- mobile, presentation
 - domain
-- mobile
+- data
+- cache
 - remote
 
 All modules contains own model classes and mappers for communication between layers.
 
 All dependencies collected in MainModule class.
 >Give name of DI for module in format [name_of_module]Module
+
+## Example
+For example of using this project, you can see on the feature.main as main module
 
 ## Todos
 - Write Tests
