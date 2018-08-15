@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion Versions.compileSdkVersion
+    compileSdkVersion SdkVersions.compileSdkVersion
     defaultConfig {
-        minSdkVersion Versions.minSdkVersion
-        targetSdkVersion Versions.targetSdkVersion
+        minSdkVersion SdkVersions.minSdkVersion
+        targetSdkVersion SdkVersions.targetSdkVersion
     }
 }
 
@@ -14,7 +14,7 @@ dependencies {
     api Deps.kotlin_stdlib
 
     api Deps.android_support_compat
-    api Deps.android_constraint
+//    api Deps.android_constraint
 
     api Deps.koin_core
     api Deps.koin_android

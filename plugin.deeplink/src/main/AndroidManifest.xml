@@ -1,2 +1,2 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="lac.plugin.fcm" />
+    package="lac.plugin.deeplink" />

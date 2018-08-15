@@ -1,4 +1,4 @@
-include ':core.app',
+include ':core.app', ':plugin.deeplink',
         ':core.feature',
         ':core.plugin',
         ':app',
@@ -9,5 +9,6 @@ include ':core.app',
         ':plugin.navigator',
         ':plugin.remoteconfig',
         ':plugin.admin',
-        ':plugin.imageloader'
+        ':plugin.imageloader',
+        ':plugin.fcm'
 

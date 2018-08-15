@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion SdkVersions.compileSdkVersion
@@ -11,11 +10,8 @@ android {
 }
 
 dependencies {
-    implementation project(':core.feature')
+    implementation project(':core.plugin')
 
-    api project(':plugin.logger')
-    api project(':plugin.analytic')
-    api project(':plugin.navigator')
-    api project(':plugin.remoteconfig')
-    api project(':plugin.admin')
+    api 'com.airbnb:deeplinkdispatch:3.1.1'
+    kapt 'com.airbnb:deeplinkdispatch-processor:3.1.1'
 }

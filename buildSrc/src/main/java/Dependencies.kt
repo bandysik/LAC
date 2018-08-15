@@ -1,9 +1,11 @@
-object Versions {
+object SdkVersions {
     val compileSdkVersion = 27
     val minSdkVersion = 19
     val targetSdkVersion = 27
+}
 
-    val kotlin = "1.2.21"
+object DepsVersions {
+    val kotlin = "1.2.50"
 
     //ANDROID
     val support = "27.1.1"
@@ -31,46 +33,46 @@ object Versions {
 }
 
 object Deps {
-    val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jre7:${Versions.kotlin}"
+    val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${DepsVersions.kotlin}"
 
     //ANDROID
-    val android_support_compat = "com.android.support:appcompat-v7:${Versions.support}"
-    val android_design = "com.android.support:design:${Versions.support}"
-    val android_vector = "com.android.support:support-vector-drawable:${Versions.support}"
+    val android_support_compat = "com.android.support:appcompat-v7:${DepsVersions.support}"
+    val android_design = "com.android.support:design:${DepsVersions.support}"
+    val android_vector = "com.android.support:support-vector-drawable:${DepsVersions.support}"
     val android_constraint =
-            "com.android.support.constraint:constraint-layout:${Versions.constraint}"
+            "com.android.support.constraint:constraint-layout:${DepsVersions.constraint}"
 
-    val arch_room = "android.arch.persistence.room:runtime:${Versions.room}"
+    val arch_room = "android.arch.persistence.room:runtime:${DepsVersions.room}"
 
-    val ktx_core = "androidx.core:core-ktx:${Versions.ktx}"
+    val ktx_core = "androidx.core:core-ktx:${DepsVersions.ktx}"
 
-    val firebase_core = "com.google.firebase:firebase-core:${Versions.firebase}"
-    val firebase_config = "com.google.firebase:firebase-config:${Versions.firebaseConfig}"
-    val firebase_database = "com.google.firebase:firebase-database:${Versions.firebase}"
+    val firebase_core = "com.google.firebase:firebase-core:${DepsVersions.firebase}"
+    val firebase_config = "com.google.firebase:firebase-config:${DepsVersions.firebaseConfig}"
+    val firebase_database = "com.google.firebase:firebase-database:${DepsVersions.firebase}"
 
     //OTHER
-    val koin_core = "org.koin:koin-core:${Versions.koin}"
-    val koin_android = "org.koin:koin-android:${Versions.koin}"
+    val koin_core = "org.koin:koin-core:${DepsVersions.koin}"
+    val koin_android = "org.koin:koin-android:${DepsVersions.koin}"
 
-    val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    val retrofit_converter_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
-    val retrofit_adapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
-    val okHttpLogger = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttpVersion}"
+    val retrofit = "com.squareup.retrofit2:retrofit:${DepsVersions.retrofit}"
+    val retrofit_converter_gson = "com.squareup.retrofit2:converter-gson:${DepsVersions.retrofit}"
+    val retrofit_adapter = "com.squareup.retrofit2:adapter-rxjava2:${DepsVersions.retrofit}"
+    val okHttpLogger = "com.squareup.okhttp3:logging-interceptor:${DepsVersions.okHttpVersion}"
 
-    val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+    val timber = "com.jakewharton.timber:timber:${DepsVersions.timber}"
 
-    val stetho = "com.facebook.stetho:stetho:${Versions.stetho}"
+    val stetho = "com.facebook.stetho:stetho:${DepsVersions.stetho}"
 
-    val leakcanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakcanary}"
-    val leakcanary_no_op = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.leakcanary}"
+    val leakcanary = "com.squareup.leakcanary:leakcanary-android:${DepsVersions.leakcanary}"
+    val leakcanary_no_op = "com.squareup.leakcanary:leakcanary-android-no-op:${DepsVersions.leakcanary}"
 
-    val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
+    val crashlytics = "com.crashlytics.sdk.android:crashlytics:${DepsVersions.crashlytics}"
 
-    val rx_kotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rx_kotlin}"
-    val rx_android = "io.reactivex.rxjava2:rxandroid:${Versions.rx_android}"
+    val rx_kotlin = "io.reactivex.rxjava2:rxkotlin:${DepsVersions.rx_kotlin}"
+    val rx_android = "io.reactivex.rxjava2:rxandroid:${DepsVersions.rx_android}"
 
     //TEST
-    val junit = "junit:junit:${Versions.junit}"
-    val android_test_runner = "com.android.support.test:runner:${Versions.android_test}"
-    val espresso_core = "com.android.support.test.espresso:espresso-core:${Versions.espresso}"
+    val junit = "junit:junit:${DepsVersions.junit}"
+    val android_test_runner = "com.android.support.test:runner:${DepsVersions.android_test}"
+    val espresso_core = "com.android.support.test.espresso:espresso-core:${DepsVersions.espresso}"
 }

@@ -3,10 +3,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion Versions.compileSdkVersion
+    compileSdkVersion SdkVersions.compileSdkVersion
     defaultConfig {
-        minSdkVersion Versions.minSdkVersion
-        targetSdkVersion Versions.targetSdkVersion
+        minSdkVersion SdkVersions.minSdkVersion
+        targetSdkVersion SdkVersions.targetSdkVersion
     }
 }
 
@@ -28,7 +28,7 @@ dependencies {
     api Deps.retrofit_adapter
     api Deps.okHttpLogger
 
-    api Deps.arch_room
+//    api Deps.arch_room
 
     api Deps.rx_kotlin
     api Deps.rx_android
